@@ -20,15 +20,15 @@ public class EvilController : MonoBehaviour
     {
         //2초마다 evil의 모양을 변경 시킴
         this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
-        if (this.delta > this.span)//2초 후
-        {
-            this.delta = 0;
-            int emotionNum = Random.Range(1, 3);
-            string imgPath = "evil_emotion" + emotionNum+".png";
-            Debug.Log(imgPath);
-            gameObject.GetComponent<Image>().sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
+        //if (this.delta > this.span)//2초 후
+        //{
+        //    this.delta = 0;
+        //    int emotionNum = Random.Range(1, 3);
+        //    string imgPath = "evil_emotion" + emotionNum+".png";
+        //    Debug.Log(imgPath);
+        //    gameObject.GetComponent<Image>().sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
 
-        }
+        //}
 
         /*
          * 충돌판정
