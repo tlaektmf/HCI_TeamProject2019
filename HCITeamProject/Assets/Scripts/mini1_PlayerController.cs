@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class mini1_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     /*
      사용자 정의 함수
      */
-     public void LButtonDown()
+    public void LButtonDown()
     {
         transform.Translate(-1.1f, 0, 0);
     }
