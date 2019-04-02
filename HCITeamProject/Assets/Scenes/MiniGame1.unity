@@ -282,7 +282,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 180405180}
+      - m_Target: {fileID: 0}
         m_MethodName: RButtonDown
         m_Mode: 1
         m_Arguments:
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 180405180}
+      - m_Target: {fileID: 0}
         m_MethodName: LButtonDown
         m_Mode: 1
         m_Arguments:
