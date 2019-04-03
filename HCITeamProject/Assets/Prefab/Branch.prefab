@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5718753093574223233}
   - component: {fileID: 6598818903793137156}
   - component: {fileID: 8067928317380913973}
+  - component: {fileID: 3491249050638832462}
   m_Layer: 0
   m_Name: Branch
   m_TagString: Branch
@@ -160,3 +161,15 @@ PolygonCollider2D:
       - {x: 1.06, y: -0.415}
       - {x: 1.0799999, y: -0.21499999}
       - {x: 0.89, y: -0.145}
+--- !u!114 &3491249050638832462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718753093574223234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42391e63b9afb584cb7d9daedd6b3072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Owl
   - Branch
+  - Bird
   layers:
   - Default
   - TransparentFX

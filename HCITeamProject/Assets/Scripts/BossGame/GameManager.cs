@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
         pos.x = Random.Range(-wrdSize.x * 0.5f, wrdSize.x * 0.5f);
 
         // 나뭇가지
-        GameObject branch = Instantiate(Resources.Load("Branch")) as GameObject;
+        GameObject branch = Instantiate(Resources.Load("branch")) as GameObject;
         branch.transform.position = pos;
 
         // SpawnPoint를 위로 이동
@@ -74,11 +74,11 @@ public class GameManager : MonoBehaviour {
     void InitGame () {
         // 배경음악
         music = GetComponent<AudioSource>();
-        music.loop = true;
+        //music.loop = true;
 
-        if (music.clip != null) {
-            music.Play();
-        }
+        //if (music.clip != null) {
+        //    music.Play();
+        //}
 
         // SpawnPoint
         spPoint = GameObject.Find("SpawnPoint").transform;
