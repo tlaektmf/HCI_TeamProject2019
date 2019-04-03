@@ -25,4 +25,13 @@ public class GameDirector : MonoBehaviour
         
     }
 
+    /*
+     * 미니게임 3에서 사용되는 함수
+     */
+    public void miniGame3Clear()
+    {
+        //evil과 충돌하는 경우 clear
+        Debug.Log("mini game 3 clear");
+    }
+
 }
