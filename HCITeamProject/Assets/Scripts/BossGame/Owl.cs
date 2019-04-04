@@ -32,6 +32,8 @@ public class Owl : MonoBehaviour {
         Vector2 pos = Camera.main.WorldToScreenPoint(transform.position);
         if (pos.y < -100) {
             isDead = true;
+            // GameManager에 통지
+            FindObjectOfType<GameManager>().SendMessage("GameOver");
             return;
         }
         // 키 입력
