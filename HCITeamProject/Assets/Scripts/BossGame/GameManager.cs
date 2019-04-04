@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
     AudioSource music;      // 배경 및 게임오버 음악
     Transform spPoint;      // SpawnPoint
     Vector3 wrdSize;        // 화면의 크기 (월드좌표)
+    public GameObject branchPrefab;
+    public GameObject birdPrefab;
 
     void Awake () {
         InitGame();
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour {
     void Update () {
         MakeBranch();
         MakeBird();
-        MakeGift();
+        //MakeGift();
     }
     
     // 나뭇가지 만들기
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour {
         pos.x = Random.Range(-wrdSize.x * 0.5f, wrdSize.x * 0.5f);
 
         // 나뭇가지
-        GameObject branch = Instantiate(Resources.Load("branch")) as GameObject;
+        GameObject branch = Instantiate(branchPrefab) as GameObject;
         branch.transform.position = pos;
 
         // SpawnPoint를 위로 이동
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour {
         Vector3 pos = spPoint.position;
         pos.y -= Random.Range(0, 2f);
 
-        GameObject bird = Instantiate(Resources.Load("Bird")) as GameObject;
+        GameObject bird = Instantiate(birdPrefab) as GameObject;
         bird.transform.position = pos;
     }
 
