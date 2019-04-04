@@ -22,7 +22,6 @@ public class Owl : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         if (isDead) return;
-
         CheckBranch();      // 나뭇가지 조사
         MoveOwl();          // 올빼미 이동
     }
@@ -58,7 +57,7 @@ public class Owl : MonoBehaviour {
     // 나뭇가지 판정
     void CheckBranch () {
         // CheckPoint에서 아래쪽으로 0.2m 이내 조사
-        RaycastHit2D hit = Physics2D.Raycast(chkPoint.position, Vector2.down, 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(chkPoint.position, Vector2.down, 0.2f);
 
         // 디버그 출력
         Debug.DrawRay(chkPoint.position, Vector2.down * 1f, Color.blue);
@@ -80,6 +79,10 @@ public class Owl : MonoBehaviour {
                 break;
             case "Gift":
                 other.SendMessage("GetGift");
+                break;
+            case "Princess":
+                print("come on?");
+                other.SendMessage("PrincessCollision");
                 break;
         }
     }

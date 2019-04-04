@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.UI;
+using System.Collections;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
+
 
 public class GameManager : MonoBehaviour {
 
@@ -12,6 +15,12 @@ public class GameManager : MonoBehaviour {
     Vector3 wrdSize;        // 화면의 크기 (월드좌표)
     public GameObject branchPrefab;
     public GameObject birdPrefab;
+    public GameObject princess;
+    public GameObject chkpoint;
+    public Text timeText;
+    private float time=2;
+
+    bool gameclear = false;
 
     void Awake () {
         InitGame();
@@ -22,6 +31,27 @@ public class GameManager : MonoBehaviour {
         MakeBranch();
         MakeBird();
         //MakeGift();
+        if (time > 0) { 
+            time -= Time.deltaTime;
+            timeText.text = "남은시간 : " + Mathf.Ceil(time).ToString();
+        }
+        else
+        {
+            //Clear!!
+            if (!gameclear)
+            {
+                Vector3 pos = spPoint.position;
+                princess.transform.position = pos;
+
+                // 나뭇가지
+                GameObject branch = Instantiate(branchPrefab) as GameObject;
+                Vector3 b_pos = new Vector3(pos.x, pos.y-(float)0.8, pos.z);
+                branch.transform.position = b_pos;
+                gameclear = true;
+            }
+           
+        }
+
     }
     
     // 나뭇가지 만들기
@@ -85,6 +115,9 @@ public class GameManager : MonoBehaviour {
         // SpawnPoint
         spPoint = GameObject.Find("SpawnPoint").transform;
 
+        GameObject branch = Instantiate(branchPrefab) as GameObject;
+        branch.transform.position = chkpoint.transform.position;
+
         // World의 크기
         Vector3 scrSize = new Vector3(Screen.width, Screen.height);
         scrSize.z = 10;
@@ -99,5 +132,11 @@ public class GameManager : MonoBehaviour {
     void SetScore()
     {
 
+    }
+    void GameClear()
+    {
+        print("용사여 당신은 공주를 구해냈어요!");
+        timeText.text = "GameClear!!";
+        SceneManager.LoadScene("MiniGame3");
     }
 }

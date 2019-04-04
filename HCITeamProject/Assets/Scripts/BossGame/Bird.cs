@@ -80,11 +80,11 @@ public class Bird : MonoBehaviour {
         GetComponent<Rigidbody2D>().gravityScale = 1;
         speed = 0;
 
-        // 점수
-        GameObject score = Instantiate(Resources.Load("Score")) as GameObject;
-        score.transform.position = transform.position;
+        //// 점수
+        //GameObject score = Instantiate(Resources.Load("Score")) as GameObject;
+        //score.transform.position = transform.position;
 
-        score.SendMessage("SetScore", -100);
+        //score.SendMessage("SetScore", -100);
     }
 
 }
