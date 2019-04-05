@@ -6,14 +6,18 @@ using UnityEngine.SceneManagement;
 public class GameDirector : MonoBehaviour
 {
     int CLEAR_CONTROL_TIME =40;
+    int CASTLE_SHOW_CONTROL_TIME = 3;
     int PLAYER_SIZE_CONTROL_TIME = 5;
+
     GameObject mplayer;
-    bool end_eatMashroom = false;
+   /// GameObject mevil;
+
 
     // Start is called before the first frame update
     void Start()
     {
         this.mplayer = GameObject.Find("player_man");
+       /// this.mevil = GameObject.Find("evil");
         StartCoroutine(miniGame1Clear());
     }
 
@@ -55,12 +59,18 @@ public class GameDirector : MonoBehaviour
     /*
      사용자 정의 함수 - 미니게임 3
      */
-    public void miniGame3Clear()
+
+    public IEnumerator miniGame3Clear()
     {
         //evil과 충돌하는 경우 clear
+
+        //1. 우선 evil을 없애고
+        //2. 3초후, 클리어 화면으로 전환한다
+
+        yield return new WaitForSeconds(CASTLE_SHOW_CONTROL_TIME);//WaitForSeconds객체를 생성해서 반환
+        Application.LoadLevel("ClearMiniGame3");
         Debug.Log("mini game 3 clear");
     }
-
 
     /*
      * 사용자 정의 함수- 미니게임 1, 미니게임 3 공통
@@ -71,5 +81,6 @@ public class GameDirector : MonoBehaviour
         Debug.Log("game over , show bad ending");
         Application.LoadLevel("BadEnding");
     }
+
 
 }

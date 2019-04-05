@@ -5,6 +5,8 @@ using UnityEngine.UI;//Image 클래스 사용가능
 
 public class EvilController : MonoBehaviour
 {
+    int EVIL_EMOTION_CNT = 3;
+    public Sprite[] evilObj = new Sprite[3];
     GameObject mplayer;//케릭터 오브젝트
     float span = 2.0f;//2초마다 이미지 변경
     float delta = 0;
@@ -20,16 +22,16 @@ public class EvilController : MonoBehaviour
     {
         //2초마다 evil의 모양을 변경 시킴
         this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
-        //(여리 추가) - 실눈 뜬 모습은 cat2, 완전히 잠에서 깬 모습은 cat3
-        //if (this.delta > this.span)//2초 후
-        //{
-        //    this.delta = 0;
-        //    int emotionNum = Random.Range(1, 3);
-        //    string imgPath = "evil_emotion" + emotionNum+".png";
-        //    Debug.Log(imgPath);
-        //    gameObject.GetComponent<Image>().sprite = Resources.Load(imgPath, typeof(Sprite)) as Sprite;
 
-        //}
+        if (this.delta > this.span)//2초 후
+        {
+            this.delta = 0;
+            int emotionNum = Random.Range(1, 3);
+            string imgPath = "cat" + emotionNum +".png";
+            Debug.Log(imgPath);
+            gameObject.GetComponent<Image>().sprite = evilObj[emotionNum];
+
+        }
 
         /*
          * 충돌판정
@@ -42,6 +44,7 @@ public class EvilController : MonoBehaviour
 
         if (dist.magnitude < evil_radius + player_radius)
         {
+            Debug.Log("crush to evil");
             //충돌하는 경우, evil 소멸시킴, 성 문이 보이도록 함
             Destroy(gameObject);
 

@@ -14,7 +14,7 @@ public class mini3_PlayerController : MonoBehaviour
     void Start()
     {
        
-        this.mevil = GameObject.Find("evil_emotion0");
+        this.mevil = GameObject.Find("evil");
         this.mcastle = GameObject.Find("castle");
         this.mroad = GameObject.Find("road");
         anim = GetComponent<Animator>();
@@ -42,8 +42,8 @@ public class mini3_PlayerController : MonoBehaviour
  */
     public void UpButton()
     {
-        mevil.transform.localScale += new Vector3(0.1f, 0.1f, 0);
-        mcastle.transform.localScale += new Vector3(0.1f, 0.1f, 0);
-        mroad.transform.Translate(0, -0.1f, 0);
+        mevil.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+        mcastle.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+        mroad.transform.Translate(0, -0.05f, 0);
     }
 }
