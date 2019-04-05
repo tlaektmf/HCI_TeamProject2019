@@ -5,8 +5,7 @@ using UnityEngine;
 public class mashroomController : MonoBehaviour
 {
     GameObject mplayer;//케릭터 오브젝트
-    float delta = 0;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +15,15 @@ public class mashroomController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
+       
+        transform.Translate(0, -0.1f, 0);//0.1f의 속도만큼 낙하시킨다
+
+        if (transform.position.y < -5.0f)
+        {//장애물의 y위치(높이)가 -5.0 밑으로 가는경우(화면에서 사라지는 경우)
+
+            Destroy(gameObject);//폭탄을 삭제
+
+        }
 
         /*
        * 충돌판정
