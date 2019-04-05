@@ -17,6 +17,9 @@ public class bgscrolling : MonoBehaviour
     void Update()
     {
         float newPos = Mathf.Repeat(Time.time * speed * Game2Controller.speed, 7.2f);
-        transform.position = startPos - Vector3.right * newPos;
+        if(Game2Controller.speed > 0)
+        {
+            transform.position = startPos - Vector3.right * newPos;
+        }
     }
 }

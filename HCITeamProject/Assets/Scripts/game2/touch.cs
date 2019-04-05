@@ -4,20 +4,34 @@ using UnityEngine;
 
 public class touch : MonoBehaviour
 {
-    public static float thrust = 5.5f;
-    GameObject player;
+    public static float thrust = 10f;
+    Player player;
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = (Player)GameObject.Find("Player").GetComponent<Player>();
     }
 
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Click");
-            Rigidbody2D rigid = player.GetComponent<Rigidbody2D>();
-            rigid.velocity = new Vector2(0, thrust);
+            // 
+            bool attack = false;
+            GameObject[] enemyobjects = GameObject.FindGameObjectsWithTag("enemy");
+            foreach (GameObject enemyob in enemyobjects)
+            {
+                float d = Vector3.Distance(enemyob.transform.position, player.gameObject.transform.position);
+                if(d < 5)
+                {
+                    player.Punch();
+                    attack = true;
+                }
+            }
+
+            if(!attack)
+            {
+                player.Jump(thrust);
+            }
         }
     }
 }

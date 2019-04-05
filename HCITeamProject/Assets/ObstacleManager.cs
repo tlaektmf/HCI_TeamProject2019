@@ -17,7 +17,7 @@ public class ObstacleManager : MonoBehaviour
     // Start is called before the first frame update
     GameObject enemyPrefab = null;
     GameObject om = null;
-    public Obstacle nextObstacle = null;
+    public static Obstacle nextObstacle = null;
     public List<Obstacle> obstacleList = new List<Obstacle>();
 
     int cnt = 0;
@@ -29,6 +29,7 @@ public class ObstacleManager : MonoBehaviour
             GameObject enemy = MonoBehaviour.Instantiate(enemyPrefab) as GameObject;
             enemy.transform.parent = om.transform;
             enemy.name = "obs" + cnt++;
+            enemy.tag = "enemy";
         }
     }
 
