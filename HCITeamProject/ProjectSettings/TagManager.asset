@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Owl
+  - Branch
+  - Bird
+  - Princess
   layers:
   - Default
   - TransparentFX
