@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
+   
     GameObject mplayer;//케릭터 오브젝트
 
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class BombController : MonoBehaviour
         Vector2 player_center = this.mplayer.transform.position;//캐릭터 중심좌표
         Vector2 dist = bomb_center - player_center;
         float bomb_radius = 0.5f;//폭탄 반경
-        float player_radius = 1.0f;//플레이어 반경
+        float player_radius = 0.5f;//플레이어 반경
 
         if (dist.magnitude < bomb_radius + player_radius)
         {
