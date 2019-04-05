@@ -13,6 +13,7 @@ public class mini1_PlayerController : MonoBehaviour
      * isStay가 false이고, isRight가 true일 경우 = 오른쪽으로 움직이는 모습
      * 
      */
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +29,19 @@ public class mini1_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 worldpos = Camera.main.WorldToViewportPoint(this.transform.position);
+        if (worldpos.x < 0f) worldpos.x = 0.1f;
+        if (worldpos.y < 0f) worldpos.y = 0f;
+        if (worldpos.x > 1f) worldpos.x = 0.9f;
+        if (worldpos.y > 1f) worldpos.y = 1f;
+        this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
+
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             anim.SetBool("isStay", false);
             anim.SetBool("isLeft", true);
             transform.Translate(-0.1f, 0, 0);//왼쪽으로 3만큼 이동
-            mbackground.transform.Translate(0.3f, 0, 0);
+            mbackground.transform.Translate(0.05f, 0, 0);
             
         }else if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
@@ -45,7 +53,7 @@ public class mini1_PlayerController : MonoBehaviour
             anim.SetBool("isStay", false);
             anim.SetBool("isRight", true);
             transform.Translate(0.1f, 0, 0);//오른쪽으로 3만큼 이동
-            mbackground.transform.Translate(-0.3f, 0, 0);
+            mbackground.transform.Translate(-0.1f, 0, 0);
         }else if (Input.GetKeyUp(KeyCode.RightArrow))
         {
             anim.SetBool("isStay", true);
