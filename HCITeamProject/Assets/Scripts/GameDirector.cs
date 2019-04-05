@@ -22,7 +22,7 @@ public class GameDirector : MonoBehaviour
      public void GameOver()
     {
         //폭탄과 충돌하는 경우 game over
-        
+        Debug.Log("crush bomb game over");
     }
 
     /*
@@ -32,6 +32,11 @@ public class GameDirector : MonoBehaviour
     {
         //evil과 충돌하는 경우 clear
         Debug.Log("mini game 3 clear");
+    }
+
+    public void eatMashroom()
+    {
+        Debug.Log("eat mashroom");
     }
 
 }
