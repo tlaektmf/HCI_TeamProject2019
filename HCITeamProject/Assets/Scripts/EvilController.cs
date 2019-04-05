@@ -20,6 +20,7 @@ public class EvilController : MonoBehaviour
     {
         //2초마다 evil의 모양을 변경 시킴
         this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
+        //(여리 추가) - 실눈 뜬 모습은 cat2, 완전히 잠에서 깬 모습은 cat3
         //if (this.delta > this.span)//2초 후
         //{
         //    this.delta = 0;

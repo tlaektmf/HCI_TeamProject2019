@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 145777840}
   - component: {fileID: 145777839}
   - component: {fileID: 145777841}
+  - component: {fileID: 145777842}
   m_Layer: 0
   m_Name: player_man_back
   m_TagString: Untagged
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 60f9ef3c59a83a048815e5bdf99b0c80, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b48993410c4bb834ca3bd9017baf1f19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 145777838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.03, y: -3.89, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -204,6 +205,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0163524ff51d446be7064581bd14bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &145777842
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145777838}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72aab33ce5cf53f4a8895394d6d75b75, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &507856988
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +519,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 6939384a6295d104ca311e5f3238457a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 121663a61d059674d810c754ff83f859, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
