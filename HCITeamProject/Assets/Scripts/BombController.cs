@@ -5,12 +5,13 @@ using UnityEngine;
 public class BombController : MonoBehaviour
 {
     GameObject mplayer;//케릭터 오브젝트
+    GameObject director;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.director = GameObject.Find("GameDirector");
         this.mplayer = GameObject.Find("player_man");//케릭터오브젝트
-        
     }
 
     // Update is called once per frame
@@ -40,7 +41,6 @@ public class BombController : MonoBehaviour
             Destroy(gameObject);
 
             //감독 스크립트에서 player와 object가 충돌했음을 전달
-            GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().GameOver();
         }
     }

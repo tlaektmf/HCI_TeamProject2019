@@ -7,6 +7,7 @@ public class mini1_PlayerController : MonoBehaviour
     GameObject mbackground;
     private Animator anim;
 
+    
     /*Animation 작동 원리
      * isStay가 true이고, isLeft가 false일 경우, isRight가 false일 경우 = 정적인 모습
      * isStay가 false이고, isLeft가 true일경우 = 왼쪽으로 움직이는 모습
@@ -17,6 +18,7 @@ public class mini1_PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         anim = GetComponent<Animator>();
 
         anim.SetBool("isStay", true);
