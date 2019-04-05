@@ -48,5 +48,6 @@ public class EvilController : MonoBehaviour
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().miniGame3Clear();
         }
+
     }
 }
