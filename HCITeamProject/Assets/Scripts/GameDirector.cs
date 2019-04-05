@@ -20,21 +20,12 @@ public class GameDirector : MonoBehaviour
     }
 
     /*
-     사용자 정의 함수
+     사용자 정의 함수 - 미니게임 1
      */
      public void GameOver()
     {
         //폭탄과 충돌하는 경우 game over
         Debug.Log("crush bomb game over");
-    }
-
-    /*
-     * 미니게임 3에서 사용되는 함수
-     */
-    public void miniGame3Clear()
-    {
-        //evil과 충돌하는 경우 clear
-        Debug.Log("mini game 3 clear");
     }
 
     public void eatMashroom()
@@ -51,4 +42,21 @@ public class GameDirector : MonoBehaviour
         yield return new WaitForSeconds(PLAYER_SIZE_CONTROL_TIME);//WaitForSeconds객체를 생성해서 반환
         this.mplayer.transform.localScale += new Vector3(0.1f, 0.1f, 0);
     }
+
+    public void miniGame1Clear()
+    {
+        //evil과 충돌하는 경우 clear
+        Debug.Log("mini game 1 clear");
+    }
+
+
+    /*
+     사용자 정의 함수 - 미니게임 3
+     */
+    public void miniGame3Clear()
+    {
+        //evil과 충돌하는 경우 clear
+        Debug.Log("mini game 3 clear");
+    }
+
 }
