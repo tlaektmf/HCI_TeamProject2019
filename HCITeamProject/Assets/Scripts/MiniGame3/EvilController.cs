@@ -41,10 +41,8 @@ public class EvilController : MonoBehaviour
         {
             this.delta = 0;
             int evilNum = (Random.Range(1, 99)%3)+1;
-            ////string imgPath = "cat" + emotionNum +".png";
            Debug.Log(evilNum);
-            ////gameObject.GetComponent<Image>().sprite = evilObj[emotionNum];
-            ///
+       
 
             switch (evilNum)
             {

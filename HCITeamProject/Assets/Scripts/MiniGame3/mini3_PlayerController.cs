@@ -13,9 +13,12 @@ public class mini3_PlayerController : MonoBehaviour
     GameObject mroad;
     private Animator anim;
 
+    GameObject director;
+
     // Start is called before the first frame update
     void Start()
     {
+        this.director = GameObject.Find("GameDirector");
 
         this.evil_open_eyes = GameObject.Find("evil_open_eyes");
         this.evil_sleep = GameObject.Find("evil_sleep");
@@ -63,11 +66,20 @@ public class mini3_PlayerController : MonoBehaviour
         ////}
         ///
 
-        evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+        if(evil_sleep.activeSelf == false)
+        {
+            //gameover
+            director.GetComponent<GameDirector>().GameOver();
+        }
+        else
+        {
+            evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
 
-        mcastle.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        mroad.transform.Translate(0, -0.05f, 0);
+            mcastle.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            mroad.transform.Translate(0, -0.05f, 0);
+        }
+
     }
 }
