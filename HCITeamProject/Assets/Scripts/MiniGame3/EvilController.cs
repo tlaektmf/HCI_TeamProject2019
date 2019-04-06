@@ -6,30 +6,60 @@ using UnityEngine.UI;//Image 클래스 사용가능
 public class EvilController : MonoBehaviour
 {
     int EVIL_EMOTION_CNT = 3;
-    public Sprite[] evilObj = new Sprite[3];
+    ////public Sprite[] evilObj = new Sprite[3];
+
     GameObject mplayer;//케릭터 오브젝트
-    float span = 2.0f;//2초마다 이미지 변경
+
+    GameObject evil_sleep;
+    GameObject evil_awake;
+    GameObject evil_open_eyes;
+
+    float span = 1;
     float delta = 0;
-   // bool flag = false;
+    
     // Start is called before the first frame update
     void Start()
     {
         this.mplayer = GameObject.Find("player_man_back");//케릭터오브젝트
+        this.evil_open_eyes = GameObject.Find("evil_open_eyes");
+        this.evil_sleep = GameObject.Find("evil_sleep");
+        this.evil_awake = GameObject.Find("evil_awake");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //2초마다 evil의 모양을 변경 시킴
+       
         this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
 
-        if (this.delta > this.span)//2초 후
+        if (this.delta > this.span)//1초 후
         {
             this.delta = 0;
-            int emotionNum = Random.Range(1, 3);
-            string imgPath = "cat" + emotionNum +".png";
-            Debug.Log(imgPath);
-            gameObject.GetComponent<Image>().sprite = evilObj[emotionNum];
+            int evilNum = (Random.Range(1, 99)%3)+1;
+            ////string imgPath = "cat" + emotionNum +".png";
+           Debug.Log(evilNum);
+            ////gameObject.GetComponent<Image>().sprite = evilObj[emotionNum];
+            ///
+
+            switch (evilNum)
+            {
+                case 1:
+                    evil_open_eyes.SetActive(true);
+                    evil_awake.SetActive(false);
+                    evil_sleep.SetActive(false);
+                    break;
+                case 2:
+                    evil_open_eyes.SetActive(false);
+                    evil_awake.SetActive(true);
+                    evil_sleep.SetActive(false);
+                    break;
+                case 3:
+                    evil_open_eyes.SetActive(false);
+                    evil_awake.SetActive(false);
+                    evil_sleep.SetActive(true);
+                    break;
+            }
 
         }
 
