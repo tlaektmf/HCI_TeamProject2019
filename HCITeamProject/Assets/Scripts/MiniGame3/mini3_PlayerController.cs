@@ -62,6 +62,7 @@ public class mini3_PlayerController : MonoBehaviour
         ////    evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
         ////}
         ///
+
         evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
         evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
         evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);

@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
-    int CLEAR_CONTROL_TIME =40;
+    int CLEAR_CONTROL_TIME =5;
     int CASTLE_SHOW_CONTROL_TIME = 3;
     int PLAYER_SIZE_CONTROL_TIME = 5;
 
     GameObject mplayer;
-   /// GameObject mevil;
-
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +17,7 @@ public class GameDirector : MonoBehaviour
         this.mplayer = GameObject.Find("player_man");
        /// this.mevil = GameObject.Find("evil");
         StartCoroutine(miniGame1Clear());
+        StartCoroutine(miniGame3End());
     }
 
     // Update is called once per frame
@@ -52,7 +51,7 @@ public class GameDirector : MonoBehaviour
         //40초가 지나는 경우 clear
         yield return new WaitForSeconds(CLEAR_CONTROL_TIME);
         Debug.Log("mini game 1 clear");
-        Application.LoadLevel("ClearMiniGame1");
+        SceneManager.LoadScene("ClearMiniGame1");
     }
 
 
@@ -68,8 +67,14 @@ public class GameDirector : MonoBehaviour
         //2. 3초후, 클리어 화면으로 전환한다
 
         yield return new WaitForSeconds(CASTLE_SHOW_CONTROL_TIME);//WaitForSeconds객체를 생성해서 반환
-        Application.LoadLevel("ClearMiniGame3");
+        SceneManager.LoadScene("ClearMiniGame3");
         Debug.Log("mini game 3 clear");
+    }
+
+    public IEnumerator miniGame3End()
+    {
+        yield return new WaitForSeconds(CLEAR_CONTROL_TIME);//WaitForSeconds객체를 생성해서 반환
+        GameOver();//40초가 지나면 game over
     }
 
     /*
@@ -78,8 +83,9 @@ public class GameDirector : MonoBehaviour
     public void GameOver()
     {
         //폭탄과 충돌하는 경우 game over
+        //minigame3에서 40초가 흐르는 경우
         Debug.Log("game over , show bad ending");
-        Application.LoadLevel("BadEnding");
+        SceneManager.LoadScene("BadEnding");
     }
 
 
