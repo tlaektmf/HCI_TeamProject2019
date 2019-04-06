@@ -15,7 +15,7 @@ public class mini3_PlayerController : MonoBehaviour
 
     GameObject director;
 
-    float BOUND_SIZE = 0.4f;
+    ///float BOUND_SIZE = 0.4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,24 +53,12 @@ public class mini3_PlayerController : MonoBehaviour
  */
     public void UpButton()
     {
-        ////if(evil_open_eyes.activeSelf == true)
-        ////{
-        ////    evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        ////}
-        ////if (evil_sleep.activeSelf == true)
-        ////{
-        ////    evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        ////}
-        ////if (evil_awake.activeSelf == true)
-        ////{
-        ////    evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        ////}
-        ///
 
-        if(evil_sleep.activeSelf == false)
+        Debug.Log(evil_sleep.GetComponent<SpriteRenderer>().enabled);
+        if( evil_sleep.GetComponent<SpriteRenderer>().enabled== false)
         {
             //gameover
-            director.GetComponent<GameDirector>().GameOver();
+            director.GetComponent<GameDirector>().miniGame3Clear();
         }
         else
         {
@@ -93,7 +81,7 @@ public class mini3_PlayerController : MonoBehaviour
 
             mcastle.transform.localScale += new Vector3(0.1f, 0.1f, 0);
             mroad.transform.Translate(0, -0.05f, 0);
-            Debug.Log(evil_awake.transform.localScale);
+           // Debug.Log(evil_awake.transform.localScale);
         }
 
     }

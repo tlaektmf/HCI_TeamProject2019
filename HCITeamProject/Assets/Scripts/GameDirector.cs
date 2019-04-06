@@ -9,12 +9,14 @@ public class GameDirector : MonoBehaviour
     int CASTLE_SHOW_CONTROL_TIME = 3;
     int PLAYER_SIZE_CONTROL_TIME = 5;
 
-    GameObject mplayer;
+    GameObject mplayer_mini1;
+    GameObject mplayer_mini3;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.mplayer = GameObject.Find("player_man");
+        this.mplayer_mini1 = GameObject.Find("player_man");
+        this.mplayer_mini3 = GameObject.Find("player_man_back");
        /// this.mevil = GameObject.Find("evil");
         StartCoroutine(miniGame1Clear());
         StartCoroutine(miniGame3End());
@@ -41,9 +43,9 @@ public class GameDirector : MonoBehaviour
     }
     public IEnumerator changeSize()
     {
-        this.mplayer.transform.localScale -= new Vector3(0.1f, 0.1f, 0);
+        this.mplayer_mini1.transform.localScale -= new Vector3(0.1f, 0.1f, 0);
         yield return new WaitForSeconds(PLAYER_SIZE_CONTROL_TIME);//WaitForSeconds객체를 생성해서 반환
-        this.mplayer.transform.localScale += new Vector3(0.1f, 0.1f, 0);
+        this.mplayer_mini1.transform.localScale += new Vector3(0.1f, 0.1f, 0);
     }
 
     public IEnumerator miniGame1Clear()
@@ -63,7 +65,7 @@ public class GameDirector : MonoBehaviour
     {
         //evil과 충돌하는 경우 clear
 
-        //1. 우선 evil을 없애고
+        //1. 우선 evil을 없애고(애니메이션으로 없애는 걸 보여줬으면 좋겠음!)
         //2. 3초후, 클리어 화면으로 전환한다
 
         yield return new WaitForSeconds(CASTLE_SHOW_CONTROL_TIME);//WaitForSeconds객체를 생성해서 반환
