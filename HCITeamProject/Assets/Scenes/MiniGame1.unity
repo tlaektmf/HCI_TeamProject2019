@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 829526525}
   - component: {fileID: 829526524}
   m_Layer: 0
-  m_Name: GameDirector
+  m_Name: mini1_GameDirector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 829526523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c420cd1cc373e249a54bc46e889b75f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3dc21bf91742d3c488e38b9213b274ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &829526525
