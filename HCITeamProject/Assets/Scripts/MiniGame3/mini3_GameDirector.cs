@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class mini3_GameDirector : MonoBehaviour
 {
-    int CLEAR_CONTROL_TIME = 10;
+    int CLEAR_CONTROL_TIME = 30;
     int CASTLE_SHOW_CONTROL_TIME = 3;
     // Start is called before the first frame update
     void Start()

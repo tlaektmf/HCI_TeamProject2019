@@ -15,11 +15,11 @@ public class mini3_PlayerController : MonoBehaviour
 
     GameObject director;
 
-    float BOUND_SIZE = 0.4f;
+    ///float BOUND_SIZE = 0.4f;
     // Start is called before the first frame update
     void Start()
     {
-        this.director = GameObject.Find("GameDirector");
+        this.director = GameObject.Find("mini3_GameDirector");
 
         this.evil_open_eyes = GameObject.Find("evil_open_eyes");
         this.evil_sleep = GameObject.Find("evil_sleep");
@@ -67,10 +67,10 @@ public class mini3_PlayerController : MonoBehaviour
         ////}
         ///
 
-        if(evil_sleep.activeSelf == false)
+        if (evil_sleep.activeSelf == false)
         {
             //gameover
-            director.GetComponent<GameDirector>().GameOver();
+            director.GetComponent<mini3_GameDirector>().GameOver();
         }
         else
         {
@@ -96,5 +96,16 @@ public class mini3_PlayerController : MonoBehaviour
             Debug.Log(evil_awake.transform.localScale);
         }
 
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "castle")
+        {
+            //감독 스크립트에서 player와 object가 충돌했음을 전달
+            Debug.Log("충돌");
+            GameObject director = GameObject.Find("mini3_GameDirector");
+            director.GetComponent<mini3_GameDirector>().miniGame3Clear();
+        }
     }
 }
