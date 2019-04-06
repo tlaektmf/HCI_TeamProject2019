@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
             col.offset = v1;
         }
 
+        if (Mathf.Abs(rigid.velocity.y) <= 0 && !grounded) Ground();
+
         if(transform.position.y < -12.8f)
         {
             Die();
@@ -77,7 +79,8 @@ public class Player : MonoBehaviour
 
     void Ground()
     {
-        if(!grounded) animator.Play("walking");
+        if(!grounded)
+            animator.Play("walking");
         grounded = true;
     }
 
@@ -96,7 +99,7 @@ public class Player : MonoBehaviour
                 Die();
             }
         }
-        else if (tag=="ground")
+        if (tag == "ground")
         {
             Ground();
         }
