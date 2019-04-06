@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Game2Controller : MonoBehaviour
 {
-    public static float speed = 7.0f;
+    public static float speed = 5.0f;
     public static int state = 0; // 0: normal, 1:dead, 2: clear
     private static Game2Controller instance = null;
     public static Game2Controller GetInstance()
