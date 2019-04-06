@@ -6,7 +6,7 @@ public class BombController : MonoBehaviour
 {
     GameObject mplayer;//케릭터 오브젝트
     GameObject director;
-
+    float speed = -0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,10 @@ public class BombController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, -0.1f, 0);//0.1f의 속도만큼 낙하시킨다
+        transform.Translate(0, 1 * speed, 0);//0.1f의 속도만큼 낙하시킨다
+        speed = Random.Range(-0.1f, -0.05f);//속도 범위 지정
+        Debug.Log(speed);
+        
 
         if (transform.position.y < -5.0f)
         {//장애물의 y위치(높이)가 -5.0 밑으로 가는경우(화면에서 사라지는 경우)
