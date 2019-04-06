@@ -10,13 +10,13 @@ public class EvilController : MonoBehaviour
 
     GameObject mplayer;//케릭터 오브젝트
 
-    GameObject evil_sleep;
+     GameObject evil_sleep;
     GameObject evil_awake;
     GameObject evil_open_eyes;
 
     float span = 1;
     float delta = 0;
-    
+    float total_time = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,18 +25,24 @@ public class EvilController : MonoBehaviour
         this.evil_sleep = GameObject.Find("evil_sleep");
         this.evil_awake = GameObject.Find("evil_awake");
 
-        evil_sleep.SetActive(true);
-        evil_awake.SetActive(true);
-        evil_open_eyes.SetActive(true);
+        evil_awake.GetComponent<SpriteRenderer>().enabled = false;
+        evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
+        evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (this.total_time<=1)
+        {
+            evil_sleep.GetComponent<SpriteRenderer>().enabled = true;
+
+        }
+
        
         this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
-
+        this.total_time += Time.deltaTime;
         if (this.delta > this.span)//1초 후
         {
             this.delta = 0;
@@ -46,22 +52,23 @@ public class EvilController : MonoBehaviour
 
             switch (evilNum)
             {
+
                 case 1:
-                    evil_open_eyes.SetActive(true);
-                    evil_awake.SetActive(false);
-                    evil_sleep.SetActive(false);
+                    evil_open_eyes.GetComponent<SpriteRenderer>().enabled = true;
+                    evil_awake.GetComponent<SpriteRenderer>().enabled = false;
+                    evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
                     crushDetect(evil_open_eyes);
                     break;
                 case 2:
-                    evil_open_eyes.SetActive(false);
-                    evil_awake.SetActive(true);
-                    evil_sleep.SetActive(false);
+                    evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
+                    evil_awake.GetComponent<SpriteRenderer>().enabled = true;
+                    evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
                     crushDetect(evil_awake);
                     break;
                 case 3:
-                    evil_open_eyes.SetActive(false);
-                    evil_awake.SetActive(false);
-                    evil_sleep.SetActive(true);
+                    evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
+                    evil_awake.GetComponent<SpriteRenderer>().enabled = false;
+                    evil_sleep.GetComponent<SpriteRenderer>().enabled = true;
                     crushDetect(evil_sleep);
                     break;
             }

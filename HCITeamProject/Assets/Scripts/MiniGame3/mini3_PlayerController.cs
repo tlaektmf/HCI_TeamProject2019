@@ -15,6 +15,7 @@ public class mini3_PlayerController : MonoBehaviour
 
     GameObject director;
 
+    float BOUND_SIZE = 0.4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,12 +74,26 @@ public class mini3_PlayerController : MonoBehaviour
         }
         else
         {
+            //사이즈 조정
+            //if (evil_awake.transform.localScale.y<BOUND_SIZE)
+            //{
+            //    evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            //    evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            //    evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            //}
+
             evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
             evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
             evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
 
-            mcastle.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            //위치 조정
+            evil_awake.transform.Translate(0.1f, -0.1f, 0);
+            evil_sleep.transform.Translate(0.1f, -0.1f, 0);
+            evil_open_eyes.transform.Translate(0.1f, -0.1f, 0);
+
+            mcastle.transform.localScale += new Vector3(0.1f, 0.1f, 0);
             mroad.transform.Translate(0, -0.05f, 0);
+            Debug.Log(evil_awake.transform.localScale);
         }
 
     }
