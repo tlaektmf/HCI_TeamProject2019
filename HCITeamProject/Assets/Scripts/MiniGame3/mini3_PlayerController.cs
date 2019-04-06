@@ -48,18 +48,23 @@ public class mini3_PlayerController : MonoBehaviour
  */
     public void UpButton()
     {
-        if(evil_open_eyes.activeSelf == true)
-        {
-            evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        }
-        if (evil_sleep.activeSelf == true)
-        {
-            evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        }
-        if (evil_awake.activeSelf == true)
-        {
-            evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        }
+        ////if(evil_open_eyes.activeSelf == true)
+        ////{
+        ////    evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+        ////}
+        ////if (evil_sleep.activeSelf == true)
+        ////{
+        ////    evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+        ////}
+        ////if (evil_awake.activeSelf == true)
+        ////{
+        ////    evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+        ////}
+        ///
+        evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+        evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+        evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+
         mcastle.transform.localScale += new Vector3(0.05f, 0.05f, 0);
         mroad.transform.Translate(0, -0.05f, 0);
     }
