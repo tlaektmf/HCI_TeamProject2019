@@ -25,6 +25,10 @@ public class EvilController : MonoBehaviour
         this.evil_sleep = GameObject.Find("evil_sleep");
         this.evil_awake = GameObject.Find("evil_awake");
 
+        evil_sleep.SetActive(true);
+        evil_awake.SetActive(true);
+        evil_open_eyes.SetActive(true);
+
     }
 
     // Update is called once per frame

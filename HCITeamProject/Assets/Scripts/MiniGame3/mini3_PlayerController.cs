@@ -25,6 +25,7 @@ public class mini3_PlayerController : MonoBehaviour
         this.mroad = GameObject.Find("road");
         anim = GetComponent<Animator>();
         anim.SetBool("isRun", true);
+
     }
 
     // Update is called once per frame
