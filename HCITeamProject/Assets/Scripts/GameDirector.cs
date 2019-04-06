@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
-    int CLEAR_CONTROL_TIME =5;
+    int CLEAR_CONTROL_TIME =40;
     int CASTLE_SHOW_CONTROL_TIME = 3;
     int PLAYER_SIZE_CONTROL_TIME = 5;
 
