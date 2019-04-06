@@ -50,25 +50,34 @@ public class EvilController : MonoBehaviour
                     evil_open_eyes.SetActive(true);
                     evil_awake.SetActive(false);
                     evil_sleep.SetActive(false);
+                    crushDetect(evil_open_eyes);
                     break;
                 case 2:
                     evil_open_eyes.SetActive(false);
                     evil_awake.SetActive(true);
                     evil_sleep.SetActive(false);
+                    crushDetect(evil_awake);
                     break;
                 case 3:
                     evil_open_eyes.SetActive(false);
                     evil_awake.SetActive(false);
                     evil_sleep.SetActive(true);
+                    crushDetect(evil_sleep);
                     break;
             }
 
         }
 
+       
+
+    }
+    
+    void crushDetect(GameObject evil)
+    {
         /*
-         * 충돌판정
-         */
-        Vector2 evil_center = transform.position;//evil의 중심좌표
+        * 충돌판정
+        */
+        Vector2 evil_center = evil.transform.position;//evil의 중심좌표
         Vector2 player_center = this.mplayer.transform.position;//캐릭터 중심좌표
         Vector2 dist = evil_center - player_center;
         float evil_radius = 0.5f;//evil 반경
@@ -84,6 +93,5 @@ public class EvilController : MonoBehaviour
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().miniGame3Clear();
         }
-
     }
 }
