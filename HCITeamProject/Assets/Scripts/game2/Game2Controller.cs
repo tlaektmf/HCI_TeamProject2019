@@ -6,6 +6,16 @@ public class Game2Controller : MonoBehaviour
 {
     public static float speed = 5.0f;
     public static int state = 0; // 0: normal, 1:dead, 2: clear
+    public static int stage = 0;
+
+    public static void Setting(int stage)
+    {
+        Game2Controller.stage = stage;
+        GameObject.Find("ObstacleManager").GetComponent<ObstacleManager>().SetStage(stage);
+        speed = 4f + 2f * stage;
+        state = 0;
+    }
+
     private static Game2Controller instance = null;
     public static Game2Controller GetInstance()
     {
@@ -28,7 +38,7 @@ public class Game2Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Setting(0);
     }
 
     // Update is called once per frame

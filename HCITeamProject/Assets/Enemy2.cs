@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy2 : Enemy
 {
     // Start is called before the first frame update
     Vector3 move;
@@ -10,7 +10,10 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        move = new Vector3(-1, 0, 0);
+
+        float r = 5f + Game2Controller.stage * 3f;
+        rigid.velocity = new Vector2(-r, 0);
+        move = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -19,10 +22,10 @@ public class Enemy : MonoBehaviour
         transform.position = transform.position + move * Game2Controller.speed * Time.deltaTime;
     }
 
-    public virtual void Die()
+    public override void Die()
     {
-        rigid.velocity = new Vector2(17f, 10.0f);
+        rigid.velocity = new Vector2(30f, -2.0f);
         GetComponent<BoxCollider2D>().enabled = false;
-        rigid.AddTorque(450f);
+        rigid.AddTorque(1500f);
     }
 }
