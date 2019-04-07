@@ -93,14 +93,14 @@ public class mini3_PlayerController : MonoBehaviour
 
             mcastle.transform.localScale += new Vector3(0.1f, 0.1f, 0);
             mroad.transform.Translate(0, -0.05f, 0);
-            Debug.Log(evil_awake.transform.localScale);
+            ///Debug.Log(evil_awake.transform.localScale);
         }
 
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "castle")
+        Debug.Log("충돌 들어옴");
+        if (collision.gameObject == mcastle)
         {
             //감독 스크립트에서 player와 object가 충돌했음을 전달
             Debug.Log("충돌");

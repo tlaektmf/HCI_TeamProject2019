@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class mini3_GameDirector : MonoBehaviour
 {
     int CLEAR_CONTROL_TIME = 30;
-    int CASTLE_SHOW_CONTROL_TIME = 3;
+    int CASTLE_SHOW_CONTROL_TIME = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,16 +23,21 @@ public class mini3_GameDirector : MonoBehaviour
     사용자 정의 함수 - 미니게임 3
     */
 
-    public IEnumerator miniGame3Clear()
+    //public IEnumerator miniGame3Clear()
+    //{
+    //    //성과 충돌하는 경우 clear
+    //    Debug.Log("mini game 3 clear");
+    //    yield return new WaitForSeconds(CASTLE_SHOW_CONTROL_TIME);//WaitForSeconds객체를 생성해서 반환
+    //    SceneManager.LoadScene("ClearMiniGame3");
+
+    //}
+
+    public void miniGame3Clear()
     {
-        //evil과 충돌하는 경우 clear
-
-        //1. 우선 evil을 없애고
-        //2. 3초후, 클리어 화면으로 전환한다
-
-        yield return new WaitForSeconds(CASTLE_SHOW_CONTROL_TIME);//WaitForSeconds객체를 생성해서 반환
-        SceneManager.LoadScene("ClearMiniGame3");
+        //성과 충돌하는 경우 clear
         Debug.Log("mini game 3 clear");
+        SceneManager.LoadScene("ClearMiniGame3");
+
     }
 
     public IEnumerator miniGame3End()
