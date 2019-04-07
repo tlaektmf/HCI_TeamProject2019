@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Owl
-  - Branch
-  - Bird
-  - Princess
+  - enemy
+  - ground
+  - player_man_back
+  - castle
   layers:
   - Default
   - TransparentFX

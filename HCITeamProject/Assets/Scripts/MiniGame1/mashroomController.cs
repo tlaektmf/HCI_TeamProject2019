@@ -40,8 +40,8 @@ public class mashroomController : MonoBehaviour
             Destroy(gameObject);
 
             //감독 스크립트에서 player와 object(mashroom)가 충돌했음을 전달
-            GameObject director = GameObject.Find("GameDirector");
-            director.GetComponent<GameDirector>().eatMashroom();
+            GameObject director = GameObject.Find("mini1_GameDirector");
+            director.GetComponent<mini1_GameDirector>().eatMashroom();
         }
 
     }

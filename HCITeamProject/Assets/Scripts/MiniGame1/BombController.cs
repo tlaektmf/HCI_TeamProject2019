@@ -10,7 +10,7 @@ public class BombController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.director = GameObject.Find("GameDirector");
+        this.director = GameObject.Find("mini1_GameDirector");
         this.mplayer = GameObject.Find("player_man");//케릭터오브젝트
     }
 
@@ -44,7 +44,7 @@ public class BombController : MonoBehaviour
             Destroy(gameObject);
 
             //감독 스크립트에서 player와 object가 충돌했음을 전달
-            director.GetComponent<GameDirector>().GameOver();
+            director.GetComponent<mini1_GameDirector>().GameOver();
         }
     }
 }
