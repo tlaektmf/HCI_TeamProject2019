@@ -97,9 +97,10 @@ public class mini3_PlayerController : MonoBehaviour
         }
 
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("충돌 들어옴");
+
         if (collision.gameObject == mcastle)
         {
             //감독 스크립트에서 player와 object가 충돌했음을 전달
