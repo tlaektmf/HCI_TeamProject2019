@@ -7,7 +7,7 @@ public class BombController : MonoBehaviour
     GameObject mplayer;//케릭터 오브젝트
     GameObject director;
 
-    float []speedArr = { 5.0f,0.1f };
+    float []speedArr = { 1.0f,0.1f };
     float speed = 0.1f;
     // Start is called before the first frame update
     void Start()

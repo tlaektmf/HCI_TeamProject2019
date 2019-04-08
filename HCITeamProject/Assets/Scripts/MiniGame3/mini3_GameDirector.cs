@@ -36,7 +36,8 @@ public class mini3_GameDirector : MonoBehaviour
     {
         //성과 충돌하는 경우 clear
         Debug.Log("mini game 3 clear");
-        SceneManager.LoadScene("ClearMiniGame3");
+        SceneController.state = "clear";
+        SceneManager.LoadScene("EmptyScene");
 
     }
 
@@ -54,6 +55,9 @@ public class mini3_GameDirector : MonoBehaviour
         //폭탄과 충돌하는 경우 game over
         //minigame3에서 40초가 흐르는 경우
         Debug.Log("game over , show bad ending");
-        SceneManager.LoadScene("BadEnding");
+        SceneController.state = "end";
+        SceneManager.LoadScene("EmptyScene");
+
     }
+
 }

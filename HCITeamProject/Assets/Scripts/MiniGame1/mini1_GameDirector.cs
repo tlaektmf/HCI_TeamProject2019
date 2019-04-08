@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class mini1_GameDirector : MonoBehaviour
 {
-    int CLEAR_CONTROL_TIME = 40;
+    int CLEAR_CONTROL_TIME = 60;
 
     int PLAYER_SIZE_CONTROL_TIME = 5;
 
@@ -14,6 +14,7 @@ public class mini1_GameDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         this.mplayer = GameObject.Find("player_man");
         /// this.mevil = GameObject.Find("evil");
         StartCoroutine(miniGame1Clear());
@@ -51,7 +52,10 @@ public class mini1_GameDirector : MonoBehaviour
         //40초가 지나는 경우 clear
         yield return new WaitForSeconds(CLEAR_CONTROL_TIME);
         Debug.Log("mini game 1 clear");
-        SceneManager.LoadScene("ClearMiniGame1");
+        SceneController.state = "clear";
+        SceneManager.LoadScene("EmptyScene");
+        
+
     }
     /*
      * 사용자 정의 함수- 미니게임 1, 미니게임 3 공통
@@ -61,7 +65,9 @@ public class mini1_GameDirector : MonoBehaviour
         //폭탄과 충돌하는 경우 game over
         //minigame3에서 40초가 흐르는 경우
         Debug.Log("game over , show bad ending");
-        SceneManager.LoadScene("BadEnding");
+        SceneController.state = "end";
+        SceneManager.LoadScene("EmptyScene");
+        
     }
 
 }

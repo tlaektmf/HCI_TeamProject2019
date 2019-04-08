@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class BombGenerator : MonoBehaviour
 {
-    int BOUND_LEFT = -2;
-    int BOUNT_RIGHT = 2;
+    float BOUND_LEFT;
+    float BOUND_RIGHT;
     bool isFinish = true;
 
     public GameObject mbombPrefab;//폭탄 프리팹을 넣을 변수(아울렛)
+    GameObject mplayer;
     float span;//1초마다 1개씩 폭탄을 생성
-   /// public float speed = 1.0f;//폭탄의 속도
     float delta = 0;
-    ///Rigidbody2D rigid;
 
     // Start is called before the first frame update
     void Start()
     {
         span = 1.0f;//1초마다 1개씩 폭탄을 생성(초기설정)
-       /// rigid = GetComponent<Rigidbody2D>();
+        this.mplayer = GameObject.Find("player_man");//케릭터오브젝트
+        BOUND_LEFT = 0.0f;
+        BOUND_RIGHT = 1.0f;
     }
 
     // Update is called once per frame
@@ -39,19 +40,16 @@ public class BombGenerator : MonoBehaviour
             {
                 this.delta = 0;
                 GameObject obj = Instantiate(mbombPrefab) as GameObject;
-                ///this.speed = Random.Range(0.5f, 1.0f);
-                
-                
-                ///GameObject obj2 = Instantiate(mbombPrefab) as GameObject;
-                ///GameObject obj3 = Instantiate(mbombPrefab) as GameObject;
-                //float random_mass=Random.Range(0.3f, 1);
-                //obj.GetComponent<Rigidbody>().mass = random_mass;
-                int appear_x = Random.Range(BOUND_LEFT, BOUNT_RIGHT);//x좌표 범위 지정
-                ///int appear_x2= Random.Range(BOUND_LEFT, BOUNT_RIGHT);//x좌표 범위 지정
-               /// int appear_x3= Random.Range(BOUND_LEFT, BOUNT_RIGHT);//x좌표 범위 지정
-                obj.transform.position = new Vector3(appear_x, 7, 0);
-                ///obj2.transform.position = new Vector3(appear_x2, 7, 0);
-               /// obj3.transform.position = new Vector3(appear_x3, 7, 0);
+
+                float appear_x = Random.Range(BOUND_LEFT, BOUND_RIGHT) ;//x좌표 범위 지정
+
+                //Vector2 worldpos = new Vector2(appear_x, 1.0f);
+
+
+                obj.transform.position = new Vector3(appear_x, 0.5f, 0);
+                ///Vector2 worldpos = new Vector2(appear_x, 0.0f);
+                ///obj.transform.position = Camera.main.WorldToScreenPoint(worldpos);
+
                 isFinish = false;
             }
         }
