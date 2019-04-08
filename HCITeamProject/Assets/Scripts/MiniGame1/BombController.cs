@@ -6,22 +6,24 @@ public class BombController : MonoBehaviour
 {
     GameObject mplayer;//케릭터 오브젝트
     GameObject director;
-   
 
+   /// float []speedArr = { 8.0f,0.1f };
     float speed = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
         this.director = GameObject.Find("mini1_GameDirector");
         this.mplayer = GameObject.Find("player_man");//케릭터오브젝트
-        
+        this.speed = Random.Range(0.1f, 10.0f);
+      /// this.speed = speedArr[Random.Range(1,100)%2];
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        transform.Translate(0, -1*speed, 0);//0.1f의 속도만큼 낙하시킨다
+        
+        transform.Translate(0, -1*speed* Time.deltaTime, 0);//0.1f의 속도만큼 낙하시킨다
+        Debug.Log("speeed"+speed);
         if (transform.position.y < -5.0f)
         {//장애물의 y위치(높이)가 -5.0 밑으로 가는경우(화면에서 사라지는 경우)
 

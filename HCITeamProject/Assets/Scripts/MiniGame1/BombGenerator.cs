@@ -10,14 +10,15 @@ public class BombGenerator : MonoBehaviour
 
     public GameObject mbombPrefab;//폭탄 프리팹을 넣을 변수(아울렛)
     float span;//1초마다 1개씩 폭탄을 생성
-    public float speed = 1.0f;//폭탄의 속도
+   /// public float speed = 1.0f;//폭탄의 속도
     float delta = 0;
-    Rigidbody2D rigid;
+    ///Rigidbody2D rigid;
+
     // Start is called before the first frame update
     void Start()
     {
         span = 1.0f;//1초마다 1개씩 폭탄을 생성(초기설정)
-        rigid = GetComponent<Rigidbody2D>();
+       /// rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class BombGenerator : MonoBehaviour
             {
                 this.delta = 0;
                 GameObject obj = Instantiate(mbombPrefab) as GameObject;
-                this.speed = Random.Range(0.5f, 1.0f);
+                ///this.speed = Random.Range(0.5f, 1.0f);
                 
                 
                 ///GameObject obj2 = Instantiate(mbombPrefab) as GameObject;
