@@ -17,10 +17,10 @@ public class BombController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //gameObject.GetComponent<Rigidbody>().velocity = Vector3.down * this.speed;
-        transform.Translate(0, -0.1f, 0);//0.1f의 속도만큼 낙하시킨다
-        //gameObject.GetComponent<Rigidbody>().AddForce(Vector2.down * 3);
+       
+        ///gameObject.GetComponent<Rigidbody>().velocity = Vector3.down * this.speed;
+        ///transform.Translate(0, -1*speed, 0);//0.1f의 속도만큼 낙하시킨다
+        ///gameObject.GetComponent<Rigidbody>().AddForce(Vector2.down * 3);
 
         if (transform.position.y < -5.0f)
         {//장애물의 y위치(높이)가 -5.0 밑으로 가는경우(화면에서 사라지는 경우)

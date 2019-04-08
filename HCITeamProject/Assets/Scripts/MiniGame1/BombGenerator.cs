@@ -36,8 +36,18 @@ public class BombGenerator : MonoBehaviour
             {
                 this.delta = 0;
                 GameObject obj = Instantiate(mbombPrefab) as GameObject;
-                int appera_x = Random.Range(BOUND_LEFT, BOUNT_RIGHT);//x좌표 범위 지정
-                obj.transform.position = new Vector3(appera_x, 7, 0);
+                speed = Random.Range(0.05f, 0.1f);
+                
+                ///GameObject obj2 = Instantiate(mbombPrefab) as GameObject;
+                ///GameObject obj3 = Instantiate(mbombPrefab) as GameObject;
+                //float random_mass=Random.Range(0.3f, 1);
+                //obj.GetComponent<Rigidbody>().mass = random_mass;
+                int appear_x = Random.Range(BOUND_LEFT, BOUNT_RIGHT);//x좌표 범위 지정
+                ///int appear_x2= Random.Range(BOUND_LEFT, BOUNT_RIGHT);//x좌표 범위 지정
+               /// int appear_x3= Random.Range(BOUND_LEFT, BOUNT_RIGHT);//x좌표 범위 지정
+                obj.transform.position = new Vector3(appear_x, 7, 0);
+                ///obj2.transform.position = new Vector3(appear_x2, 7, 0);
+               /// obj3.transform.position = new Vector3(appear_x3, 7, 0);
                 isFinish = false;
             }
         }
