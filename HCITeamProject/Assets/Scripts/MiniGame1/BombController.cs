@@ -7,15 +7,15 @@ public class BombController : MonoBehaviour
     GameObject mplayer;//케릭터 오브젝트
     GameObject director;
 
-   /// float []speedArr = { 8.0f,0.1f };
+    float []speedArr = { 8.0f,0.1f };
     float speed = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
         this.director = GameObject.Find("mini1_GameDirector");
         this.mplayer = GameObject.Find("player_man");//케릭터오브젝트
-        this.speed = Random.Range(0.1f, 10.0f);
-      /// this.speed = speedArr[Random.Range(1,100)%2];
+        //this.speed = Random.Range(0.1f, 10.0f);
+       this.speed = speedArr[Random.Range(1,100)%2];
     }
 
     // Update is called once per frame
