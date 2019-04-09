@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour {
         branch.transform.position = pos;
 
         // SpawnPoint를 위로 이동
-        spPoint.position += new Vector3(0, 3, 0);
+        spPoint.position += new Vector3(0, (float)2.5, 0);
     }
 
     // 참새 만들기
@@ -82,7 +82,9 @@ public class GameManager : MonoBehaviour {
         pos.y -= Random.Range(0, 2f);
 
         GameObject bird = Instantiate(birdPrefab) as GameObject;
+        bird.transform.localScale = birdPrefab.transform.localScale;
         bird.transform.position = pos;
+        
     }
 
     // 선물상자 만들기

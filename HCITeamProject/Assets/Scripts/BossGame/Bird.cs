@@ -8,7 +8,7 @@ public class Bird : MonoBehaviour {
 
     Animator anim;      // Animator
 
-    int dir;            // 이동 방향
+    float dir;            // 이동 방향
     float speed;        // 속도
 
     // Use this for initialization
@@ -41,8 +41,16 @@ public class Bird : MonoBehaviour {
     // 참새 초기화
     void InitBird () {
         // 참새의 이동 방향
-        dir = (Random.Range(0, 2) == 0) ? -1 : 1;   // -1 or 1
-        transform.localScale = new Vector3(dir, 1, 1);
+        if (Random.Range(0, 2) == 0)
+        {
+            dir = (float)-0.3;
+        }
+        else
+        {
+            dir = (float)0.3;
+        }
+        //dir = (Random.Range(0, 2) == 0) ? -0.2 : 0.2;   // -1 or 1
+        transform.localScale = new Vector3(dir, (float)0.3, 1);
 
         // 이동 속도
         speed = Random.Range(5, 8);         // 5~8

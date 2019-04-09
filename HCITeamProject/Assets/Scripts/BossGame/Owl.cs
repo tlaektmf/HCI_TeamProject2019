@@ -8,11 +8,14 @@ public class Owl : MonoBehaviour {
     Transform chkPoint;             // Check Point
 
     float moveSpeed = 8f;           // 이동 속도
-    float jumpSpeed = 12f;          // 점프 속도
+    float jumpSpeed = 10f;          // 점프 속도
     float gravity = 19f;            // 중력
 
     Vector3 moveDir;                // 이동 방향
+    private Touch tempTouchs;   //스마트폰터치 방향
     bool isDead = false;            // 사망?
+
+    bool noContinueJump=false;    //계속적인 점프 방지
 
     // Use this for initialization
     void Start () {
@@ -59,14 +62,22 @@ public class Owl : MonoBehaviour {
     // 나뭇가지 판정
     void CheckBranch () {
         // CheckPoint에서 아래쪽으로 0.2m 이내 조사
-        RaycastHit2D hit = Physics2D.Raycast(chkPoint.position, Vector2.down, 0.2f);
+        RaycastHit2D hit = Physics2D.Raycast(chkPoint.position, Vector2.down, 0.1f);
 
         // 디버그 출력
         Debug.DrawRay(chkPoint.position, Vector2.down * 1f, Color.blue);
 
         // 조사한 물체가 나뭇가지이면 점프 속도 설정
+        float v = hit.distance;
+        if(v>0)
+            print(v);
         if (hit.collider != null && hit.collider.tag == "Branch") {
+           //print("점프할고야");
             moveDir.y = jumpSpeed;
+        }
+        else
+        {
+            //print("놉 점프");
         }
     }
     // 충돌 판정 및 처리
