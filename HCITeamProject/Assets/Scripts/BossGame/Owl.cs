@@ -14,13 +14,18 @@ public class Owl : MonoBehaviour {
     Vector3 moveDir;                // 이동 방향
     private Touch tempTouchs;   //스마트폰터치 방향
     bool isDead = false;            // 사망?
+    bool isPhone = false;    //스마트폰쓰니?
 
-    bool noContinueJump=false;    //계속적인 점프 방지
+    Transform beforeBranch;   //방금 점프한 나뭇가지 정보
 
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
         chkPoint = transform.Find("CheckPoint");
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            isPhone = true;
+        }
     }
     // Update is called once per frame
     void Update () {
@@ -39,24 +44,65 @@ public class Owl : MonoBehaviour {
             FindObjectOfType<GameManager>().SendMessage("GameOver");
             return;
         }
+
         // 키 입력
-        float keyValue = Input.GetAxis("Horizontal");
+        float keyValue=0.0f;
+        
+        if (isPhone)
+        {
+            Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
+            if (touchPos.x <= Screen.width / 2)
+            {
+                //왼쪽
+                moveDir.x = -Vector3.right.x*moveSpeed;
+            }
+            else if (touchPos.x >= Screen.width / 2)
+            {
+                //오른쪽
+                moveDir.x = Vector3.right.x * moveSpeed;
+            }
+            // 화면의 가장자리인지 조사
+            if ((keyValue < 0 && pos.x < 40) ||
+                (keyValue > 0 && pos.x > Screen.width - 40))
+            {
+                moveDir.x = 0;
+            }
+            else
+            {
+                //화면의 가장자리가 아니라면 실행
 
-        // 화면의 가장자리인지 조사
-        if ((keyValue < 0 && pos.x < 40) || 
-            (keyValue > 0 && pos.x > Screen.width - 40)) {
-            keyValue = 0;
+                // 중력
+                moveDir.y -= gravity * Time.deltaTime;
+
+                // 이동
+                transform.Translate(moveDir * Time.deltaTime);
+
+                // 올빼미 애니메이션
+                anim.SetFloat("velocity", moveDir.y);
+            }
         }
-        moveDir.x = keyValue * moveSpeed;
+        else
+        {
+            //키보드일 때
+            keyValue = Input.GetAxis("Horizontal");
+            print(keyValue);
+            // 화면의 가장자리인지 조사
+            if ((keyValue < 0 && pos.x < 40) ||
+                (keyValue > 0 && pos.x > Screen.width - 40))
+            {
+                keyValue = 0;
+            }
+            moveDir.x = keyValue * moveSpeed;
 
-        // 중력
-        moveDir.y -= gravity * Time.deltaTime;
+            // 중력
+            moveDir.y -= gravity * Time.deltaTime;
 
-        // 이동
-        transform.Translate(moveDir * Time.deltaTime);
+            // 이동
+            transform.Translate(moveDir * Time.deltaTime);
 
-        // 올빼미 애니메이션
-        anim.SetFloat("velocity", moveDir.y);
+            // 올빼미 애니메이션
+            anim.SetFloat("velocity", moveDir.y);
+        }
     }
 
     // 나뭇가지 판정
@@ -68,12 +114,22 @@ public class Owl : MonoBehaviour {
         Debug.DrawRay(chkPoint.position, Vector2.down * 1f, Color.blue);
 
         // 조사한 물체가 나뭇가지이면 점프 속도 설정
-        float v = hit.distance;
-        if(v>0)
-            print(v);
+        beforeBranch = hit.transform;
+
         if (hit.collider != null && hit.collider.tag == "Branch") {
-           //print("점프할고야");
+            //print("점프할고야");
             moveDir.y = jumpSpeed;
+            //if (beforeBranch.transform == hit.transform)
+            //{
+            //    이전의 나뭇가지를 또 밟은 것
+            //    moveDir.y = jumpSpeed;
+            //}
+            //else
+            //{
+            //    새로운 나뭇가지를 밟은 것
+            //    /*1) */
+            //}
+
         }
         else
         {
