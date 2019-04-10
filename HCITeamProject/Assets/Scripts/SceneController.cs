@@ -27,7 +27,7 @@ using UnityEngine.UI;
 
 /*
  * 1. 맵뷰에서 스테이지 이동, 클릭 시 
- * stage, difficulty, stage=null 가 EmptyScene로 전달됨
+ * stage, difficulty, state=null 가 EmptyScene로 전달됨
  * 
  * 2. 미니게임 성공, 실패 시
  * stage 설정만 해주면 됨
