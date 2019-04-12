@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MiniGame1.unity
     guid: 3d5fda4c36b35a944b8ce3442413352d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BadEnding.unity
     guid: e4e2038ff35b71a4b8da007c08e0c996
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ClearMiniGame1.unity
     guid: 70f048a5f32c83a479cf7a831ff864b8
+  - enabled: 1
+    path: Assets/Scenes/MiniGame2.unity
+    guid: 8df29e45093475748b5626f1436fa1f4
   m_configObjects: {}
