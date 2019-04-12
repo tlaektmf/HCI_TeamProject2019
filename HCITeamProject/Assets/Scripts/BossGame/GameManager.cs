@@ -17,8 +17,10 @@ public class GameManager : MonoBehaviour {
     public GameObject birdPrefab;
     public GameObject princess;
     public GameObject chkpoint;
+    public GameObject mainCamera;   //카메라 이동
+    public GameObject Owl;   //주인공
     public Text timeText;
-    private float time=2;
+    private float time=40;
 
     bool gameclear = false;
 
@@ -28,12 +30,14 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        MakeBranch();
-        MakeBird();
+        
         //MakeGift();
         if (time > 0) { 
             time -= Time.deltaTime;
             timeText.text = "남은시간 : " + Mathf.Ceil(time).ToString();
+            MakeBranch();
+            MakeBird();
+            cameraUp();
         }
         else
         {
@@ -69,7 +73,7 @@ public class GameManager : MonoBehaviour {
         branch.transform.position = pos;
 
         // SpawnPoint를 위로 이동
-        spPoint.position += new Vector3(0, 3, 0);
+        spPoint.position += new Vector3(0, (float)2.5, 0);
     }
 
     // 참새 만들기
@@ -79,10 +83,12 @@ public class GameManager : MonoBehaviour {
         if (cnt > 7 || Random.Range(0, 1000) < 980) return;
 
         Vector3 pos = spPoint.position;
-        pos.y -= Random.Range(0, 2f);
+        pos.y -= Random.Range(0, 1f);
 
         GameObject bird = Instantiate(birdPrefab) as GameObject;
+        bird.transform.localScale = birdPrefab.transform.localScale;
         bird.transform.position = pos;
+        
     }
 
     // 선물상자 만들기
@@ -127,7 +133,19 @@ public class GameManager : MonoBehaviour {
     }
     void BirdStrike()
     {
-
+        //이 함수 다시 타이머 함수로 만들기
+        
+        //float currentTime=Time.deltaTime+2f;
+        Vector3 owlpos=Owl.transform.position;
+        //owlpos.y = owlpos.y;
+        //StartCoroutine("wait");
+    }
+    IEnumerator wait()
+    {
+        print("쉬는시간");
+        
+        yield return new WaitForSeconds(10f);
+        print("waitAndPrint " + Time.time);
     }
     void SetScore()
     {
@@ -144,5 +162,13 @@ public class GameManager : MonoBehaviour {
         print("당신은 실패했습니다.");
         timeText.text = "GameOver!!";
         SceneManager.LoadScene("BadEnding");    //GameOver -> BadEnding
+    }
+    void cameraUp()
+    {
+        Vector3 pos = mainCamera.transform.position;
+        pos = Vector3.Lerp(pos, new Vector3(pos.x, pos.y+0.6f, pos.z), Time.deltaTime);
+        //pos.y += 0.6f*Time.deltaTime;
+            //Mathf.Lerp(0.01f * Time.deltaTime); 
+        mainCamera.transform.position = pos;
     }
 }

@@ -8,7 +8,7 @@ public class Bird : MonoBehaviour {
 
     Animator anim;      // Animator
 
-    int dir;            // 이동 방향
+    float dir;            // 이동 방향
     float speed;        // 속도
 
     // Use this for initialization
@@ -33,16 +33,16 @@ public class Bird : MonoBehaviour {
 
         Vector2 pos = Camera.main.WorldToScreenPoint(worldPos);
         if ((pos.y < -30) ||                            // 아래로 벗어남
-            (dir == -1 && pos.x < -30) ||               // 왼쪽으로 벗어남
-            (dir == 1 && pos.x > Screen.width + 30)) {  // 오른쪽으로 벗어남
+            (dir == -0.3f && pos.x < -30) ||               // 왼쪽으로 벗어남
+            (dir == 0.3f && pos.x > Screen.width + 30)) {  // 오른쪽으로 벗어남
             Destroy(gameObject);
         } 
     }
     // 참새 초기화
     void InitBird () {
         // 참새의 이동 방향
-        dir = (Random.Range(0, 2) == 0) ? -1 : 1;   // -1 or 1
-        transform.localScale = new Vector3(dir, 1, 1);
+        dir = (Random.Range(0, 2) == 0) ? -0.3f : 0.3f;   // -1 or 1
+        transform.localScale = new Vector3(dir, 0.3f, 1);
 
         // 이동 속도
         speed = Random.Range(5, 8);         // 5~8
@@ -67,6 +67,7 @@ public class Bird : MonoBehaviour {
     void DropBird()
     {
         // GameManager에 통지
+        //StartCoroutine("BirdStrike");
         FindObjectOfType<GameManager>().SendMessage("BirdStrike");
 
         GetComponent<AudioSource>().Play();
@@ -86,5 +87,5 @@ public class Bird : MonoBehaviour {
 
         //score.SendMessage("SetScore", -100);
     }
-
+    
 }

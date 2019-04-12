@@ -8,6 +8,11 @@ TagManager:
   - ground
   - player_man_back
   - castle
+  - Owl
+  - Princess
+  - Branch
+  - Bird
+  - sceneImage
   layers:
   - Default
   - TransparentFX
