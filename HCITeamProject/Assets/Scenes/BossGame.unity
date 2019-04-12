@@ -177,6 +177,8 @@ MonoBehaviour:
     type: 3}
   princess: {fileID: 2127192999}
   chkpoint: {fileID: 1489079329}
+  mainCamera: {fileID: 1777143451}
+  Owl: {fileID: 0}
   timeText: {fileID: 1307850085}
 --- !u!4 &354967217
 Transform:
@@ -432,7 +434,7 @@ Transform:
   m_GameObject: {fileID: 1203731743}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.23, y: 21.64, z: 21}
-  m_LocalScale: {x: 6.1776, y: 52.52, z: 1}
+  m_LocalScale: {x: 12, y: 52.52, z: 1}
   m_Children: []
   m_Father: {fileID: 1777143454}
   m_RootOrder: 0
@@ -483,7 +485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 282, y: 434}
+  m_AnchoredPosition: {x: 282, y: 330}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1307850085
@@ -925,7 +927,7 @@ Transform:
   m_GameObject: {fileID: 2127192999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.18, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
