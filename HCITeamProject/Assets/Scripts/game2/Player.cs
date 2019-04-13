@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     Animator animator;
     Rigidbody2D rigid;
     BoxCollider2D col;
-    float actionDelay = 0.3f;
+    float actionDelay = 0.5f;
     float delay = 0.0f;
 
     Vector2 v1, v2;
@@ -30,8 +30,8 @@ public class Player : MonoBehaviour
     {
         delay -= Time.deltaTime;
         attacktime += Time.deltaTime;
-        
-        if(attacktime > 0.08f && attacktime < 0.25f)
+
+        if(attacktime > 0.15f && attacktime < 0.25f)
         {
             col.offset = v2;
         }
@@ -45,11 +45,6 @@ public class Player : MonoBehaviour
         if(transform.position.y < -12.8f)
         {
             Die();
-        }
-
-        if (transform.position.x < -1.8)
-        {
-            transform.Translate(Time.deltaTime, 0, 0);
         }
     }
 
@@ -94,7 +89,7 @@ public class Player : MonoBehaviour
         string tag = other.gameObject.tag;
         if (tag == "enemy")
         {
-            if (attacktime > 0.08f && attacktime < 0.25f)
+            if (attacktime > 0.15f && attacktime < 0.25f)
             {
                 Enemy e = (Enemy)other.gameObject.GetComponent<Enemy>();
                 e.Die();

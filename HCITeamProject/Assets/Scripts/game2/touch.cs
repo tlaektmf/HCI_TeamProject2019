@@ -21,7 +21,7 @@ public class touch : MonoBehaviour
             foreach (GameObject enemyob in enemyobjects)
             {
                 float d = Vector3.Distance(enemyob.transform.position, player.gameObject.transform.position);
-                if(d < 3)
+                if(d < 5)
                 {
                     player.Punch();
                     attack = true;

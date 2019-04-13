@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
         transform.position = transform.position + move * Game2Controller.speed * Time.deltaTime;
     }
 
-    public virtual void Die()
+    public void Die()
     {
         rigid.velocity = new Vector2(17f, 10.0f);
         GetComponent<BoxCollider2D>().enabled = false;

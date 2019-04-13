@@ -21,7 +21,7 @@ public class BombController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         transform.Translate(0, -1*speed* Time.deltaTime, 0);//0.1f의 속도만큼 낙하시킨다
         Debug.Log("speeed"+speed);
         if (transform.position.y < -5.0f)
