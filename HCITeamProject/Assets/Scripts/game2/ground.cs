@@ -11,15 +11,20 @@ public class ground : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Ground Loaded");
+        cnt = 0;
         if (name == "ground1")
         {
             other = GameObject.Find("ground2");
+            transform.position = new Vector3(0, -4.64f, 0);
         }
         else
         {
             other = GameObject.Find("ground1");
             prev = other;
+            transform.position = new Vector3(8f, -4.64f, 0);
         }
+
     }
 
     // Update is called once per frame
