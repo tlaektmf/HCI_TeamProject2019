@@ -36,4 +36,13 @@ public class ButtonClick : MonoBehaviour
 
         SceneManager.LoadScene("EmptyScene");
     }
+    public void boss()
+    {
+        SceneController.stage = "boss";
+        SceneController.difficulty = "";
+        SceneController.state = null;
+        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
+
+        SceneManager.LoadScene("EmptyScene");
+    }
 }
