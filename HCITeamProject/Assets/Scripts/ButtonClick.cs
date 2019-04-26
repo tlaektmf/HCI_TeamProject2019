@@ -54,4 +54,11 @@ public class ButtonClick : MonoBehaviour
         SceneController.state = null;
         SceneManager.LoadScene("EmptyScene");
     }
+
+    public void replay()
+    {
+        SceneController.state = null;
+        SceneManager.LoadScene("EmptyScene");
+
+    }
 }

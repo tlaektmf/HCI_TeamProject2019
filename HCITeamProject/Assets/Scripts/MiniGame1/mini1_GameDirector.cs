@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class mini1_GameDirector : MonoBehaviour
 {
-    int CLEAR_CONTROL_TIME = 60;
+    int CLEAR_CONTROL_TIME = 40;
 
     int PLAYER_SIZE_CONTROL_TIME = 5;
 

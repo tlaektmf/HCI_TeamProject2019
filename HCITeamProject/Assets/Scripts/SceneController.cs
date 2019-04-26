@@ -47,13 +47,14 @@ public class SceneController : MonoBehaviour
 
     GameObject loadImage;
     int WAIT_TIME = 5;
-    
 
+     GameObject btn;
     // Start is called before the first frame update
     void Start()
     {
         this.loadImage = GameObject.Find("sceneImage");
-
+        btn = GameObject.Find("replay");
+        btn.SetActive(false);
 
     }
 
@@ -75,9 +76,14 @@ public class SceneController : MonoBehaviour
         else
         {
             //게임 후-> 게임 결과에 맞는 엔딩을 보여줌(해피, 배드, 클리어화면)
+            
             showEnding();
             //게임 후-> 엔딩/클리어 -> (일정 시간 후) 맵view
-            StartCoroutine(showMapView());
+            if (state != "end")
+            {
+                StartCoroutine(showMapView());
+            }
+           
         }
 
 
@@ -89,20 +95,25 @@ public class SceneController : MonoBehaviour
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("hiddenEnding");
         }
-        else if (state == "clear" && stage == "boss" && isContinue == false)
+        else if (state == "clear" && stage == "boss" && isContinue == true)
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("happyEnding");
         }
         else if (state == "end")
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("badEnding");
+
+            //게임오버 후에는 다시하기 버튼이 나옴
+            isContinue = true;
+            btn.SetActive(true);
+            
         }
         else if (state == "clear")
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("clear");
         }
 
-        stage = null;
+       
     }
 
     //para : string stage, string difficulty
@@ -115,6 +126,7 @@ public class SceneController : MonoBehaviour
     public IEnumerator showMapView()
     {
         yield return new WaitForSeconds(WAIT_TIME);//WaitForSeconds객체를 생성해서 반환
+        state = null;
         SceneManager.LoadScene("MapView");
     }
 
