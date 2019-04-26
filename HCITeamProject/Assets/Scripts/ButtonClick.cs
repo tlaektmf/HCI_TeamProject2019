@@ -17,23 +17,29 @@ public class ButtonClick : MonoBehaviour
         
     }
 
-    public void stage1_easy()
+    public void stage1(int difficulty)
     {
         SceneController.stage = "1";
-        SceneController.difficulty = "easy";
+        string temp = "";
+        if (difficulty == 0) temp = "easy";
+        if (difficulty == 1) temp = "normal";
+        if (difficulty == 2) temp = "hard";
+        SceneController.difficulty = temp;
         SceneController.state = null;
         Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
         SceneManager.LoadScene("EmptyScene");
     }
 
-    public void stage3_easy()
+    public void stage3(int difficulty)
     {
         SceneController.stage = "3";
-        SceneController.difficulty = "easy";
+        string temp = "";
+        if (difficulty == 0) temp = "easy";
+        if (difficulty == 1) temp = "normal";
+        if (difficulty == 2) temp = "hard";
+        SceneController.difficulty = temp;
         SceneController.state = null;
         Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
         SceneManager.LoadScene("EmptyScene");
     }
 
