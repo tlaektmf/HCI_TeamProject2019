@@ -56,6 +56,13 @@ public class SceneController : MonoBehaviour
         btn = GameObject.Find("replay");
         btn.SetActive(false);
 
+        //여기서 데이터를 불러옴=>mapview에서 해당부분 활성화
+        /*
+         * 예를들어, PlayerPrefs.GetString(stage) == "clear" 인 경우만, 활성화 시켜주면 되고, 나머지 스테이지들은 다 회색(비활성화)처리
+         * ->여리~
+         */
+
+
     }
 
     // Update is called once per frame
@@ -91,6 +98,15 @@ public class SceneController : MonoBehaviour
 
     void showEnding()
     {
+        //로컬에 저장
+        //Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
+        //if (PlayerPrefs.GetString(stage+"_"+difficulty) != "clear")
+        //{
+        //    //한번도 깬적이 없는 경우만 저장
+        //    PlayerPrefs.SetString(stage + "_" + difficulty, state);
+        //    Debug.Log("로컬에저장: " + stage + "_" + difficulty + " " + state);
+        //}
+
         if (state == "clear" && stage == "boss"&& isContinue==false)
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("hiddenEnding");
