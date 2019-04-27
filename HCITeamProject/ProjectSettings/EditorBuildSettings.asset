@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MiniGame1.unity
     guid: 3d5fda4c36b35a944b8ce3442413352d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MiniGame2.unity
     guid: 8df29e45093475748b5626f1436fa1f4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MiniGame3.unity
     guid: 64a24170bdadf9a44b5fce79a2999f8f
   - enabled: 1
     path: Assets/Scenes/BossGame.unity
     guid: 15cd8e0c09a8b074ca5431c7ee476590
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EmptyScene.unity
     guid: 8621f0e185197d34eb85e6ef76c663b3
   m_configObjects: {}

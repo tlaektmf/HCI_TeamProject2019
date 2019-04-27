@@ -47,13 +47,25 @@ public class SceneController : MonoBehaviour
 
     GameObject loadImage;
     int WAIT_TIME = 5;
-    
 
+    GameObject btn;
     // Start is called before the first frame update
     void Start()
     {
         this.loadImage = GameObject.Find("sceneImage");
+        btn = GameObject.Find("replay");
+        btn.SetActive(false);
 
+        //여기서 데이터를 불러옴=>mapview에서 해당부분 활성화
+        /*
+         * 예를들어, PlayerPrefs.GetString(stage) == "clear" 인 경우만, 활성화 시켜주면 되고, 나머지 스테이지들은 다 회색(비활성화)처리
+         * ->여리~
+         */
+        string str=PlayerPrefs.GetString(stage);
+        string[] str2 = str.Split(new char[] { '_' });
+        string stage_num = str2[0];
+        string stage_diffculty = str2[1];
+        /*MapView에서 이루어져야 되는데, SceneController는 EmptyScene부터 관리하는 것이 아닌가? 어떻게 접근해야 될까..*/
 
     }
 
@@ -85,31 +97,45 @@ public class SceneController : MonoBehaviour
 
     void showEnding()
     {
-        if (state == "clear" && stage == "boss"&& isContinue==false)
+        //로컬에 저장
+        Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
+        if (PlayerPrefs.GetString(stage + "_" + difficulty) != "clear")
+        {
+            //한번도 깬적이 없는 경우만 저장
+            PlayerPrefs.SetString(stage + "_" + difficulty, state);
+            Debug.Log("로컬에저장: " + stage + "_" + difficulty + " " + state);
+        }
+
+        if (state == "clear" && stage == "boss" && isContinue == false)
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("hiddenEnding");
         }
-        else if (state == "clear" && stage == "boss" && isContinue == false)
+        else if (state == "clear" && stage == "boss" && isContinue == true)
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("happyEnding");
         }
         else if (state == "end")
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("badEnding");
+
+            //게임오버 후에는 다시하기 버튼이 나옴
+            isContinue = true;
+            btn.SetActive(true);
+
         }
         else if (state == "clear")
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("clear");
         }
 
-        stage = null;
     }
 
     //para : string stage, string difficulty
     void showStory()
     {
         //resource file name 예시 : stage1_easy_story
-        this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("stage"+stage+"_"+difficulty+"_"+"story");
+        this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("stage" + stage + "_" + difficulty + "_" + "story");
+        
     }
 
     public IEnumerator showMapView()

@@ -58,32 +58,14 @@ public class Owl : MonoBehaviour {
             if (touchPos.x <= Screen.width / 2)
             {
                 //왼쪽
-                moveDir.x = -Vector3.right.x*moveSpeed;
+                moveDir.x = -10.0f*moveSpeed;
             }
             else if (touchPos.x >= Screen.width / 2)
             {
                 //오른쪽
-                moveDir.x = Vector3.right.x * moveSpeed;
+                moveDir.x = 10.0f * moveSpeed;
             }
-            // 화면의 가장자리인지 조사
-            if ((keyValue < 0 && pos.x < 40) ||
-                (keyValue > 0 && pos.x > Screen.width - 40))
-            {
-                moveDir.x = 0;
-            }
-            else
-            {
-                //화면의 가장자리가 아니라면 실행
-
-                // 중력
-                moveDir.y -= gravity * Time.deltaTime;
-
-                // 이동
-                transform.Translate(moveDir * Time.deltaTime);
-
-                // 올빼미 애니메이션
-                anim.SetFloat("velocity", moveDir.y);
-            }
+            moveDir.y -= gravity * Time.deltaTime;
         }
         else
         {

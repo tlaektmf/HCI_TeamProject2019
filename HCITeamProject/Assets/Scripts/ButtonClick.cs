@@ -38,6 +38,7 @@ public class ButtonClick : MonoBehaviour
     }
     public void boss()
     {
+        print("여기와?");
         SceneController.stage = "boss";
         SceneController.difficulty = "";
         SceneController.state = null;
