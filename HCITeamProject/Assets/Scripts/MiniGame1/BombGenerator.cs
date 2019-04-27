@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BombGenerator : MonoBehaviour
 {
+    const float BOMB_SIZE = 0.08f;
     float BOUND_LEFT;
     float BOUND_RIGHT;
     Vector2 min;
@@ -25,8 +26,8 @@ public class BombGenerator : MonoBehaviour
         //폭탄 생성 x 축 경계 설정
          min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
          max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-        BOUND_LEFT = min.x+0.07f;
-        BOUND_RIGHT = max.x - 0.07f;
+        BOUND_LEFT = min.x+ BOMB_SIZE;
+        BOUND_RIGHT = max.x - BOMB_SIZE;
     }
 
     // Update is called once per frame

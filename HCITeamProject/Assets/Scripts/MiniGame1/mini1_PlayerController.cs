@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class mini1_PlayerController : MonoBehaviour
 {
-    int MOVE_BACKGROUND = 2;
-    int OUT_BOUND_MIN = 0;
-    int OUT_BOUND_MAX = 1;
+    Vector2 min;
+    Vector2 max;
+
+    const float PLAYER_SIZE = 0.5f;
+    const float PLAYER_SPEED = 0.1f;
+    float BOUND_LEFT;
+    float BOUND_RIGHT;
+
     GameObject mbackground;
     private Animator anim;
-    int move_back_flag;//0,1,2
     
     /*Animation 작동 원리
      * isStay가 true이고, isLeft가 false일 경우, isRight가 false일 경우 = 정적인 모습
@@ -28,7 +32,14 @@ public class mini1_PlayerController : MonoBehaviour
         anim.SetBool("isLeft", false);
         anim.SetBool("isRight", false);
         this.mbackground = GameObject.Find("minigame1_background");
-        //this.move_back_flag = MOVE_BACKGROUND;//초기에는 배경을 이동
+
+        // x 축 경계 설정
+        min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        BOUND_LEFT = min.x + PLAYER_SIZE;
+        BOUND_RIGHT = max.x - PLAYER_SIZE;
+
+
     }
 
     // Update is called once per frame
@@ -44,12 +55,13 @@ public class mini1_PlayerController : MonoBehaviour
         {
             anim.SetBool("isStay", false);
             anim.SetBool("isLeft", true);
-            transform.Translate(-0.1f, 0, 0);//왼쪽으로 3만큼 이동
-            if (checkBound() == MOVE_BACKGROUND)
-            {
-                mbackground.transform.Translate(0.05f, 0, 0);
-            }
             
+            if (checkBound(transform.position.x - PLAYER_SPEED) == true)
+            {
+                transform.Translate(-PLAYER_SPEED, 0, 0);//왼쪽으로  이동
+                mbackground.transform.Translate(PLAYER_SPEED*0.2f, 0, 0);
+            }
+
             
         }
         //else if (tpos.x <= Screen.width / 2)
@@ -63,11 +75,14 @@ public class mini1_PlayerController : MonoBehaviour
         {
             anim.SetBool("isStay", false);
             anim.SetBool("isRight", true);
-            transform.Translate(0.1f, 0, 0);//오른쪽으로 3만큼 이동
-            if (checkBound()==MOVE_BACKGROUND)
+            
+            if (checkBound(transform.position.x + PLAYER_SPEED) ==true)
             {
-                mbackground.transform.Translate(-0.05f, 0, 0);
+                transform.Translate(PLAYER_SPEED, 0, 0);//오른쪽으로  이동
+                mbackground.transform.Translate(-PLAYER_SPEED*0.2f, 0, 0);
             }
+
+         
         }
         else if (Input.GetKeyUp(KeyCode.RightArrow))
         // else if (tpos.x > Screen.width / 2)
@@ -88,42 +103,15 @@ public class mini1_PlayerController : MonoBehaviour
     {
         transform.Translate(1.1f, 0, 0);
     }
-   
-    public int checkBound()
+
+    public bool checkBound(float next_x)
     {
-        Vector3 worldpos = Camera.main.WorldToViewportPoint(this.transform.position);
-
-        if (worldpos.x < 0f)
-        {
-            ///worldpos.x = 0.1f;
-            move_back_flag = OUT_BOUND_MIN;
-        }
-        //if (worldpos.y < 0f)
-        //{
-        //    worldpos.y = 0f;
-        //}
-        else if (worldpos.x > 1f)
-        {
-            ///worldpos.x = 0.9f;
-            move_back_flag = OUT_BOUND_MAX;
-        }
-        //if (worldpos.y > 1f)
-        //{
-        //    worldpos.y = 1f;
-        //}
-        else if (worldpos.x > 0.1f && worldpos.x < 0.9f)
-        {
-            move_back_flag = MOVE_BACKGROUND;
-        }
-
-        if (move_back_flag == OUT_BOUND_MIN) worldpos.x = 0.1f;
-        if (move_back_flag == OUT_BOUND_MAX) worldpos.x = 0.9f;
-        this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
-
-        Debug.Log(move_back_flag);
-
-        return move_back_flag;
         
+        if (next_x> BOUND_RIGHT ||
+            next_x < BOUND_LEFT)
+        {
+            return false;
+        }
+        else return true;
     }
-    
 }

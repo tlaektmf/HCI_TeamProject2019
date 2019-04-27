@@ -15,7 +15,8 @@ public class BombController : MonoBehaviour
     {
         this.director = GameObject.Find("mini1_GameDirector");
         this.mplayer = GameObject.Find("player_man");//케릭터오브젝트
-        //this.speed = Random.Range(0.1f, 10.0f);
+        
+        
 
     }
 

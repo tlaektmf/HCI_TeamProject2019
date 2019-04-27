@@ -15,6 +15,9 @@ public class mashroomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
+         * 난이도 지정////////////////////////////////////////////////
+         */
         //버섯 생성 주기 설정
         if (SceneController.difficulty == "easy")
         {
@@ -26,7 +29,7 @@ public class mashroomGenerator : MonoBehaviour
         {
             span = 20.0f;//1초마다 1개씩 mashroom을 생성(초기설정)
         }
-        
+        ///////////////////////////////////////////////////////////////
     }
 
     // Update is called once per frame
