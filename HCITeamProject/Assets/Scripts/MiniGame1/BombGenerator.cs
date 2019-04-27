@@ -46,7 +46,7 @@ public class BombGenerator : MonoBehaviour
                 //Vector2 worldpos = new Vector2(appear_x, 1.0f);
 
 
-                obj.transform.position = new Vector3(appear_x, 0.5f, 0);
+                obj.transform.position = new Vector3(appear_x, 1.0f, 0);
                 ///Vector2 worldpos = new Vector2(appear_x, 0.0f);
                 ///obj.transform.position = Camera.main.WorldToScreenPoint(worldpos);
 

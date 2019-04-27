@@ -34,10 +34,13 @@ public class mini1_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Vector3 tpos = Input.GetTouch(0).position;//터치할 좌표
+
         if (Input.GetKey(KeyCode.LeftArrow))
+        //if(tpos.x<=Screen.width/2)//왼쪽
         {
             anim.SetBool("isStay", false);
             anim.SetBool("isLeft", true);
@@ -48,12 +51,15 @@ public class mini1_PlayerController : MonoBehaviour
             }
             
             
-        }else if (Input.GetKeyUp(KeyCode.LeftArrow))
+        }
+        //else if (tpos.x <= Screen.width / 2)
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             anim.SetBool("isStay", true);
             anim.SetBool("isLeft", false);
         }
         if (Input.GetKey(KeyCode.RightArrow))
+        //if (tpos.x >Screen.width / 2)
         {
             anim.SetBool("isStay", false);
             anim.SetBool("isRight", true);
@@ -64,6 +70,7 @@ public class mini1_PlayerController : MonoBehaviour
             }
         }
         else if (Input.GetKeyUp(KeyCode.RightArrow))
+        // else if (tpos.x > Screen.width / 2)
         {
             anim.SetBool("isStay", true);
             anim.SetBool("isRight", false);
