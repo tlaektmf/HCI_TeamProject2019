@@ -48,7 +48,7 @@ public class SceneController : MonoBehaviour
     GameObject loadImage;
     int WAIT_TIME = 5;
 
-     GameObject btn;
+    GameObject btn;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +61,7 @@ public class SceneController : MonoBehaviour
          * 예를들어, PlayerPrefs.GetString(stage) == "clear" 인 경우만, 활성화 시켜주면 되고, 나머지 스테이지들은 다 회색(비활성화)처리
          * ->여리~
          */
-
+       
 
     }
 
@@ -83,14 +83,9 @@ public class SceneController : MonoBehaviour
         else
         {
             //게임 후-> 게임 결과에 맞는 엔딩을 보여줌(해피, 배드, 클리어화면)
-            
             showEnding();
             //게임 후-> 엔딩/클리어 -> (일정 시간 후) 맵view
-            if (state != "end")
-            {
-                StartCoroutine(showMapView());
-            }
-           
+            StartCoroutine(showMapView());
         }
 
 
@@ -99,15 +94,15 @@ public class SceneController : MonoBehaviour
     void showEnding()
     {
         //로컬에 저장
-        //Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
-        //if (PlayerPrefs.GetString(stage+"_"+difficulty) != "clear")
-        //{
-        //    //한번도 깬적이 없는 경우만 저장
-        //    PlayerPrefs.SetString(stage + "_" + difficulty, state);
-        //    Debug.Log("로컬에저장: " + stage + "_" + difficulty + " " + state);
-        //}
+        Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
+        if (PlayerPrefs.GetString(stage + "_" + difficulty) != "clear")
+        {
+            //한번도 깬적이 없는 경우만 저장
+            PlayerPrefs.SetString(stage + "_" + difficulty, state);
+            Debug.Log("로컬에저장: " + stage + "_" + difficulty + " " + state);
+        }
 
-        if (state == "clear" && stage == "boss"&& isContinue==false)
+        if (state == "clear" && stage == "boss" && isContinue == false)
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("hiddenEnding");
         }
@@ -122,27 +117,26 @@ public class SceneController : MonoBehaviour
             //게임오버 후에는 다시하기 버튼이 나옴
             isContinue = true;
             btn.SetActive(true);
-            
+
         }
         else if (state == "clear")
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("clear");
         }
 
-       
     }
 
     //para : string stage, string difficulty
     void showStory()
     {
         //resource file name 예시 : stage1_easy_story
-        this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("stage"+stage+"_"+difficulty+"_"+"story");
+        this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("stage" + stage + "_" + difficulty + "_" + "story");
+        
     }
 
     public IEnumerator showMapView()
     {
         yield return new WaitForSeconds(WAIT_TIME);//WaitForSeconds객체를 생성해서 반환
-        state = null;
         SceneManager.LoadScene("MapView");
     }
 
