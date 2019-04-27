@@ -5,7 +5,9 @@ using UnityEngine;
 public class mashroomController : MonoBehaviour
 {
     GameObject mplayer;//케릭터 오브젝트
-    
+
+    float MUSHROOM_SPEED = 0.05f;//default 버섯 낙하 속도
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,7 @@ public class mashroomController : MonoBehaviour
     void Update()
     {
        
-        transform.Translate(0, -0.1f, 0);//0.1f의 속도만큼 낙하시킨다
+        transform.Translate(0, -MUSHROOM_SPEED, 0);//0.1f의 속도만큼 낙하시킨다
 
         if (transform.position.y < -5.0f)
         {//장애물의 y위치(높이)가 -5.0 밑으로 가는경우(화면에서 사라지는 경우)

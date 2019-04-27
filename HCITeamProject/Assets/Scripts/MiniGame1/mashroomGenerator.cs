@@ -6,18 +6,27 @@ public class mashroomGenerator : MonoBehaviour
 {
     // Start is called before the first frame update
 
-   /// bool isFinish = true;
     int BOUND_LEFT = -2;
     int BOUNT_RIGHT = 2;
-
     public GameObject mmashPrefab;//mashroom 프리팹을 넣을 변수(아울렛)
-    float span;
+    float span=10.0f;//default; 버섯 생성 주기
     float delta = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        span = 8.0f;//1초마다 1개씩 mashroom을 생성(초기설정)
+        //버섯 생성 주기 설정
+        if (SceneController.difficulty == "easy")
+        {
+            span = 8.0f;//1초마다 1개씩 mashroom을 생성(초기설정)
+        }else if (SceneController.difficulty == "normal")
+        {
+            span = 10.0f;//1초마다 1개씩 mashroom을 생성(초기설정)
+        }else if (SceneController.difficulty == "hard")
+        {
+            span = 20.0f;//1초마다 1개씩 mashroom을 생성(초기설정)
+        }
+        
     }
 
     // Update is called once per frame
@@ -26,14 +35,6 @@ public class mashroomGenerator : MonoBehaviour
 
         this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
 
-        //if (isFinish == false)
-        //{
-        //    span = setRandomSpan();
-        //    isFinish = true;
-        //    Debug.Log("set new span: " + span);
-        //}
-        //else
-        //{
             if (this.delta > this.span)
             {
                 this.delta = 0;
@@ -42,15 +43,10 @@ public class mashroomGenerator : MonoBehaviour
                 obj.transform.position = new Vector3(appera_x, 7, 0);
                 ///isFinish = false;
             }
-       // }
 
 
 
-    }
-
-    float setRandomSpan()//mashroom이 떨어지는 속도 설정
-    {
-        return Random.Range(0.5f, 1);//0.5초~1초
 
     }
+
 }

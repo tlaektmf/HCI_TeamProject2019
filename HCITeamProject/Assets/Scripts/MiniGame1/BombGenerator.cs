@@ -6,20 +6,27 @@ public class BombGenerator : MonoBehaviour
 {
     float BOUND_LEFT;
     float BOUND_RIGHT;
+    Vector2 min;
+    Vector2 max;
+
     bool isFinish = true;
 
     public GameObject mbombPrefab;//폭탄 프리팹을 넣을 변수(아울렛)
     GameObject mplayer;
-    float span;//1초마다 1개씩 폭탄을 생성
+    float span;//default; 폭탄 생성 주기
     float delta = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        span = 1.0f;//1초마다 1개씩 폭탄을 생성(초기설정)
+        span = 2.0f;//1초마다 1개씩 폭탄을 생성(초기설정)
         this.mplayer = GameObject.Find("player_man");//케릭터오브젝트
-        BOUND_LEFT = 0.0f;
-        BOUND_RIGHT = 1.0f;
+
+        //폭탄 생성 x 축 경계 설정
+         min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+         max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        BOUND_LEFT = min.x+0.07f;
+        BOUND_RIGHT = max.x - 0.07f;
     }
 
     // Update is called once per frame
@@ -43,12 +50,7 @@ public class BombGenerator : MonoBehaviour
 
                 float appear_x = Random.Range(BOUND_LEFT, BOUND_RIGHT) ;//x좌표 범위 지정
 
-                //Vector2 worldpos = new Vector2(appear_x, 1.0f);
-
-
-                obj.transform.position = new Vector3(appear_x, 1.0f, 0);
-                ///Vector2 worldpos = new Vector2(appear_x, 0.0f);
-                ///obj.transform.position = Camera.main.WorldToScreenPoint(worldpos);
+                obj.transform.position = new Vector3(appear_x, max.y, 0);
 
                 isFinish = false;
             }
@@ -60,7 +62,7 @@ public class BombGenerator : MonoBehaviour
 
     float setRandomSpan()//폭탄이 떨어지는 속도 설정
     {
-        return Random.Range(0.5f, 1);//0.5초~1초
+        return Random.Range(1.0f, 1.5f);//0.5초~1초
 
     }
 }
