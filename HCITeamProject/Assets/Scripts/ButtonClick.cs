@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonClick : MonoBehaviour
 {
@@ -9,45 +10,64 @@ public class ButtonClick : MonoBehaviour
     string str = "";
     bool null_start = false;
     GameObject stage1_easy_btn;
+    Image stage1_easy_btn_img;
+    GameObject stage1_middle_btn;
+    Image stage1_middle_btn_img;
+    GameObject stage1_hard_btn;
+    Image stage1_hard_btn_img;
+
     GameObject stage3_easy_btn;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!map&&PlayerPrefs.GetString("boss") == "clear")
+        stage1_easy_btn_img = stage1_easy_btn.GetComponent<Image>();
+        stage1_middle_btn_img = stage1_middle_btn.GetComponent<Image>();
+        stage1_hard_btn_img = stage1_hard_btn.GetComponent<Image>();
+
+        if (!map && PlayerPrefs.GetString("1") != null)
         {
-            map = true;
-            str = PlayerPrefs.GetString("boss");
-        }
-        if (!map && PlayerPrefs.GetString("4") == "clear")
-        {
-            map = true;
-            str = PlayerPrefs.GetString("4");
+
+            if (!map && PlayerPrefs.GetString("boss") == "clear")
+            {
+                map = true;
+                str = PlayerPrefs.GetString("boss");
+            }
+            if (!map && PlayerPrefs.GetString("4") == "clear")
+            {
+                map = true;
+                str = PlayerPrefs.GetString("4");
+
+            }
+            if (!map && PlayerPrefs.GetString("3") == "clear")
+            {
+                map = true;
+                str = PlayerPrefs.GetString("3");
+            }
+            if (!map && PlayerPrefs.GetString("2") == "clear")
+            {
+                map = true;
+                str = PlayerPrefs.GetString("2");
+            }
+            if (!map && PlayerPrefs.GetString("1") == "clear")
+            {
+                map = true;
+                str = PlayerPrefs.GetString("1");
+            }
+
+            ImageChange(str);
 
         }
-        if (!map && PlayerPrefs.GetString("3") == "clear")
-        {
-            map = true;
-            str = PlayerPrefs.GetString("3");
-        }
-        if (!map && PlayerPrefs.GetString("2") == "clear")
-        {
-            map = true;
-            str = PlayerPrefs.GetString("2");
-        }
-        if (!map && PlayerPrefs.GetString("1") == "clear")
-        {
-            map = true;
-            str = PlayerPrefs.GetString("1");
-        }
-        
+
+    }
+    void ImageChange(string str)
+    {
         string[] str2 = str.Split(new char[] { '_' });
         string stage_num = str2[0];
         string stage_diffculty = str2[1];
-        /*MapView에서 이루어져야 되는데, SceneController는 EmptyScene부터 관리하는 것이 아닌가? 어떻게 접근해야 될까..*/
 
+        
     }
-
     // Update is called once per frame
     void Update()
     {
