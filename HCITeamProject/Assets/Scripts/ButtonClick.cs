@@ -5,10 +5,47 @@ using UnityEngine.SceneManagement;
 
 public class ButtonClick : MonoBehaviour
 {
+    bool map = false;
+    string str = "";
+    GameObject stage1_easy_btn;
+    GameObject stage3_easy_btn;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        if (!map&&PlayerPrefs.GetString("boss") == "clear")
+        {
+            map = true;
+            str = PlayerPrefs.GetString("boss");
+        }
+        if (!map && PlayerPrefs.GetString("4") == "clear")
+        {
+            map = true;
+            str = PlayerPrefs.GetString("4");
+
+        }
+        if (!map && PlayerPrefs.GetString("3") == "clear")
+        {
+            map = true;
+            str = PlayerPrefs.GetString("3");
+        }
+        if (!map && PlayerPrefs.GetString("2") == "clear")
+        {
+            map = true;
+            str = PlayerPrefs.GetString("2");
+        }
+        if (!map && PlayerPrefs.GetString("1") == "clear")
+        {
+            map = true;
+            str = PlayerPrefs.GetString("1");
+        }
         
+        string[] str2 = str.Split(new char[] { '_' });
+        string stage_num = str2[0];
+        string stage_diffculty = str2[1];
+        /*MapView에서 이루어져야 되는데, SceneController는 EmptyScene부터 관리하는 것이 아닌가? 어떻게 접근해야 될까..*/
+
     }
 
     // Update is called once per frame

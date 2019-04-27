@@ -61,11 +61,7 @@ public class SceneController : MonoBehaviour
          * 예를들어, PlayerPrefs.GetString(stage) == "clear" 인 경우만, 활성화 시켜주면 되고, 나머지 스테이지들은 다 회색(비활성화)처리
          * ->여리~
          */
-        //string str=PlayerPrefs.GetString(stage);
-        //string[] str2 = str.Split(new char[] { '_' });
-        //string stage_num = str2[0];
-        //string stage_diffculty = str2[1];
-        /*MapView에서 이루어져야 되는데, SceneController는 EmptyScene부터 관리하는 것이 아닌가? 어떻게 접근해야 될까..*/
+       
 
     }
 
@@ -98,13 +94,13 @@ public class SceneController : MonoBehaviour
     void showEnding()
     {
         //로컬에 저장
-        //Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
-        //if (PlayerPrefs.GetString(stage + "_" + difficulty) != "clear")
-        //{
-        //    //한번도 깬적이 없는 경우만 저장
-        //    PlayerPrefs.SetString(stage + "_" + difficulty, state);
-        //    Debug.Log("로컬에저장: " + stage + "_" + difficulty + " " + state);
-        //}
+        Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
+        if (PlayerPrefs.GetString(stage + "_" + difficulty) != "clear")
+        {
+            //한번도 깬적이 없는 경우만 저장
+            PlayerPrefs.SetString(stage + "_" + difficulty, state);
+            Debug.Log("로컬에저장: " + stage + "_" + difficulty + " " + state);
+        }
 
         if (state == "clear" && stage == "boss" && isContinue == false)
         {
