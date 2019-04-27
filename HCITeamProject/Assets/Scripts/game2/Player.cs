@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     float attacktime = 1f;
     bool grounded = true;
+    bool banging = false;
     Animator animator;
     Rigidbody2D rigid;
     BoxCollider2D col;
@@ -30,6 +31,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(banging)
+        {
+            transform.Rotate(-Vector3.forward * 2500f * Time.deltaTime);
+            transform.localScale -= (Vector3.up + Vector3.right) * Time.deltaTime;
+        }
+
         delay -= Time.deltaTime;
         attacktime += Time.deltaTime;
         
@@ -96,6 +103,17 @@ public class Player : MonoBehaviour
         grounded = true;
     }
 
+    void Banging()
+    {
+        if (Game2Controller.state == 4) return;
+        Rigidbody2D rigid = GetComponent<Rigidbody2D>();
+        Game2Controller.state = 4;
+        Game2Controller.speed = 0;
+        banging = true;
+        rigid.bodyType = RigidbodyType2D.Static;
+        // SoundManager.Instance.PlayEffectWithPath("audio/common/gameover_tetris");
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         string tag = other.gameObject.tag;
@@ -115,6 +133,10 @@ public class Player : MonoBehaviour
         if (tag == "ground")
         {
             Ground();
+        }
+        if (tag == "portal")
+        {
+            Banging();
         }
     }
 }

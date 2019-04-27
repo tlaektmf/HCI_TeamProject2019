@@ -45,6 +45,8 @@ public class SceneController : MonoBehaviour
     public static string state;
     public static string difficulty;
 
+    public static int phase = 0;
+
     GameObject loadImage;
     int WAIT_TIME = 5;
     
