@@ -44,6 +44,7 @@ public class Game2Controller : MonoBehaviour
 
         string diff = SceneController.difficulty;
         int phase = SceneController.phase;
+        SceneController.phase = 0;
 
         int difficulty = 0;
         if (diff == "easy") difficulty = 0;
@@ -82,6 +83,7 @@ public class Game2Controller : MonoBehaviour
                 {
                     SceneController.state = "clear";
                     SceneManager.LoadScene("EmptyScene");
+                    SoundManager.Instance.Stop();
                 }
                 else
                 {
