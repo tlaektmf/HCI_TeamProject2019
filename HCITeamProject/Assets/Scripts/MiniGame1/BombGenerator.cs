@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombGenerator : MonoBehaviour
 {
-    const float BOMB_SIZE = 0.05f;
+    const float BOMB_SIZE = 0.4f;
     float BOUND_LEFT;
     float BOUND_RIGHT;
     Vector2 min;
@@ -35,7 +35,7 @@ public class BombGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        ///Debug.Log(BOUND_LEFT + " " + BOUND_RIGHT+" "+max.y);
         this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
 
         if (isFinish == false)
@@ -53,7 +53,7 @@ public class BombGenerator : MonoBehaviour
 
                 float appear_x = Random.Range(BOUND_LEFT, BOUND_RIGHT) ;//x좌표 범위 지정
 
-                obj.transform.position = new Vector3(appear_x, max.y, 0);
+                obj.transform.position = new Vector3(appear_x, max.y+BOMB_SIZE, 0);
 
                 isFinish = false;
             }

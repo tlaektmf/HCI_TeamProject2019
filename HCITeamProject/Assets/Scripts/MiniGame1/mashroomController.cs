@@ -33,8 +33,8 @@ public class mashroomController : MonoBehaviour
         Vector2 mashroom_center = transform.position;//mashroom의 중심좌표
         Vector2 player_center = this.mplayer.transform.position;//캐릭터 중심좌표
         Vector2 dist = mashroom_center - player_center;
-        float mashroom_radius = 0.5f;//mashroom 반경
-        float player_radius = 0.5f;//플레이어 반경
+        float mashroom_radius = 0.3f;//mashroom 반경
+        float player_radius = 0.3f;//플레이어 반경
 
         if (dist.magnitude < mashroom_radius + player_radius)
         {
