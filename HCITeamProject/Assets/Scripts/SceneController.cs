@@ -86,10 +86,10 @@ public class SceneController : MonoBehaviour
             
             showEnding();
             //게임 후-> 엔딩/클리어 -> (일정 시간 후) 맵view
-            if (state != "end")
-            {
+           // if (state != "end")
+           // {
                 StartCoroutine(showMapView());
-            }
+           // }
            
         }
 
