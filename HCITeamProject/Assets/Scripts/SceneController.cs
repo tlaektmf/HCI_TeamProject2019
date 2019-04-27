@@ -133,9 +133,16 @@ public class SceneController : MonoBehaviour
     //para : string stage, string difficulty
     void showStory()
     {
-        //resource file name 예시 : stage1_easy_story
-        this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("stage" + stage + "_" + difficulty + "_" + "story");
-        
+        if (stage == "boss")
+        {
+            this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("boss_story");
+
+        }
+        else
+        {
+            //resource file name 예시 : stage1_easy_story
+            this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("stage" + stage + "_" + difficulty + "_" + "story");
+        }
     }
 
     public IEnumerator showMapView()

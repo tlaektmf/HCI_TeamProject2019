@@ -7,13 +7,13 @@ public class ButtonClick : MonoBehaviour
 {
     bool map = false;
     string str = "";
+    bool null_start = false;
     GameObject stage1_easy_btn;
     GameObject stage3_easy_btn;
 
     // Start is called before the first frame update
     void Start()
     {
-
         if (!map&&PlayerPrefs.GetString("boss") == "clear")
         {
             map = true;
