@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombGenerator : MonoBehaviour
 {
-    const float BOMB_SIZE = 0.08f;
+    const float BOMB_SIZE = 0.05f;
     float BOUND_LEFT;
     float BOUND_RIGHT;
     Vector2 min;
@@ -14,13 +14,13 @@ public class BombGenerator : MonoBehaviour
 
     public GameObject mbombPrefab;//폭탄 프리팹을 넣을 변수(아울렛)
     GameObject mplayer;
-    float span;//default; 폭탄 생성 주기
+    float span=2.0f;//default 폭탄 생성 주기
     float delta = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        span = 2.0f;//1초마다 1개씩 폭탄을 생성(초기설정)
+        
         this.mplayer = GameObject.Find("player_man");//케릭터오브젝트
 
         //폭탄 생성 x 축 경계 설정
@@ -28,6 +28,8 @@ public class BombGenerator : MonoBehaviour
          max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
         BOUND_LEFT = min.x+ BOMB_SIZE;
         BOUND_RIGHT = max.x - BOMB_SIZE;
+
+       
     }
 
     // Update is called once per frame
@@ -61,9 +63,27 @@ public class BombGenerator : MonoBehaviour
 
     }
 
-    float setRandomSpan()//폭탄이 떨어지는 속도 설정
+    float setRandomSpan()
     {
-        return Random.Range(1.0f, 1.5f);//0.5초~1초
+        /*
+        * 난이도 지정////////////////////////////////////////////////
+        */
+        //폭탄 생성 주기 설정
+        if (SceneController.difficulty == "easy")
+        {
+            return Random.Range(1.0f, 1.5f);
+          
+        }
+        else if (SceneController.difficulty == "normal")
+        {
+            return Random.Range(0.5f, 1.0f);
+        }
+        else if (SceneController.difficulty == "hard")
+        {
+            return Random.Range(0.7f, 1.0f);
+        }
+        ///////////////////////////////////////////////////////////////
+        return Random.Range(0.5f, 1.0f);//defult
 
     }
 }

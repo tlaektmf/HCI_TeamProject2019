@@ -7,7 +7,7 @@ public class BombController : MonoBehaviour
     GameObject mplayer;//케릭터 오브젝트
     GameObject director;
 
-    float speed = 0.1f;//폭탄 낙하 속도
+    float speed ;// 폭탄 낙하 속도
 
     // Start is called before the first frame update
 
@@ -15,8 +15,26 @@ public class BombController : MonoBehaviour
     {
         this.director = GameObject.Find("mini1_GameDirector");
         this.mplayer = GameObject.Find("player_man");//케릭터오브젝트
-        
-        
+       /// this.speed = Random.Range(0.1f, 5.0f);//default
+
+        /*
+        * 난이도 지정////////////////////////////////////////////////
+        */
+        //폭탄 낙하 속도 설정
+        if (SceneController.difficulty == "easy")
+        {
+            this.speed = 0.1f;
+        }
+        else if (SceneController.difficulty == "normal")
+        {
+            this.speed = 0.1f;
+        }
+        else if (SceneController.difficulty == "hard")
+        { 
+            //this.speed = Random.Range(0.1f, 10.0f);
+            this.speed = Random.Range(0.1f, 5.0f);
+        }
+        ///////////////////////////////////////////////////////////////
 
     }
 
@@ -40,7 +58,7 @@ public class BombController : MonoBehaviour
         Vector2 player_center = this.mplayer.transform.position;//캐릭터 중심좌표
         Vector2 dist = bomb_center - player_center;
         float bomb_radius = 0.5f;//폭탄 반경
-        float player_radius = 0.5f;//플레이어 반경
+        float player_radius = 0.3f;//플레이어 반경
 
         if (dist.magnitude < bomb_radius + player_radius)
         {
