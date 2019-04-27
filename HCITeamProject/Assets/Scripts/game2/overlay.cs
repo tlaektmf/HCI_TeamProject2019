@@ -12,6 +12,7 @@ public class overlay : MonoBehaviour
         sr.sprite = sp;
         Color tmp = sr.color;
         tmp.a = 0.3f;
+        if (Game2Controller.stage == 0) tmp.a = 0.07f;
         sr.color = tmp;
     }
 

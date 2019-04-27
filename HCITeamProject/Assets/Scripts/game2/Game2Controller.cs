@@ -39,7 +39,7 @@ public class Game2Controller : MonoBehaviour
         Camera.main.orthographicSize = 1280 / (100.0f * 2.0f); // 카메라 수직길이 절반 / 100
 
         string diff = SceneController.difficulty;
-        int difficulty = 2;
+        int difficulty = 0;
         if (diff == "easy") difficulty = 0;
         if (diff == "normal") difficulty = 1;
         if (diff == "hard") difficulty = 2;

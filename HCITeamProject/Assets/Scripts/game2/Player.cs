@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
         v1 = new Vector2(0, 0);
         v2 = new Vector2(0.5f, 0);
+        
+        SoundManager.Instance.PlayMusicWithPath("audio/game2/game2bgm");
     }
 
     // Update is called once per frame
@@ -61,6 +63,8 @@ public class Player : MonoBehaviour
         Game2Controller.speed = 0;
         rigid.bodyType = RigidbodyType2D.Static;
         animator.Play("dead");
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayEffectWithPath("audio/common/gameover_tetris");
     }
 
     public void Jump(float thurst)
@@ -71,6 +75,8 @@ public class Player : MonoBehaviour
         animator.Play("jumping");
         rigid.velocity = new Vector2(0, thurst);
         delay = actionDelay;
+
+        SoundManager.Instance.PlayEffectWithPath("audio/game2/jumping");
     }
 
     public void Punch()
@@ -80,6 +86,7 @@ public class Player : MonoBehaviour
         animator.Play("attack");
         delay = actionDelay;
         attacktime = 0;
+
     }
 
     void Ground()
@@ -97,6 +104,7 @@ public class Player : MonoBehaviour
             if (attacktime > 0.08f && attacktime < 0.25f)
             {
                 Enemy e = (Enemy)other.gameObject.GetComponent<Enemy>();
+                SoundManager.Instance.PlayEffectWithPath("audio/game2/punch");
                 e.Die();
             }
             else
