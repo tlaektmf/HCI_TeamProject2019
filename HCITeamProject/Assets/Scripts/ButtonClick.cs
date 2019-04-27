@@ -42,6 +42,7 @@ public class ButtonClick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(720, 1280, true);
         stage1_easy_btn_img = stage1_easy_btn.GetComponent<Image>();
         stage1_middle_btn_img = stage1_middle_btn.GetComponent<Image>();
         stage1_hard_btn_img = stage1_hard_btn.GetComponent<Image>();

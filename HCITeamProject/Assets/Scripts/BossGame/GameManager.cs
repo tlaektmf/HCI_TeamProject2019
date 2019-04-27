@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
     bool gameclear = false;
 
     void Awake () {
+        Screen.SetResolution(720, 1280, true);
         InitGame();
     }
 
