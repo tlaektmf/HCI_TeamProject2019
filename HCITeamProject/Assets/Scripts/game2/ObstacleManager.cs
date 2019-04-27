@@ -56,20 +56,45 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
-    public void SetStage(int stage)
+    public void SetStage(int stage, int phase)
     {
         switch (stage)
         {
         case 0:
-            obstacleList.Add(new Obstacle(15.0f, 1));
-            obstacleList.Add(new Obstacle(24.0f, 1));
-            obstacleList.Add(new Obstacle(33.0f, 1));
-            obstacleList.Add(new Obstacle(42.0f, 2));
-            obstacleList.Add(new Obstacle(46.0f, 1));
-            obstacleList.Add(new Obstacle(55.0f, 2));
-            obstacleList.Add(new Obstacle(58.0f, 1));
-            obstacleList.Add(new Obstacle(80.0f, 100));
-                break;
+            if(phase == 0)
+            {
+                obstacleList.Add(new Obstacle(15.0f, 1));
+                obstacleList.Add(new Obstacle(24.0f, 1));
+                obstacleList.Add(new Obstacle(33.0f, 1));
+                obstacleList.Add(new Obstacle(42.0f, 2));
+                obstacleList.Add(new Obstacle(46.0f, 1));
+                obstacleList.Add(new Obstacle(55.0f, 2));
+                obstacleList.Add(new Obstacle(58.0f, 1));
+                obstacleList.Add(new Obstacle(75.0f, 100));
+            }
+            else if (phase == 1)
+            {
+                obstacleList.Add(new Obstacle(15.0f, 1));
+                obstacleList.Add(new Obstacle(24.0f, 1));
+                obstacleList.Add(new Obstacle(33.0f, 1));
+                obstacleList.Add(new Obstacle(42.0f, 2));
+                obstacleList.Add(new Obstacle(46.0f, 1));
+                obstacleList.Add(new Obstacle(55.0f, 2));
+                obstacleList.Add(new Obstacle(58.0f, 1));
+                obstacleList.Add(new Obstacle(75.0f, 100));
+            }
+            else
+            {
+                obstacleList.Add(new Obstacle(15.0f, 1));
+                obstacleList.Add(new Obstacle(24.0f, 1));
+                obstacleList.Add(new Obstacle(33.0f, 1));
+                obstacleList.Add(new Obstacle(42.0f, 2));
+                obstacleList.Add(new Obstacle(46.0f, 1));
+                obstacleList.Add(new Obstacle(55.0f, 2));
+                obstacleList.Add(new Obstacle(58.0f, 1));
+                obstacleList.Add(new Obstacle(75.0f, 100));
+            }
+            break;
         case 1:
             obstacleList.Add(new Obstacle(15.0f, 1));
             obstacleList.Add(new Obstacle(24.0f, 1));

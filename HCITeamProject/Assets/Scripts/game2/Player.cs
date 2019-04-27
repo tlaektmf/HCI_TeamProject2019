@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     float attacktime = 1f;
     bool grounded = true;
+    bool banging = false;
     Animator animator;
     Rigidbody2D rigid;
     BoxCollider2D col;
@@ -23,11 +24,19 @@ public class Player : MonoBehaviour
 
         v1 = new Vector2(0, 0);
         v2 = new Vector2(0.5f, 0);
+        
+        SoundManager.Instance.PlayMusicWithPath("audio/game2/game2bgm");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(banging)
+        {
+            transform.Rotate(-Vector3.forward * 2500f * Time.deltaTime);
+            transform.localScale -= (Vector3.up + Vector3.right) * Time.deltaTime;
+        }
+
         delay -= Time.deltaTime;
         attacktime += Time.deltaTime;
         
@@ -61,6 +70,8 @@ public class Player : MonoBehaviour
         Game2Controller.speed = 0;
         rigid.bodyType = RigidbodyType2D.Static;
         animator.Play("dead");
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayEffectWithPath("audio/common/gameover_tetris");
     }
 
     public void Jump(float thurst)
@@ -71,6 +82,8 @@ public class Player : MonoBehaviour
         animator.Play("jumping");
         rigid.velocity = new Vector2(0, thurst);
         delay = actionDelay;
+
+        SoundManager.Instance.PlayEffectWithPath("audio/game2/jumping");
     }
 
     public void Punch()
@@ -80,6 +93,7 @@ public class Player : MonoBehaviour
         animator.Play("attack");
         delay = actionDelay;
         attacktime = 0;
+
     }
 
     void Ground()
@@ -87,6 +101,17 @@ public class Player : MonoBehaviour
         if(!grounded)
             animator.Play("walking");
         grounded = true;
+    }
+
+    void Banging()
+    {
+        if (Game2Controller.state == 4) return;
+        Rigidbody2D rigid = GetComponent<Rigidbody2D>();
+        Game2Controller.state = 4;
+        Game2Controller.speed = 0;
+        banging = true;
+        rigid.bodyType = RigidbodyType2D.Static;
+        // SoundManager.Instance.PlayEffectWithPath("audio/common/gameover_tetris");
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -97,6 +122,7 @@ public class Player : MonoBehaviour
             if (attacktime > 0.08f && attacktime < 0.25f)
             {
                 Enemy e = (Enemy)other.gameObject.GetComponent<Enemy>();
+                SoundManager.Instance.PlayEffectWithPath("audio/game2/punch");
                 e.Die();
             }
             else
@@ -107,6 +133,10 @@ public class Player : MonoBehaviour
         if (tag == "ground")
         {
             Ground();
+        }
+        if (tag == "portal")
+        {
+            Banging();
         }
     }
 }
