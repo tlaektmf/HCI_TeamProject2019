@@ -87,9 +87,11 @@ public class SceneController : MonoBehaviour
             //게임 후-> 게임 결과에 맞는 엔딩을 보여줌(해피, 배드, 클리어화면)
             showEnding();
             //게임 후-> 엔딩/클리어 -> (일정 시간 후) 맵view
-            StartCoroutine(showMapView());
+            if (state != "end")
+            {
+                StartCoroutine(showMapView());
+            }
         }
-
 
     }
 
