@@ -58,12 +58,12 @@ public class Owl : MonoBehaviour {
             if (touchPos.x <= Screen.width / 2)
             {
                 //왼쪽
-                moveDir.x = -10.0f*moveSpeed;
+                moveDir.x = -Vector3.right.x*moveSpeed;
             }
             else if (touchPos.x >= Screen.width / 2)
             {
                 //오른쪽
-                moveDir.x = 10.0f * moveSpeed;
+                moveDir.x = Vector3.right.x * moveSpeed;
             }
             moveDir.y -= gravity * Time.deltaTime;
         }
