@@ -103,7 +103,7 @@ public class SceneController : MonoBehaviour
         {
             //한번도 깬적이 없는 경우만 저장
             PlayerPrefs.SetString(stage + "_" + difficulty, state);
-            //Debug.Log("로컬에저장: " + stage + "_" + difficulty + " " + state);
+            
         }
         //PlayerPrefs.SetString("1" + "_" + "easy", "clear");
         if (state == "clear" && stage == "boss" && isContinue == false)

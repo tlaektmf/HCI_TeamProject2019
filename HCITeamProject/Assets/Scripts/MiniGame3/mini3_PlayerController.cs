@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class mini3_PlayerController : MonoBehaviour
 {
+    const float EVIL_SIZE= 0.005f;
+    const float EVIL_MOVE = 0.01f;
+    const float CASTLE_SIZE = 0.01f;
+    const float ROAD_MOVE = 0.01f;
     //오브젝트 사이즈 변경
     GameObject evil_sleep;
     GameObject evil_awake;
@@ -57,19 +61,7 @@ public class mini3_PlayerController : MonoBehaviour
  */
     public void UpButton()
     {
-        ////if(evil_open_eyes.activeSelf == true)
-        ////{
-        ////    evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        ////}
-        ////if (evil_sleep.activeSelf == true)
-        ////{
-        ////    evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        ////}
-        ////if (evil_awake.activeSelf == true)
-        ////{
-        ////    evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-        ////}
-        ///
+       
 
         if (evil_sleep.activeSelf == false)
         {
@@ -78,25 +70,19 @@ public class mini3_PlayerController : MonoBehaviour
         }
         else
         {
-            //사이즈 조정
-            //if (evil_awake.transform.localScale.y<BOUND_SIZE)
-            //{
-            //    evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-            //    evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-            //    evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-            //}
+            
 
-            evil_awake.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-            evil_sleep.transform.localScale += new Vector3(0.05f, 0.05f, 0);
-            evil_open_eyes.transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            evil_awake.transform.localScale += new Vector3(EVIL_SIZE, EVIL_SIZE, 0);
+            evil_sleep.transform.localScale += new Vector3(EVIL_SIZE, EVIL_SIZE, 0);
+            evil_open_eyes.transform.localScale += new Vector3(EVIL_SIZE, EVIL_SIZE, 0);
 
             //위치 조정
-            evil_awake.transform.Translate(0.1f, -0.1f, 0);
-            evil_sleep.transform.Translate(0.1f, -0.1f, 0);
-            evil_open_eyes.transform.Translate(0.1f, -0.1f, 0);
+            evil_awake.transform.Translate(EVIL_MOVE, -EVIL_MOVE, 0);
+            evil_sleep.transform.Translate(EVIL_MOVE, -EVIL_MOVE, 0);
+            evil_open_eyes.transform.Translate(EVIL_MOVE, -EVIL_MOVE, 0);
 
-            mcastle.transform.localScale += new Vector3(0.1f, 0.1f, 0);
-            mroad.transform.Translate(0, -0.05f, 0);
+            mcastle.transform.localScale += new Vector3(CASTLE_SIZE, CASTLE_SIZE, 0);
+            mroad.transform.Translate(0, -ROAD_MOVE, 0);
             ///Debug.Log(evil_awake.transform.localScale);
         }
 
