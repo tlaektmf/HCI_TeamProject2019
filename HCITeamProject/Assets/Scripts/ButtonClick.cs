@@ -57,8 +57,9 @@ public class ButtonClick : MonoBehaviour
 
         boss_btn = GameObject.FindGameObjectWithTag("boss");
 
-        if (PlayerPrefs.GetString("1_easy") != null){
+        if (PlayerPrefs.GetString("1_easy") != ""){
             print("값이 들어 있어");
+            Debug.Log("1_easy_state " + PlayerPrefs.GetString("1_easy"));
         }
         else
         {
@@ -80,9 +81,10 @@ public class ButtonClick : MonoBehaviour
 
             boss_img = boss_btn.GetComponent<Image>();
             
-            if (PlayerPrefs.GetString("1_easy") != null)
+            if (PlayerPrefs.GetString("1_easy") != "")
             {
                 Debug.Log("1_easy_state "+PlayerPrefs.GetString("1_easy"));
+
                 if (PlayerPrefs.GetString("boss_") == "clear")
                 {
                     boss_img.sprite = Resources.Load<Sprite>("activate");
