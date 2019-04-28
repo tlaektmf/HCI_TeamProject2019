@@ -15,7 +15,7 @@ using UnityEngine.UI;
  * [difficulty]
  * 
  * hard
- * normal
+ * middle
  * easy
  * 
  * [state]
@@ -133,7 +133,7 @@ public class SceneController : MonoBehaviour
     //para : string stage, string difficulty
     void showStory()
     {
-        print(stage);
+        print(stage+" "+difficulty);
         if (stage == "boss")
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("boss_story");

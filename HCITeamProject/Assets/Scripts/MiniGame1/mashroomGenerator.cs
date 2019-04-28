@@ -22,7 +22,7 @@ public class mashroomGenerator : MonoBehaviour
         if (SceneController.difficulty == "easy")
         {
             span = 8.0f;//1초마다 1개씩 mashroom을 생성(초기설정)
-        }else if (SceneController.difficulty == "normal")
+        }else if (SceneController.difficulty == "middle")
         {
             span = 10.0f;//1초마다 1개씩 mashroom을 생성(초기설정)
         }else if (SceneController.difficulty == "hard")

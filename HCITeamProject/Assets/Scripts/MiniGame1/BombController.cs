@@ -25,7 +25,7 @@ public class BombController : MonoBehaviour
         {
             this.speed = 0.1f;
         }
-        else if (SceneController.difficulty == "normal")
+        else if (SceneController.difficulty == "middle")
         {
             this.speed = 0.1f;
         }

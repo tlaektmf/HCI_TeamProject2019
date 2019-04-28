@@ -20,7 +20,7 @@ public class mini3_GameDirector : MonoBehaviour
         {
             CLEAR_CONTROL_TIME = 40;
         }
-        else if (SceneController.difficulty == "normal")
+        else if (SceneController.difficulty == "middle")
         {
             CLEAR_CONTROL_TIME = 30;
         }
