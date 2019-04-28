@@ -43,103 +43,118 @@ public class ButtonClick : MonoBehaviour
     void Start()
     {
         
-        //stage1_easy_btn_img = stage1_easy_btn.GetComponent<Image>();
-        //stage1_middle_btn_img = stage1_middle_btn.GetComponent<Image>();
-        //stage1_hard_btn_img = stage1_hard_btn.GetComponent<Image>();
+        PlayerPrefs.SetString("1" + "_" + "easy", "clear");
+        stage1_easy_btn = GameObject.FindGameObjectWithTag("stage1_easy");
+        stage2_easy_btn = GameObject.FindGameObjectWithTag("stage2_easy");
+        stage3_easy_btn = GameObject.FindGameObjectWithTag("stage3_easy");
 
-        //stage2_easy_btn_img = stage2_easy_btn.GetComponent<Image>();
-        //stage2_middle_btn_img = stage2_middle_btn.GetComponent<Image>();
-        //stage2_hard_btn_img = stage2_hard_btn.GetComponent<Image>();
+        stage1_middle_btn = GameObject.FindGameObjectWithTag("stage1_middle");
+        stage2_middle_btn = GameObject.FindGameObjectWithTag("stage2_middle");
+        stage3_middle_btn = GameObject.FindGameObjectWithTag("stage3_middle");
 
-        //stage3_easy_btn_img = stage3_easy_btn.GetComponent<Image>();
-        //stage3_middle_btn_img = stage3_middle_btn.GetComponent<Image>();
-        //stage3_hard_btn_img = stage3_hard_btn.GetComponent<Image>();
+        stage1_hard_btn = GameObject.FindGameObjectWithTag("stage1_hard");
+        stage2_hard_btn = GameObject.FindGameObjectWithTag("stage2_hard");
+        stage3_hard_btn = GameObject.FindGameObjectWithTag("stage3_hard");
 
-        //boss_img = boss_btn.GetComponent<Image>();
+        boss_btn = GameObject.FindGameObjectWithTag("boss");
 
-        //if (!map && PlayerPrefs.GetString("1") != null)
-        //{
+        stage1_easy_btn_img = stage1_easy_btn.GetComponent<Image>();
+        stage1_middle_btn_img = stage1_middle_btn.GetComponent<Image>();
+        stage1_hard_btn_img = stage1_hard_btn.GetComponent<Image>();
 
-        //    if (!map && PlayerPrefs.GetString("boss") == "clear")
-        //    {
-        //        //map = true;
-        //        str = PlayerPrefs.GetString("boss");
-        //        string[] str2 = str.Split(new char[] { '_' });
-        //        boss_img.sprite = Resources.Load<Sprite>("활성화");
+        stage2_easy_btn_img = stage2_easy_btn.GetComponent<Image>();
+        stage2_middle_btn_img = stage2_middle_btn.GetComponent<Image>();
+        stage2_hard_btn_img = stage2_hard_btn.GetComponent<Image>();
 
-        //    }
-        //    if (!map && PlayerPrefs.GetString("3") == "clear")
-        //    {
-        //        //map = true;
-        //        str = PlayerPrefs.GetString("3");
-        //        string[] str2 = str.Split(new char[] { '_' });
-                
-        //        if (str2[1] == "hard")
-        //        {
-        //            stage3_easy_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //            stage3_middle_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //            stage3_hard_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //        }
-        //        else if (str2[1] == "middle")
-        //        {
-        //            stage3_easy_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //            stage3_middle_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //        }
-        //        else
-        //        {
-        //            stage3_easy_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //        }
-        //    }
-        //    if (!map && PlayerPrefs.GetString("2") == "clear")
-        //    {
-        //        //map = true;
-        //        str = PlayerPrefs.GetString("2");
-        //        string[] str2 = str.Split(new char[] { '_' });
-        //        string stage_diffculty = str2[1];
-        //        if (str2[1] == "hard")
-        //        {
-        //            stage2_easy_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //            stage2_middle_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //            stage2_hard_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //        }
-        //        else if (str2[1] == "middle")
-        //        {
-        //            stage2_easy_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //            stage2_middle_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //        }
-        //        else
-        //        {
-        //            stage2_easy_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //        }
-        //    }
-        //    if (!map && PlayerPrefs.GetString("1") == "clear")
-        //    {
-        //        map = true;
-        //        str = PlayerPrefs.GetString("1");
-        //        string[] str2 = str.Split(new char[] { '_' });
-        //        string stage_diffculty = str2[1];
-        //        if (str2[1] == "hard")
-        //        {
-        //            stage1_easy_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //            stage1_middle_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //            stage1_hard_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //        }
-        //        else if (str2[1] == "middle")
-        //        {
-        //            stage1_easy_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //            stage1_middle_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //        }
-        //        else
-        //        {
-        //            stage1_easy_btn_img.sprite = Resources.Load<Sprite>("활성화");
-        //        }
-        //    }
+        stage3_easy_btn_img = stage3_easy_btn.GetComponent<Image>();
+        stage3_middle_btn_img = stage3_middle_btn.GetComponent<Image>();
+        stage3_hard_btn_img = stage3_hard_btn.GetComponent<Image>();
 
-        //    //ImageChange(str);
+        boss_img = boss_btn.GetComponent<Image>();
+        boss_img.sprite = Resources.Load<Sprite>("activate");
+        if (!map && PlayerPrefs.GetString("1") != null)
+        {
 
-        //}
+            if (!map && PlayerPrefs.GetString("boss") == "clear")
+            {
+                //map = true;
+                str = PlayerPrefs.GetString("boss");
+                string[] str2 = str.Split(new char[] { '_' });
+                boss_img.sprite = Resources.Load<Sprite>("activate");
 
-    }
+            }
+            if (!map && PlayerPrefs.GetString("3") == "clear")
+            {
+                //map = true;
+                str = PlayerPrefs.GetString("3");
+                string[] str2 = str.Split(new char[] { '_' });
+
+                if (str2[1] == "hard")
+                {
+                    stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage3_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage3_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
+                }
+                else if (str2[1] == "middle")
+                {
+                    stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage3_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+                }
+                else
+                {
+                    stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+                }
+            }
+            if (!map && PlayerPrefs.GetString("2") == "clear")
+            {
+                //map = true;
+                str = PlayerPrefs.GetString("2");
+                string[] str2 = str.Split(new char[] { '_' });
+                string stage_diffculty = str2[1];
+                if (str2[1] == "hard")
+                {
+                    stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage2_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage2_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
+                }
+                else if (str2[1] == "middle")
+                {
+                    stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage2_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+                }
+                else
+                {
+                    stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+                }
+            }
+            if (!map && PlayerPrefs.GetString("1") == "clear")
+            {
+                map = true;
+                str = PlayerPrefs.GetString("1");
+                string[] str2 = str.Split(new char[] { '_' });
+                string stage_diffculty = str2[1];
+                if (str2[1] == "hard")
+                {
+                    stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage1_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage1_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
+                }
+                else if (str2[1] == "middle")
+                {
+                    stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage1_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+                }
+                else
+                {
+                    stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+                }
+            }
+
+            //    //ImageChange(str);
+
+            }
+
+        }
 
     //Stage1
     public void stage1_easy()

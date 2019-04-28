@@ -14,6 +14,16 @@ TagManager:
   - Bird
   - sceneImage
   - portal
+  - stage1_easy
+  - stage1_hard
+  - boss
+  - stage2_easy
+  - stage3_easy
+  - stage1_middle
+  - stage2_middle
+  - stage3_middle
+  - stage2_hard
+  - stage3_hard
   layers:
   - Default
   - TransparentFX
