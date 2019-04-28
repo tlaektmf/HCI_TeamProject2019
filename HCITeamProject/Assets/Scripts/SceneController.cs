@@ -70,7 +70,7 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("stage :" + stage + "    state : " + state+"   difficulty: "+difficulty);
+        //Debug.Log("stage :" + stage + "    state : " + state+"   difficulty: "+difficulty);
 
         if (state == null)
         {
@@ -98,14 +98,14 @@ public class SceneController : MonoBehaviour
     void showEnding()
     {
         //로컬에 저장
-        Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
+        //Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
         if (PlayerPrefs.GetString(stage + "_" + difficulty) != "clear")
         {
             //한번도 깬적이 없는 경우만 저장
             PlayerPrefs.SetString(stage + "_" + difficulty, state);
-            Debug.Log("로컬에저장: " + stage + "_" + difficulty + " " + state);
+            //Debug.Log("로컬에저장: " + stage + "_" + difficulty + " " + state);
         }
-
+        //PlayerPrefs.SetString("1" + "_" + "easy", "clear");
         if (state == "clear" && stage == "boss" && isContinue == false)
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("hiddenEnding");

@@ -43,7 +43,6 @@ public class ButtonClick : MonoBehaviour
     void Start()
     {
         
-        PlayerPrefs.SetString("1" + "_" + "easy", "clear");
         stage1_easy_btn = GameObject.FindGameObjectWithTag("stage1_easy");
         stage2_easy_btn = GameObject.FindGameObjectWithTag("stage2_easy");
         stage3_easy_btn = GameObject.FindGameObjectWithTag("stage3_easy");
@@ -58,44 +57,36 @@ public class ButtonClick : MonoBehaviour
 
         boss_btn = GameObject.FindGameObjectWithTag("boss");
 
-        stage1_easy_btn_img = stage1_easy_btn.GetComponent<Image>();
-        stage1_middle_btn_img = stage1_middle_btn.GetComponent<Image>();
-        stage1_hard_btn_img = stage1_hard_btn.GetComponent<Image>();
-
-        stage2_easy_btn_img = stage2_easy_btn.GetComponent<Image>();
-        stage2_middle_btn_img = stage2_middle_btn.GetComponent<Image>();
-        stage2_hard_btn_img = stage2_hard_btn.GetComponent<Image>();
-
-        stage3_easy_btn_img = stage3_easy_btn.GetComponent<Image>();
-        stage3_middle_btn_img = stage3_middle_btn.GetComponent<Image>();
-        stage3_hard_btn_img = stage3_hard_btn.GetComponent<Image>();
-
-        boss_img = boss_btn.GetComponent<Image>();
-        boss_img.sprite = Resources.Load<Sprite>("activate");
-        if (!map && PlayerPrefs.GetString("1") != null)
+        if (stage1_easy_btn!=null)
         {
+            stage1_easy_btn_img = stage1_easy_btn.GetComponent<Image>();
+            stage1_middle_btn_img = stage1_middle_btn.GetComponent<Image>();
+            stage1_hard_btn_img = stage1_hard_btn.GetComponent<Image>();
 
-            if (!map && PlayerPrefs.GetString("boss") == "clear")
+            stage2_easy_btn_img = stage2_easy_btn.GetComponent<Image>();
+            stage2_middle_btn_img = stage2_middle_btn.GetComponent<Image>();
+            stage2_hard_btn_img = stage2_hard_btn.GetComponent<Image>();
+
+            stage3_easy_btn_img = stage3_easy_btn.GetComponent<Image>();
+            stage3_middle_btn_img = stage3_middle_btn.GetComponent<Image>();
+            stage3_hard_btn_img = stage3_hard_btn.GetComponent<Image>();
+
+            boss_img = boss_btn.GetComponent<Image>();
+
+            if (!map && PlayerPrefs.GetString("1") != null)
             {
-                //map = true;
-                str = PlayerPrefs.GetString("boss");
-                string[] str2 = str.Split(new char[] { '_' });
-                boss_img.sprite = Resources.Load<Sprite>("activate");
 
-            }
-            if (!map && PlayerPrefs.GetString("3") == "clear")
-            {
-                //map = true;
-                str = PlayerPrefs.GetString("3");
-                string[] str2 = str.Split(new char[] { '_' });
-
-                if (str2[1] == "hard")
+                if (PlayerPrefs.GetString("boss_") == "clear")
                 {
+                    boss_img.sprite = Resources.Load<Sprite>("activate");
+                }
+                if (PlayerPrefs.GetString("3_hard") == "clear")
+                {
+                    stage3_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
                     stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                     stage3_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage3_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
                 }
-                else if (str2[1] == "middle")
+                else if (PlayerPrefs.GetString("3_middle") == "clear")
                 {
                     stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                     stage3_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
@@ -104,42 +95,30 @@ public class ButtonClick : MonoBehaviour
                 {
                     stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                 }
-            }
-            if (!map && PlayerPrefs.GetString("2") == "clear")
-            {
-                //map = true;
-                str = PlayerPrefs.GetString("2");
-                string[] str2 = str.Split(new char[] { '_' });
-                string stage_diffculty = str2[1];
-                if (str2[1] == "hard")
+
+                if (PlayerPrefs.GetString("2_hard") == "clear")
                 {
                     stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                     stage2_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
                     stage2_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
                 }
-                else if (str2[1] == "middle")
+                else if (PlayerPrefs.GetString("2_middle") == "clear")
                 {
-                    stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                     stage2_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                 }
                 else
                 {
                     stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                 }
-            }
-            if (!map && PlayerPrefs.GetString("1") == "clear")
-            {
-                map = true;
-                str = PlayerPrefs.GetString("1");
-                string[] str2 = str.Split(new char[] { '_' });
-                string stage_diffculty = str2[1];
-                if (str2[1] == "hard")
+
+                if (PlayerPrefs.GetString("1_hard") == "clear")
                 {
                     stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                     stage1_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage1_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
+                    stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                 }
-                else if (str2[1] == "middle")
+                else if (PlayerPrefs.GetString("1_middle") == "clear")
                 {
                     stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                     stage1_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
@@ -148,11 +127,14 @@ public class ButtonClick : MonoBehaviour
                 {
                     stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                 }
-            }
 
-            //    //ImageChange(str);
+
+
+                //    //ImageChange(str);
 
             }
+        }
+        
 
         }
 
