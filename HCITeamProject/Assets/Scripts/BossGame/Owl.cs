@@ -7,9 +7,9 @@ public class Owl : MonoBehaviour {
     Animator anim;                  // Animator
     Transform chkPoint;             // Check Point
 
-    float moveSpeed = 7f;           // 이동 속도    //default:7f
+    float moveSpeed = 10f;           // 이동 속도    //default:7f
     float jumpSpeed = 10f;          // 점프 속도
-    float gravity = 19f;            // 중력
+    float gravity = 17f;            // 중력
 
     Vector3 moveDir;                // 이동 방향
     private Touch tempTouchs;   //스마트폰터치 방향
@@ -62,28 +62,11 @@ public class Owl : MonoBehaviour {
         //Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
         if (Input.touchCount > 0)
         {
-            
-            Touch touch = Input.GetTouch(0);
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            print(Input.GetMouseButton(0));
+            if (Input.GetMouseButton(0))
             {
-                touch_p = true;
-                //print("웨 안와");
-                beforetime = Time.deltaTime;
-                
-            }
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                touch_p = false;
-                print("터치뗏어");
-                
-            }
-            if (touch_p)
-            {
-                //keyValue = Mathf.Abs(Time.deltaTime - beforetime)*200f;
-                
-                //print(keyValue);
+                keyValue += 0.3f;
                 Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
-
                 if (touchPos.x <= Screen.width / 2)
                 {
                     //왼쪽
@@ -100,6 +83,43 @@ public class Owl : MonoBehaviour {
                 //// 이동
                 transform.Translate(moveDir * Time.deltaTime);
             }
+            //Touch touch = Input.GetTouch(0);
+            //if (Input.GetTouch(0).phase == TouchPhase.Began)
+            //{
+            //    touch_p = true;
+            //    //print("웨 안와");
+            //    beforetime = Time.deltaTime;
+                
+            //}
+            //if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            //{
+            //    touch_p = false;
+            //    print("터치뗏어");
+                
+            //}
+            //if (touch_p)
+            //{
+            //    //keyValue = Mathf.Abs(Time.deltaTime - beforetime)*200f;
+                
+            //    //print(keyValue);
+            //    Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
+
+            //    if (touchPos.x <= Screen.width / 2)
+            //    {
+            //        //왼쪽
+            //        moveDir.x = -keyValue * moveSpeed;
+            //        //moveDir.y = jumpSpeed;
+            //    }
+            //    else if (touchPos.x >= Screen.width / 2)
+            //    {
+            //        //오른쪽
+            //        moveDir.x = keyValue * moveSpeed;
+            //        //moveDir.y = jumpSpeed;
+            //    }
+            //    moveDir.y -= gravity * Time.deltaTime;
+            //    //// 이동
+            //    transform.Translate(moveDir * Time.deltaTime);
+            //}
         }
         //if (touchPos.x <= Screen.width / 2)
         //{
