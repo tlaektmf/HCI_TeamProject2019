@@ -24,6 +24,7 @@ TagManager:
   - stage3_middle
   - stage2_hard
   - stage3_hard
+  - story
   layers:
   - Default
   - TransparentFX

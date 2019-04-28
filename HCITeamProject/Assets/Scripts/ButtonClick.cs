@@ -42,7 +42,7 @@ public class ButtonClick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerPrefs.DeleteAll();
         stage1_easy_btn = GameObject.FindGameObjectWithTag("stage1_easy");
         stage2_easy_btn = GameObject.FindGameObjectWithTag("stage2_easy");
         stage3_easy_btn = GameObject.FindGameObjectWithTag("stage3_easy");
@@ -57,6 +57,13 @@ public class ButtonClick : MonoBehaviour
 
         boss_btn = GameObject.FindGameObjectWithTag("boss");
 
+        if (PlayerPrefs.GetString("1_easy") != null){
+            print("값이 들어 있어");
+        }
+        else
+        {
+            print("값이 안들어 있어");
+        }
         if (stage1_easy_btn!=null)
         {
             stage1_easy_btn_img = stage1_easy_btn.GetComponent<Image>();
@@ -72,10 +79,10 @@ public class ButtonClick : MonoBehaviour
             stage3_hard_btn_img = stage3_hard_btn.GetComponent<Image>();
 
             boss_img = boss_btn.GetComponent<Image>();
-
-            if (!map && PlayerPrefs.GetString("1_easy") != null)
+            
+            if (PlayerPrefs.GetString("1_easy") != null)
             {
-
+                Debug.Log(PlayerPrefs.GetString("1_easy"));
                 if (PlayerPrefs.GetString("boss_") == "clear")
                 {
                     boss_img.sprite = Resources.Load<Sprite>("activate");

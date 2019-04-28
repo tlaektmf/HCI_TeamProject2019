@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour {
         print("용사여 당신은 공주를 구해냈어요!");
         timeText.text = "GameClear!!";
         SceneController.state = "clear";
-        SceneController.stage = "boss";
+        //SceneController.stage = "boss";
         SceneManager.LoadScene("EmptyScene");    //GameClear 종류 두개로 바뀜. 확인해서 조건문도 바꿀것
     }
     void GameOver()
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour {
         print("당신은 실패했습니다.");
         timeText.text = "GameOver!!";
         SceneController.state = "end";
-        SceneController.stage = "boss";
+        //SceneController.stage = "boss";
         SceneManager.LoadScene("EmptyScene");    //GameOver -> BadEnding
     }
     void cameraUp()
