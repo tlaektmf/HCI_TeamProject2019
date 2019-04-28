@@ -138,95 +138,76 @@ public class ButtonClick : MonoBehaviour
 
         }
 
+    void commonAction()
+    {
+        SceneController.state = null;
+        SceneManager.LoadScene("EmptyScene");
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayEffectWithPath("audio/common/change");
+    }
+
     //Stage1
     public void stage1_easy()
     {
         SceneController.stage = "1";
         SceneController.difficulty = "easy";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
 
     public void stage1_middle()
     {
         SceneController.stage = "1";
         SceneController.difficulty = "middle";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
+        commonAction();
 
-        SceneManager.LoadScene("EmptyScene");
     }
     public void stage1_hard()
     {
         SceneController.stage = "1";
         SceneController.difficulty = "hard";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
     //Stage2
     public void stage2_easy()
     {
         SceneController.stage = "2";
         SceneController.difficulty = "easy";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
     public void stage2_middle()
     {
         SceneController.stage = "2";
         SceneController.difficulty = "middle";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
     public void stage2_hard()
     {
         SceneController.stage = "2";
         SceneController.difficulty = "hard";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
     //Stage3
     public void stage3_easy()
     {
         SceneController.stage = "3";
         SceneController.difficulty = "easy";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
     public void stage3_middle()
     {
         SceneController.stage = "3";
         SceneController.difficulty = "middle";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
     public void stage3_hard()
     {
         SceneController.stage = "3";
         SceneController.difficulty = "hard";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
     public void replay()
     {
-        SceneController.state = null;
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
 
     //Boss
@@ -234,9 +215,6 @@ public class ButtonClick : MonoBehaviour
     {
         SceneController.stage = "boss";
         SceneController.difficulty = "";
-        SceneController.state = null;
-        Debug.Log(SceneController.stage + " " + SceneController.difficulty);
-
-        SceneManager.LoadScene("EmptyScene");
+        commonAction();
     }
 }

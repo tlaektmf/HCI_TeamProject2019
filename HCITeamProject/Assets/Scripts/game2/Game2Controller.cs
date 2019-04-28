@@ -48,7 +48,7 @@ public class Game2Controller : MonoBehaviour
 
         int difficulty = 0;
         if (diff == "easy") difficulty = 0;
-        if (diff == "normal") difficulty = 1;
+        if (diff == "middle") difficulty = 1;
         if (diff == "hard") difficulty = 2;
         Setting(difficulty, phase);
     }
