@@ -62,15 +62,17 @@ public class Owl : MonoBehaviour {
         //Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
         if (Input.touchCount > 0)
         {
-            print(Input.GetMouseButton(0));
+            print(Input.GetMouseButtonUp(0));
             if (Input.GetMouseButton(0))
             {
-                keyValue += 0.3f;
-                Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
+                keyValue += 0.4f;
+                print("안왕");
+                Vector3 touchPos = Input.mousePosition;  //터치좌표를 가져옴.
                 if (touchPos.x <= Screen.width / 2)
                 {
                     //왼쪽
                     moveDir.x = -keyValue * moveSpeed;
+                    print(-keyValue * moveSpeed);
                     //moveDir.y = jumpSpeed;
                 }
                 else if (touchPos.x >= Screen.width / 2)
@@ -78,10 +80,15 @@ public class Owl : MonoBehaviour {
                     //오른쪽
                     moveDir.x = keyValue * moveSpeed;
                     //moveDir.y = jumpSpeed;
+                    print(keyValue * moveSpeed);
                 }
                 moveDir.y -= gravity * Time.deltaTime;
                 //// 이동
                 transform.Translate(moveDir * Time.deltaTime);
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                
             }
             //Touch touch = Input.GetTouch(0);
             //if (Input.GetTouch(0).phase == TouchPhase.Began)
