@@ -15,7 +15,7 @@ public class EvilController : MonoBehaviour
     GameObject evil_awake;
     GameObject evil_open_eyes;
 
-    float span = 1.0f;//이미지 변경 속도
+    float span = 3.0f;// 이미지 변경 속도
     float TIME_TYPE2_APPEAR=5.0f;//default 실눈 뜬 고양이 지속 시간 조절
     float delta = 0;
     float total_time = 0;
@@ -42,15 +42,15 @@ public class EvilController : MonoBehaviour
        
         if (SceneController.difficulty == "easy")
         {
-            this.TIME_TYPE2_APPEAR = 2.0f;
+            this.TIME_TYPE2_APPEAR = 3.0f;
         }
         else if (SceneController.difficulty == "normal")
         {
-            this.TIME_TYPE2_APPEAR = 1.5f;
+            this.TIME_TYPE2_APPEAR = 2.5f;
         }
         else if (SceneController.difficulty == "hard")
         {
-            this.TIME_TYPE2_APPEAR = 1.0f;
+            this.TIME_TYPE2_APPEAR = 2.0f;
         }
         ///////////////////////////////////////////////////////////////
 
@@ -78,8 +78,7 @@ public class EvilController : MonoBehaviour
             evilNum = (Random.Range(1, 99)%3)+1;
            Debug.Log(evilNum);
 
-            if (evilNum != 2)
-            {
+            
                 switch (evilNum)
                 {
 
@@ -94,17 +93,17 @@ public class EvilController : MonoBehaviour
                         evil_sleep.SetActive(false);
 
                         break;
-                    //case 2:
-                    //    evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
-                    //    evil_open_eyes.SetActive(false);
+                    case 2:
+                        evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
+                        evil_open_eyes.SetActive(false);
 
-                    //    evil_awake.GetComponent<SpriteRenderer>().enabled = true;
-                    //    evil_awake.SetActive(true);
+                        evil_awake.GetComponent<SpriteRenderer>().enabled = true;
+                        evil_awake.SetActive(true);
 
-                    //    evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
-                    //    evil_sleep.SetActive(false);
+                        evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
+                        evil_sleep.SetActive(false);
 
-                    //    break;
+                        break;
                     case 3:
                         evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
                         evil_open_eyes.SetActive(false);
@@ -118,18 +117,11 @@ public class EvilController : MonoBehaviour
 
                         break;
                 }
-            }
+            
 
-            if (evilNum == 2)
-            {
-                flag = TARGET;
-            }
+           
         }
 
-        if (flag == TARGET)
-        {      
-            StartCoroutine(waitTime());
-        }
        
 
     }

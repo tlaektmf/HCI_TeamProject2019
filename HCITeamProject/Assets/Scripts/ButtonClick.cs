@@ -72,7 +72,7 @@ public class ButtonClick : MonoBehaviour
             stage3_hard_btn_img = stage3_hard_btn.GetComponent<Image>();
 
             boss_img = boss_btn.GetComponent<Image>();
-
+            Debug.Log("log"+PlayerPrefs.GetString("1_easy"));
             if (!map && PlayerPrefs.GetString("1_easy") != null)
             {
 
