@@ -5,22 +5,19 @@ using UnityEngine.UI;//Image 클래스 사용가능
 
 public class EvilController : MonoBehaviour
 {
-    const int STOP = -1;
-    const int GO = 1;
-    const int TARGET = 0;
+
 
     GameObject mplayer;//케릭터 오브젝트
-
     GameObject evil_sleep;
     GameObject evil_awake;
     GameObject evil_open_eyes;
 
-    float span = 3.0f;// 이미지 변경 속도
+    const float FREQ_IMG = 2.0f;// 이미지 변경 속도
     float TIME_TYPE2_APPEAR=5.0f;//default 실눈 뜬 고양이 지속 시간 조절
     float delta = 0;
     float total_time = 0;
     int evilNum;
-    int flag;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +49,7 @@ public class EvilController : MonoBehaviour
             this.TIME_TYPE2_APPEAR = 2.0f;
         }
         ///////////////////////////////////////////////////////////////
-        InvokeRepeating("waitTime",2, 3.0f);
+        InvokeRepeating("waitTime",2, FREQ_IMG);
 
     }
 
