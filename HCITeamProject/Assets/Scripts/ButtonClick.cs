@@ -80,63 +80,53 @@ public class ButtonClick : MonoBehaviour
             stage3_hard_btn_img = stage3_hard_btn.GetComponent<Image>();
 
             boss_img = boss_btn.GetComponent<Image>();
-            
-            if (PlayerPrefs.GetString("1_easy") != "")
+
+            //stage 1 active 제어
+            if (PlayerPrefs.GetString("1_easy") == "clear")
             {
-                Debug.Log("1_easy_state "+PlayerPrefs.GetString("1_easy"));
+                stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+            }
+            if (PlayerPrefs.GetString("1_middle") == "clear")
+            {
+                stage1_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+            }
+            if (PlayerPrefs.GetString("1_hard") == "clear")
+            {
+                stage1_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
+            }
 
-                if (PlayerPrefs.GetString("boss_") == "clear")
-                {
-                    boss_img.sprite = Resources.Load<Sprite>("activate");
-                }
-                if (PlayerPrefs.GetString("3_hard") == "clear")
-                {
-                    stage3_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage3_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
-                }
-                else if (PlayerPrefs.GetString("3_middle") == "clear")
-                {
-                    stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage3_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
-                }
-                else
-                {
-                    stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                }
+            //stage 2 active 제어
+            if (PlayerPrefs.GetString("2_easy") == "clear")
+            {
+                stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+            }
+            if (PlayerPrefs.GetString("2_middle") == "clear")
+            {
+                stage2_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+            }
+            if (PlayerPrefs.GetString("2_hard") == "clear")
+            {
+                stage2_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
+            }
 
-                if (PlayerPrefs.GetString("2_hard") == "clear")
-                {
-                    stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage2_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage2_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
-                }
-                else if (PlayerPrefs.GetString("2_middle") == "clear")
-                {
-                    stage2_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                }
-                else
-                {
-                    stage2_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                }
+            //stage 3 active 제어
+            if (PlayerPrefs.GetString("3_easy") == "clear")
+            {
+                stage3_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
+            }
+            if (PlayerPrefs.GetString("3_middle") == "clear")
+            {
+                stage3_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
+            }
+            if (PlayerPrefs.GetString("3_hard") == "clear")
+            {
+                stage3_hard_btn_img.sprite = Resources.Load<Sprite>("activate");
+            }
 
-                if (PlayerPrefs.GetString("1_hard") == "clear")
-                {
-                    stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage1_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                }
-                else if (PlayerPrefs.GetString("1_middle") == "clear")
-                {
-                    stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                    stage1_middle_btn_img.sprite = Resources.Load<Sprite>("activate");
-                }
-                else
-                {
-                    stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
-                }
-
+            //boss active 제어
+            if (PlayerPrefs.GetString("boss_") == "clear")
+            {
+                boss_img.sprite = Resources.Load<Sprite>("activate");
             }
         }
         
