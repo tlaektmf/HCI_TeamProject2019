@@ -46,7 +46,7 @@ public class Bird : MonoBehaviour {
 
         // 이동 속도
         speed = Random.Range(5, 8);         // 5~8
-        anim.speed = 1 + (speed - 5) / 3;   // 1~2
+        //anim.speed = 1 + (speed - 5) / 3;   // 1~2
 
         // 참새의 위치를 Screen좌표로 변환
         Vector3 worldPos = transform.position;
@@ -70,11 +70,11 @@ public class Bird : MonoBehaviour {
         //StartCoroutine("BirdStrike");
         FindObjectOfType<GameManager>().SendMessage("BirdStrike");
 
-        GetComponent<AudioSource>().Play();
+        //GetComponent<AudioSource>().Play();
 
         // 참새 회전 & 애니메이션 중지
         transform.localEulerAngles = new Vector3(0, 0, 180);
-        anim.enabled = false;
+        //anim.enabled = false;
 
         // 콜라이더 제거 & 중력 적용
         Destroy(GetComponent<Collider2D>());
