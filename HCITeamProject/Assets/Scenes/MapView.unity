@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 219761434}
   - component: {fileID: 219761437}
   m_Layer: 5
-  m_Name: stage2_hard
+  m_Name: stage3_middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 229704647}
   - component: {fileID: 229704646}
   m_Layer: 5
-  m_Name: stage3_easy
+  m_Name: stage1_hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,7 +568,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 229704646}
-        m_MethodName: stage3_easy
+        m_MethodName: stage1_hard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 724910242}
   - component: {fileID: 724910245}
   m_Layer: 5
-  m_Name: stage2_easy
+  m_Name: stage1_middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 821007878}
   - component: {fileID: 821007881}
   m_Layer: 5
-  m_Name: stage1_middle
+  m_Name: stage2_easy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1218,7 +1218,7 @@ GameObject:
   - component: {fileID: 851860795}
   - component: {fileID: 851860798}
   m_Layer: 5
-  m_Name: stage1_hard
+  m_Name: stage3_easy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2071,7 +2071,7 @@ GameObject:
   - component: {fileID: 1502562506}
   - component: {fileID: 1502562509}
   m_Layer: 5
-  m_Name: stage3_middle
+  m_Name: stage2_hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2138,7 +2138,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1502562509}
-        m_MethodName: stage3_middle
+        m_MethodName: stage2_hard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
