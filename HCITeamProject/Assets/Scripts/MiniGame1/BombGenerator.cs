@@ -74,7 +74,7 @@ public class BombGenerator : MonoBehaviour
             return Random.Range(1.0f, 1.5f);
           
         }
-        else if (SceneController.difficulty == "normal")
+        else if (SceneController.difficulty == "middle")
         {
             return Random.Range(0.5f, 1.0f);
         }
