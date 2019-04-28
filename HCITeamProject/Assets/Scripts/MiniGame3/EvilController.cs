@@ -34,7 +34,6 @@ public class EvilController : MonoBehaviour
         evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
         evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
 
-        flag = GO;
         /*
        * 난이도 지정////////////////////////////////////////////////
        */
@@ -53,14 +52,14 @@ public class EvilController : MonoBehaviour
             this.TIME_TYPE2_APPEAR = 2.0f;
         }
         ///////////////////////////////////////////////////////////////
-
+        InvokeRepeating("waitTime",2, 3.0f);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(flag);
+      
 
         if (this.total_time<=1)
         {
