@@ -6,7 +6,7 @@ using UnityEngine.UI;//Image 클래스 사용가능
 public class EvilController : MonoBehaviour
 {
 
-
+    
     GameObject mplayer;//케릭터 오브젝트
     GameObject evil_sleep;
     GameObject evil_awake;
@@ -17,8 +17,9 @@ public class EvilController : MonoBehaviour
     float TIME_TYPE3_APPEAR = 2.0f;
     float delta = 0;
     float time;
-    int evilNum;
+int evilNum;
     bool flag;
+    public static int number;
 
     // Start is called before the first frame update
     void Start()
@@ -102,6 +103,7 @@ public class EvilController : MonoBehaviour
         */
 
         evilNum = (evilNum + 1) % 3;
+        number = evilNum;
         Debug.Log("evilnum " + evilNum);
 
         switch (evilNum)
@@ -150,11 +152,5 @@ public class EvilController : MonoBehaviour
 
     }
 
-    IEnumerator stop()
-    {
-        Debug.Log("enter 코루틴");
-        yield return new WaitForSeconds(5);
-        flag = true;
-        Debug.Log("outdsdfsdfsdf 코루틴");
-    }
+
 }

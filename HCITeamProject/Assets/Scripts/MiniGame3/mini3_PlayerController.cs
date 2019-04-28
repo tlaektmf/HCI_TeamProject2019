@@ -63,7 +63,7 @@ public class mini3_PlayerController : MonoBehaviour
     {
        
 
-        if (evil_sleep.activeSelf == false)
+        if (EvilController.number==2)
         {
             //gameover
             director.GetComponent<mini3_GameDirector>().GameOver();
