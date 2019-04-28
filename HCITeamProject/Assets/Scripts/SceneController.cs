@@ -119,7 +119,7 @@ public class SceneController : MonoBehaviour
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("badEnding");
 
             //게임오버 후에는 다시하기 버튼이 나옴
-            isContinue = true;
+            isContinue = true;//일단 죽으면 한번에 깬건 아니므로 바바이~
             btn.SetActive(true);
 
         }
