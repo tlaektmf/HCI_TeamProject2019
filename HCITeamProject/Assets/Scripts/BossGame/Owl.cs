@@ -7,9 +7,9 @@ public class Owl : MonoBehaviour {
     Animator anim;                  // Animator
     Transform chkPoint;             // Check Point
 
-    float moveSpeed = 7f;           // 이동 속도
+    float moveSpeed = 7f;           // 이동 속도    //default:7f
     float jumpSpeed = 10f;          // 점프 속도
-    float gravity = 19f;            // 중력
+    float gravity = 16f;            // 중력
 
     Vector3 moveDir;                // 이동 방향
     private Touch tempTouchs;   //스마트폰터치 방향
@@ -18,6 +18,9 @@ public class Owl : MonoBehaviour {
     bool start = false; //처음에 나뭇가지 정보 넣을때
     bool t = true;
     Vector3 beforeBranch;   //방금 점프한 나뭇가지 정보
+    float beforetime;
+    bool touch_p = false;
+    float KeyYalue=0.0f;
 
     // Use this for initialization
     void Start () {
@@ -32,6 +35,11 @@ public class Owl : MonoBehaviour {
     void Update () {
         if (isDead) return;
         if (t)
+        {
+            CheckBranch();      // 나뭇가지 조사
+            MoveOwl();          // 올빼미 이동
+        }
+        if (isPhone&&t)
         {
             CheckBranch();      // 나뭇가지 조사
             MoveOwl();          // 올빼미 이동
@@ -51,45 +59,61 @@ public class Owl : MonoBehaviour {
 
         // 키 입력
         float keyValue=0.0f;
-        
+
+        //Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
+        if (Input.touchCount > 0)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                KeyYalue = 0.06f;
+                Vector3 touchPos = Input.mousePosition;  //터치좌표를 가져옴.
+                if (touchPos.x <= Screen.width / 2)
+                {
+                    //왼쪽
+                    moveDir.x = -KeyYalue *Time.deltaTime* moveSpeed;
+                    print(-KeyYalue * moveSpeed);
+                }
+                else if (touchPos.x >= Screen.width / 2)
+                {
+                    //오른쪽
+                    moveDir.x = KeyYalue * Time.deltaTime * moveSpeed;
+                    print(KeyYalue * moveSpeed);
+                }
+                moveDir.y -= gravity * Time.deltaTime;
+                //// 이동
+                transform.Translate(moveDir * Time.deltaTime);
+            }
+            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            { 
+                KeyYalue = 0.0f;
+            }
+            
+        }
         if (isPhone)
         {
-            Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
-            if (touchPos.x <= Screen.width / 2)
-            {
-                //왼쪽
-                moveDir.x = -Vector3.right.x*moveSpeed;
-            }
-            else if (touchPos.x >= Screen.width / 2)
-            {
-                //오른쪽
-                moveDir.x = Vector3.right.x * moveSpeed;
-            }
-            // 화면의 가장자리인지 조사
-            if ((keyValue < 0 && pos.x < 40) ||
-                (keyValue > 0 && pos.x > Screen.width - 40))
-            {
-                moveDir.x = 0;
-            }
-            else
-            {
-                //화면의 가장자리가 아니라면 실행
-
-                // 중력
-                moveDir.y -= gravity * Time.deltaTime;
-
-                // 이동
-                transform.Translate(moveDir * Time.deltaTime);
-
-                // 올빼미 애니메이션
-                anim.SetFloat("velocity", moveDir.y);
-            }
+            //Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
+            
+            //if (touchPos.x <= Screen.width / 2)
+            //{
+            //    //왼쪽
+            //    moveDir.x = -Vector3.right.x*moveSpeed;
+            //    //moveDir.y = jumpSpeed;
+            //}
+            //else if (touchPos.x >= Screen.width / 2)
+            //{
+            //    //오른쪽
+            //    moveDir.x = Vector3.right.x * moveSpeed;
+            //    //moveDir.y = jumpSpeed;
+            //}
+            //moveDir.y -= gravity * Time.deltaTime;
+            //// 이동
+            //transform.Translate(moveDir * Time.deltaTime);
         }
         else
         {
             //키보드일 때
             keyValue = Input.GetAxis("Horizontal");
-            //print(keyValue);
+            
             // 화면의 가장자리인지 조사
             if ((keyValue < 0 && pos.x < 40) ||
                 (keyValue > 0 && pos.x > Screen.width - 40))
@@ -118,7 +142,6 @@ public class Owl : MonoBehaviour {
         Debug.DrawRay(chkPoint.position, Vector2.down * 1f, Color.blue);
 
         // 조사한 물체가 나뭇가지이면 점프 속도 설정
-
         if (hit.collider != null && hit.collider.tag == "Branch") {
             //print("점프할고야");
             if (!start)
@@ -126,7 +149,6 @@ public class Owl : MonoBehaviour {
                 beforeBranch = hit.point;
                 start = true;
             }
-            print(hit.point.y+" "+ beforeBranch.y+"");
             if (Mathf.Abs(hit.point.x-beforeBranch.x)<=0.01f &&Math.Abs(hit.point.y-beforeBranch.y)>=0.2f)
             {
                 //y축은 다른데 x축은 같아. 그러면 바로 위에있는 거.
@@ -158,7 +180,6 @@ public class Owl : MonoBehaviour {
         switch (other.tag)
         {
             case "Bird":
-                print("화살에 맞았어요");
                 StartCoroutine("wait");
                 other.SendMessage("DropBird");
                 break;
@@ -166,7 +187,6 @@ public class Owl : MonoBehaviour {
                 other.SendMessage("GetGift");
                 break;
             case "Princess":
-                //print("come on?");
                 other.SendMessage("PrincessCollision");
                 break;
         }

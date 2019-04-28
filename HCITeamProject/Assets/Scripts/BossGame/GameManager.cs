@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
 
 public class GameManager : MonoBehaviour {
@@ -24,7 +25,22 @@ public class GameManager : MonoBehaviour {
 
     bool gameclear = false;
 
+    private const float inchTocm = 2.54f;
+    [SerializeField]
+    private EventSystem eventSystem = null;
+    [SerializeField]
+    private float dragThresholdCM = 0.5f;
+
+    private void SetDragThreshold()
+    {
+        if (eventSystem != null)
+        {
+            eventSystem.pixelDragThreshold = (int)(dragThresholdCM * Screen.dpi / inchTocm);
+        }
+    }
     void Awake () {
+        Screen.SetResolution(720, 1280, true);
+        SetDragThreshold();
         InitGame();
     }
 
