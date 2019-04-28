@@ -73,7 +73,7 @@ public class ButtonClick : MonoBehaviour
 
             boss_img = boss_btn.GetComponent<Image>();
 
-            if (!map && PlayerPrefs.GetString("1") != null)
+            if (!map && PlayerPrefs.GetString("1_easy") != null)
             {
 
                 if (PlayerPrefs.GetString("boss_") == "clear")
@@ -127,10 +127,6 @@ public class ButtonClick : MonoBehaviour
                 {
                     stage1_easy_btn_img.sprite = Resources.Load<Sprite>("activate");
                 }
-
-
-
-                //    //ImageChange(str);
 
             }
         }
