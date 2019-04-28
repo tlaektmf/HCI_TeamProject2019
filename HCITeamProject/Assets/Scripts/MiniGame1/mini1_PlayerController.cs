@@ -46,7 +46,6 @@ public class mini1_PlayerController : MonoBehaviour
     void Update()
     {
 
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Vector3 tpos = Input.GetTouch(0).position;//터치할 좌표
 

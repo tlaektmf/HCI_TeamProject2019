@@ -19,6 +19,8 @@ public class mini1_GameDirector : MonoBehaviour
         /// this.mevil = GameObject.Find("evil");
         StartCoroutine(miniGame1Clear());
 
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayMusicWithPath("audio/game1/game1");
     }
 
     // Update is called once per frame
