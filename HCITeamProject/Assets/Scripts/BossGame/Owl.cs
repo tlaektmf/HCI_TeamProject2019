@@ -154,11 +154,13 @@ public class Owl : MonoBehaviour {
                 //y축은 다른데 x축은 같아. 그러면 바로 위에있는 거.
                 print("점프반값");
                 moveDir.y=jumpSpeed / 2 + 1f;
+                SoundManager.Instance.PlayEffectWithPath("audio/boss/jump");
             }
             else
             {
                 print("정상점프");
                 moveDir.y = jumpSpeed;
+                SoundManager.Instance.PlayEffectWithPath("audio/boss/jump");
             }
             beforeBranch = hit.point;
         }
@@ -182,6 +184,7 @@ public class Owl : MonoBehaviour {
             case "Bird":
                 StartCoroutine("wait");
                 other.SendMessage("DropBird");
+                SoundManager.Instance.PlayEffectWithPath("audio/boss/arrow");
                 break;
             case "Gift":
                 other.SendMessage("GetGift");
