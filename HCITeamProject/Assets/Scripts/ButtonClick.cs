@@ -42,7 +42,7 @@ public class ButtonClick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.DeleteAll();
+        ///PlayerPrefs.DeleteAll();
         stage1_easy_btn = GameObject.FindGameObjectWithTag("stage1_easy");
         stage2_easy_btn = GameObject.FindGameObjectWithTag("stage2_easy");
         stage3_easy_btn = GameObject.FindGameObjectWithTag("stage3_easy");
@@ -82,7 +82,7 @@ public class ButtonClick : MonoBehaviour
             
             if (PlayerPrefs.GetString("1_easy") != null)
             {
-                Debug.Log(PlayerPrefs.GetString("1_easy"));
+                Debug.Log("1_easy_state "+PlayerPrefs.GetString("1_easy"));
                 if (PlayerPrefs.GetString("boss_") == "clear")
                 {
                     boss_img.sprite = Resources.Load<Sprite>("activate");

@@ -98,7 +98,7 @@ public class SceneController : MonoBehaviour
     void showEnding()
     {
         //로컬에 저장
-        //Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
+        Debug.Log("로컬 데이터 (stage_difficulty): " + PlayerPrefs.GetString(stage + "_" + difficulty));
         if (PlayerPrefs.GetString(stage + "_" + difficulty) != "clear")
         {
             //한번도 깬적이 없는 경우만 저장
