@@ -50,46 +50,90 @@ public class mini1_PlayerController : MonoBehaviour
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Vector3 tpos = Input.GetTouch(0).position;//터치할 좌표
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        //if(tpos.x<=Screen.width/2)//왼쪽
+        if (Input.touchCount > 0)
         {
-            anim.SetBool("isStay", false);
-            anim.SetBool("isLeft", true);
-            
-            if (checkBound(transform.position.x - PLAYER_SPEED) == true)
+            Vector3 touchPos = Input.mousePosition; //터치좌표
+            if (Input.GetMouseButton(0))
             {
-                transform.Translate(-PLAYER_SPEED, 0, 0);//왼쪽으로  이동
-                mbackground.transform.Translate(PLAYER_SPEED*0.2f, 0, 0);
+                //누르고 있는 동안 에는 이동해야 함. 
+                if (touchPos.x <= Screen.width / 2)
+                {
+                    //왼쪽
+                    anim.SetBool("isStay", false);
+                    anim.SetBool("isLeft", true);
+                    if (checkBound(transform.position.x - PLAYER_SPEED) == true)
+                    {
+                        transform.Translate(-PLAYER_SPEED, 0, 0);//왼쪽으로  이동
+                        mbackground.transform.Translate(PLAYER_SPEED * 0.2f, 0, 0);
+                    }
+                }
+                else if (touchPos.x > Screen.width / 2)
+                {
+                    //오른쪽
+                    anim.SetBool("isStay", false);
+                    anim.SetBool("isRight", true);
+                    if (checkBound(transform.position.x + PLAYER_SPEED) == true)
+                    {
+                        transform.Translate(PLAYER_SPEED, 0, 0);//오른쪽으로  이동
+                        mbackground.transform.Translate(-PLAYER_SPEED * 0.2f, 0, 0);
+                    }
+                }
+            }else if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                if (touchPos.x <= Screen.width / 2)
+                {
+                    //왼쪽, 뗏을때
+                    anim.SetBool("isStay", true);
+                    anim.SetBool("isLeft", false);
+
+                }else if (touchPos.x > Screen.width / 2)
+                {
+                    //오른쪽 뗏을때
+                    anim.SetBool("isStay", true);
+                    anim.SetBool("isRight", false);
+                }
             }
+        }
+        //if (Input.GetKey(KeyCode.LeftArrow))
+        ////if(tpos.x<=Screen.width/2)//왼쪽
+        //{
+        //    anim.SetBool("isStay", false);
+        //    anim.SetBool("isLeft", true);
+            
+        //    if (checkBound(transform.position.x - PLAYER_SPEED) == true)
+        //    {
+        //        transform.Translate(-PLAYER_SPEED, 0, 0);//왼쪽으로  이동
+        //        mbackground.transform.Translate(PLAYER_SPEED*0.2f, 0, 0);
+        //    }
 
             
-        }
-        //else if (tpos.x <= Screen.width / 2)
-        else if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            anim.SetBool("isStay", true);
-            anim.SetBool("isLeft", false);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        //if (tpos.x >Screen.width / 2)
-        {
-            anim.SetBool("isStay", false);
-            anim.SetBool("isRight", true);
+        //}
+        ////else if (tpos.x <= Screen.width / 2)
+        //else if (Input.GetKeyUp(KeyCode.LeftArrow))
+        //{
+        //    anim.SetBool("isStay", true);
+        //    anim.SetBool("isLeft", false);
+        //}
+        //if (Input.GetKey(KeyCode.RightArrow))
+        ////if (tpos.x >Screen.width / 2)
+        //{
+        //    anim.SetBool("isStay", false);
+        //    anim.SetBool("isRight", true);
             
-            if (checkBound(transform.position.x + PLAYER_SPEED) ==true)
-            {
-                transform.Translate(PLAYER_SPEED, 0, 0);//오른쪽으로  이동
-                mbackground.transform.Translate(-PLAYER_SPEED*0.2f, 0, 0);
-            }
+        //    if (checkBound(transform.position.x + PLAYER_SPEED) ==true)
+        //    {
+        //        transform.Translate(PLAYER_SPEED, 0, 0);//오른쪽으로  이동
+        //        mbackground.transform.Translate(-PLAYER_SPEED*0.2f, 0, 0);
+        //    }
 
          
-        }
-        else if (Input.GetKeyUp(KeyCode.RightArrow))
-        // else if (tpos.x > Screen.width / 2)
-        {
-            anim.SetBool("isStay", true);
-            anim.SetBool("isRight", false);
-        }
+        //}
+        //else if (Input.GetKeyUp(KeyCode.RightArrow))
+        //// else if (tpos.x > Screen.width / 2)
+        //{
+        //    anim.SetBool("isStay", true);
+        //    anim.SetBool("isRight", false);
+        //}
     }
 
     /*
