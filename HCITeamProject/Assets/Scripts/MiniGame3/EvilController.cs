@@ -12,11 +12,13 @@ public class EvilController : MonoBehaviour
     GameObject evil_awake;
     GameObject evil_open_eyes;
 
-    const float FREQ_IMG = 2.0f;// 이미지 변경 속도
-    float TIME_TYPE2_APPEAR=5.0f;//default 실눈 뜬 고양이 지속 시간 조절
+    float FREQ_IMG = 2.0f;// 이미지 변경 속도
+    float TIME_TYPE2_APPEAR = 5.0f;//default 실눈 뜬 고양이 지속 시간 조절
+    float TIME_TYPE3_APPEAR = 2.0f;
     float delta = 0;
-    float total_time = 0;
+    float time;
     int evilNum;
+    bool flag;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +36,11 @@ public class EvilController : MonoBehaviour
        * 난이도 지정////////////////////////////////////////////////
        */
         //실눈뜬 고양이 등장 속도 조절
-        
+
         if (SceneController.difficulty == "easy")
         {
             this.TIME_TYPE2_APPEAR = 3.0f;
-          
+
         }
         else if (SceneController.difficulty == "middle")
         {
@@ -49,105 +51,110 @@ public class EvilController : MonoBehaviour
             this.TIME_TYPE2_APPEAR = 2.0f;
         }
         ///////////////////////////////////////////////////////////////
-        InvokeRepeating("waitTime",1, FREQ_IMG);
+        evilNum = -1;
+        flag = true;
+        this.time = Random.Range(2, 5);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-      
 
-        if (this.total_time<=1)
+        
+        this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
+
+        Debug.Log("time  "+time+"  evilnum: " + evilNum + "  delta    " + delta + "  time.deltatime  " + Time.deltaTime);
+        if (flag == true)
         {
-            evil_sleep.GetComponent<SpriteRenderer>().enabled = true;
+
+            flag = false;
+            waitTime();
 
         }
 
-       
-        this.delta += Time.deltaTime;//Time.deltaTime : 앞프레임과 현재 프레임의 시간차이
-        this.total_time += Time.deltaTime;
+        if (evilNum == 0 && delta >= time)//자고있음
+        {
+            delta = 0;
+            flag = true;
+            time= Random.Range(2, 7);
+        }
+        if (evilNum == 1 && delta >= TIME_TYPE2_APPEAR)//실눈
+        {
+            delta = 0;
+            flag = true;
+        }
+        if (evilNum == 2 && delta >= TIME_TYPE3_APPEAR)//눈다뜸
+        {
+            delta = 0;
+            flag = true;
+        }
+
 
 
     }
 
-    public  void waitTime()
+    public void waitTime()
     {
 
         /*
-     * 난이도 지정////////////////////////////////////////////////
-     */
-        //고양이 등장 빈도 조절
+        * 난이도 지정////////////////////////////////////////////////
+        */
 
-        if (SceneController.difficulty == "easy")
+        evilNum = (evilNum + 1) % 3;
+        Debug.Log("evilnum " + evilNum);
+
+        switch (evilNum)
         {
-            evilNum = (Random.Range(1, 100) % 4) + 1;//0~3랜덤넘버
-            if (evilNum == 4)
-            {
-                evilNum = 3;
-            }
+
+            case 1://실눈
+                evil_open_eyes.GetComponent<SpriteRenderer>().enabled = true;
+                //evil_open_eyes.SetActive(true);
+
+                evil_awake.GetComponent<SpriteRenderer>().enabled = false;
+                //evil_awake.SetActive(false);
+
+                evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
+                //evil_sleep.SetActive(false);
+
+
+
+                break;
+            case 2://눈다뜸
+                evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
+                //evil_open_eyes.SetActive(false);
+
+                evil_awake.GetComponent<SpriteRenderer>().enabled = true;
+                //evil_awake.SetActive(true);
+
+                evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
+                //evil_sleep.SetActive(false);
+
+
+                break;
+            case 0://자고있음
+                evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
+                //evil_open_eyes.SetActive(false);
+
+                evil_awake.GetComponent<SpriteRenderer>().enabled = false;
+                //evil_awake.SetActive(false);
+
+                evil_sleep.GetComponent<SpriteRenderer>().enabled = true;
+                //evil_sleep.SetActive(true);
+
+
+                break;
 
         }
-        else if (SceneController.difficulty == "middle")
-        {
-            evilNum = (Random.Range(1, 100) % 4) + 1;//0~3랜덤넘버
-            if (evilNum == 4)
-            {
-                evilNum = 2;
-            }
-        }
-        else if (SceneController.difficulty == "hard")
-        {
-            evilNum = (Random.Range(1, 100) % 4) + 1;//0~3랜덤넘버
-            if (evilNum == 4)
-            {
-                evilNum = 2;
-            }
-        }
-        ///////////////////////////////////////////////////////////////
-     
-       /// evilNum = (Random.Range(1, 99) % 3) + 1;
-            Debug.Log("evilnum "+evilNum);
 
-            switch (evilNum)
-            {
 
-                case 1:
-                    evil_open_eyes.GetComponent<SpriteRenderer>().enabled = true;
-                    evil_open_eyes.SetActive(true);
+    }
 
-                    evil_awake.GetComponent<SpriteRenderer>().enabled = false;
-                    evil_awake.SetActive(false);
-
-                    evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
-                    evil_sleep.SetActive(false);
-
-                    break;
-                case 2:
-                    evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
-                    evil_open_eyes.SetActive(false);
-
-                    evil_awake.GetComponent<SpriteRenderer>().enabled = true;
-                    evil_awake.SetActive(true);
-
-                    evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
-                    evil_sleep.SetActive(false);
-
-                    break;
-                case 3:
-                    evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;
-                    evil_open_eyes.SetActive(false);
-
-                    evil_awake.GetComponent<SpriteRenderer>().enabled = false;
-                    evil_awake.SetActive(false);
-
-                    evil_sleep.GetComponent<SpriteRenderer>().enabled = true;
-                    evil_sleep.SetActive(true);
-
-                    
-                    break;
-            }
-
-    
+    IEnumerator stop()
+    {
+        Debug.Log("enter 코루틴");
+        yield return new WaitForSeconds(5);
+        flag = true;
+        Debug.Log("outdsdfsdfsdf 코루틴");
     }
 }
