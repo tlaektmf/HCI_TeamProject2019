@@ -43,7 +43,6 @@ public class BombController : MonoBehaviour
     {
 
         transform.Translate(0, -1*speed* Time.deltaTime, 0);//0.1f의 속도만큼 낙하시킨다
-        Debug.Log("speed"+speed);
         if (transform.position.y < -5.0f)
         {//장애물의 y위치(높이)가 -5.0 밑으로 가는경우(화면에서 사라지는 경우)
 
