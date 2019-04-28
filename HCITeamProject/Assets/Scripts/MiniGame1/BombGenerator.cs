@@ -80,7 +80,7 @@ public class BombGenerator : MonoBehaviour
         }
         else if (SceneController.difficulty == "hard")
         {
-            return Random.Range(0.7f, 1.0f);
+            return Random.Range(0.3f, 0.7f);
         }
         ///////////////////////////////////////////////////////////////
         return Random.Range(0.5f, 1.0f);//defult
