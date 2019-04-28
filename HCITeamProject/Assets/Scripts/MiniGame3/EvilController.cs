@@ -126,7 +126,7 @@ public class EvilController : MonoBehaviour
 
     }
 
-    public  waitTime()
+    public  void waitTime()
     {
        
            /// this.delta = 0;
