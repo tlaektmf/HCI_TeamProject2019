@@ -14,7 +14,6 @@ public class Owl : MonoBehaviour {
     Vector3 moveDir;                // 이동 방향
     private Touch tempTouchs;   //스마트폰터치 방향
     bool isDead = false;            // 사망?
-    bool isPhone = false;    //스마트폰쓰니?
     bool start = false; //처음에 나뭇가지 정보 넣을때
     bool t = true;
     Vector3 beforeBranch;   //방금 점프한 나뭇가지 정보
@@ -24,22 +23,14 @@ public class Owl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        moveDir = new Vector3(0,0,0);
         anim = GetComponent<Animator>();
         chkPoint = transform.Find("CheckPoint");
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            isPhone = true;
-        }
     }
     // Update is called once per frame
     void Update () {
         if (isDead) return;
         if (t)
-        {
-            CheckBranch();      // 나뭇가지 조사
-            MoveOwl();          // 올빼미 이동
-        }
-        if (isPhone&&t)
         {
             CheckBranch();      // 나뭇가지 조사
             MoveOwl();          // 올빼미 이동
@@ -59,78 +50,37 @@ public class Owl : MonoBehaviour {
 
         // 키 입력
         float keyValue=0.0f;
-
         //Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
-        if (Input.touchCount > 0)
+        bool touching = false;
+        if (Input.GetMouseButton(0))
         {
-            if (Input.GetMouseButton(0))
+            
+            touching = true;
+            KeyYalue += 1.4f * Time.deltaTime;
+            Vector3 touchPos = Input.mousePosition;  //터치좌표를 가져옴.
+            if (touchPos.x <= Screen.width / 2)
             {
-                KeyYalue += 0.04f;
-                Vector3 touchPos = Input.mousePosition;  //터치좌표를 가져옴.
-                if (touchPos.x <= Screen.width / 2)
-                {
-                    //왼쪽
-                    moveDir.x = -KeyYalue* moveSpeed;
-                    Debug.Log(-KeyYalue * moveSpeed);
-                }
-                else if (touchPos.x >= Screen.width / 2)
-                {
-                    //오른쪽
-                    moveDir.x = KeyYalue* moveSpeed;
-                    Debug.Log(KeyYalue * moveSpeed);
-                }
-                moveDir.y -= gravity * Time.deltaTime;
-                //// 이동
-                transform.Translate(moveDir * Time.deltaTime);
+                //왼쪽
+                moveDir.x = -KeyYalue * moveSpeed;
             }
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            { 
-                KeyYalue = 0.0f;
-            }
-            
-        }
-        if (isPhone)
-        {
-            //Vector3 touchPos = Input.GetTouch(0).position;  //터치좌표를 가져옴.
-            
-            //if (touchPos.x <= Screen.width / 2)
-            //{
-            //    //왼쪽
-            //    moveDir.x = -Vector3.right.x*moveSpeed;
-            //    //moveDir.y = jumpSpeed;
-            //}
-            //else if (touchPos.x >= Screen.width / 2)
-            //{
-            //    //오른쪽
-            //    moveDir.x = Vector3.right.x * moveSpeed;
-            //    //moveDir.y = jumpSpeed;
-            //}
-            //moveDir.y -= gravity * Time.deltaTime;
-            //// 이동
-            //transform.Translate(moveDir * Time.deltaTime);
-        }
-        else
-        {
-            //키보드일 때
-            keyValue = Input.GetAxis("Horizontal");
-            
-            // 화면의 가장자리인지 조사
-            if ((keyValue < 0 && pos.x < 40) ||
-                (keyValue > 0 && pos.x > Screen.width - 40))
+            else if (touchPos.x >= Screen.width / 2)
             {
-                keyValue = 0;
+                //오른쪽
+                moveDir.x = KeyYalue * moveSpeed;
             }
-            moveDir.x = keyValue * moveSpeed;
-
-            // 중력
-            moveDir.y -= gravity * Time.deltaTime;
-
-            // 이동
-            transform.Translate(moveDir * Time.deltaTime);
-
-            // 올빼미 애니메이션
-            anim.SetFloat("velocity", moveDir.y);
         }
+
+        if (touching == false)
+        {
+            KeyYalue = 0.0f;
+        }
+        
+        // 화면의 가장자리인지 조사
+        
+
+        moveDir.y -= gravity * Time.deltaTime;
+        transform.Translate(moveDir * Time.deltaTime);
+        anim.SetFloat("velocity", moveDir.y);
     }
 
     // 나뭇가지 판정
