@@ -81,9 +81,10 @@ public class Game2Controller : MonoBehaviour
                 portalTime = 0;
                 if (phase == 2)
                 {
+                    SoundManager.Instance.Stop();
+                    SoundManager.Instance.PlayEffectWithPath("audio/common/win");
                     SceneController.state = "clear";
                     SceneManager.LoadScene("EmptyScene");
-                    SoundManager.Instance.Stop();
                 }
                 else
                 {

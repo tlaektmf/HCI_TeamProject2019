@@ -63,7 +63,8 @@ public class BombController : MonoBehaviour
         {
             //충돌하는 경우, 장애물을 소멸시킴
             Destroy(gameObject);
-
+            SoundManager.Instance.Stop();
+            SoundManager.Instance.PlayEffectWithPath("audio/common/gameover_tetris");
             //감독 스크립트에서 player와 object가 충돌했음을 전달
             director.GetComponent<mini1_GameDirector>().GameOver();
         }

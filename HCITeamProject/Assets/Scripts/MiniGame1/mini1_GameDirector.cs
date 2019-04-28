@@ -54,10 +54,10 @@ public class mini1_GameDirector : MonoBehaviour
         //40초가 지나는 경우 clear
         yield return new WaitForSeconds(CLEAR_CONTROL_TIME);
         Debug.Log("mini game 1 clear");
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayEffectWithPath("audio/common/win");
         SceneController.state = "clear";
         SceneManager.LoadScene("EmptyScene");
-        
-
     }
     /*
      * 사용자 정의 함수- 미니게임 1, 미니게임 3 공통
