@@ -9,7 +9,7 @@ public class Owl : MonoBehaviour {
 
     float moveSpeed = 7f;           // 이동 속도    //default:7f
     float jumpSpeed = 10f;          // 점프 속도
-    float gravity = 16f;            // 중력
+    float gravity = 13f;            // 중력
 
     Vector3 moveDir;                // 이동 방향
     private Touch tempTouchs;   //스마트폰터치 방향
@@ -65,19 +65,19 @@ public class Owl : MonoBehaviour {
         {
             if (Input.GetMouseButton(0))
             {
-                KeyYalue = 0.06f;
+                KeyYalue += 0.04f;
                 Vector3 touchPos = Input.mousePosition;  //터치좌표를 가져옴.
                 if (touchPos.x <= Screen.width / 2)
                 {
                     //왼쪽
-                    moveDir.x = -KeyYalue *Time.deltaTime* moveSpeed;
-                    print(-KeyYalue * moveSpeed);
+                    moveDir.x = -KeyYalue* moveSpeed;
+                    Debug.Log(-KeyYalue * moveSpeed);
                 }
                 else if (touchPos.x >= Screen.width / 2)
                 {
                     //오른쪽
-                    moveDir.x = KeyYalue * Time.deltaTime * moveSpeed;
-                    print(KeyYalue * moveSpeed);
+                    moveDir.x = KeyYalue* moveSpeed;
+                    Debug.Log(KeyYalue * moveSpeed);
                 }
                 moveDir.y -= gravity * Time.deltaTime;
                 //// 이동

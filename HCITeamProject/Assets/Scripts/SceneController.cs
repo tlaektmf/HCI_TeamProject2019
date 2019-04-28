@@ -133,6 +133,7 @@ public class SceneController : MonoBehaviour
     //para : string stage, string difficulty
     void showStory()
     {
+        print(stage);
         if (stage == "boss")
         {
             this.loadImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("boss_story");
