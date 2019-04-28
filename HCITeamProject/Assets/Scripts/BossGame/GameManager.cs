@@ -44,6 +44,12 @@ public class GameManager : MonoBehaviour {
         InitGame();
     }
 
+    void Start()
+    {
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayMusicWithPath("audio/boss/boss");
+    }
+
     // Update is called once per frame
     void Update () {
         
@@ -171,6 +177,8 @@ public class GameManager : MonoBehaviour {
     {
         print("용사여 당신은 공주를 구해냈어요!");
         timeText.text = "GameClear!!";
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayEffectWithPath("audio/common/win");
         SceneController.state = "clear";
         //SceneController.stage = "boss";
         SceneManager.LoadScene("EmptyScene");    //GameClear 종류 두개로 바뀜. 확인해서 조건문도 바꿀것
@@ -179,6 +187,8 @@ public class GameManager : MonoBehaviour {
     {
         print("당신은 실패했습니다.");
         timeText.text = "GameOver!!";
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayEffectWithPath("audio/common/gameover_tetris");
         SceneController.state = "end";
         //SceneController.stage = "boss";
         SceneManager.LoadScene("EmptyScene");    //GameOver -> BadEnding
