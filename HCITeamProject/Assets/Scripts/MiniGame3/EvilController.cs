@@ -164,7 +164,7 @@ public class EvilController : MonoBehaviour
                     evil_sleep.GetComponent<SpriteRenderer>().enabled = true;
                     evil_sleep.SetActive(true);
 
-
+                    
                     break;
             }
 

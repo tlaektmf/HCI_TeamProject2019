@@ -31,7 +31,9 @@ public class mini3_GameDirector : MonoBehaviour
         ///////////////////////////////////////////////////////////////
         
         StartCoroutine(miniGame3End());
-      
+
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayMusicWithPath("audio/game3/game3");
     }
 
     // Update is called once per frame
@@ -47,7 +49,8 @@ public class mini3_GameDirector : MonoBehaviour
     public void miniGame3Clear()
     {
         //성과 충돌하는 경우 clear
-        Debug.Log("mini game 3 clear");
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayEffectWithPath("audio/common/win");
         SceneController.state = "clear";
         SceneManager.LoadScene("EmptyScene");
 
@@ -67,6 +70,8 @@ public class mini3_GameDirector : MonoBehaviour
         //폭탄과 충돌하는 경우 game over
         //minigame3에서 특정 시간 초가 흐르는 경우
         Debug.Log("game over , show bad ending");
+        SoundManager.Instance.Stop();
+        SoundManager.Instance.PlayEffectWithPath("audio/common/gameover_tetris");
         SceneController.state = "end";
         SceneManager.LoadScene("EmptyScene");
 
