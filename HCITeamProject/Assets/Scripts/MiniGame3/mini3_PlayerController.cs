@@ -35,15 +35,19 @@ public class mini3_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.touchCount > 0)
         {
-            //플레이어가 이동을 하지는 않고, 오브젝트들의 사이즈가 바뀜
-            //transform.localScale += new Vector3(0.5f, 0.5f, 0);
-            anim.SetBool("isRun", false);
-            UpButton();
-        }else if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            anim.SetBool("isRun", true);
+            if (Input.GetMouseButton(0))
+            {
+                //플레이어가 이동을 하지는 않고, 오브젝트들의 사이즈가 바뀜
+                //transform.localScale += new Vector3(0.5f, 0.5f, 0);
+                anim.SetBool("isRun", false);
+                UpButton();
+            }
+            else if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                anim.SetBool("isRun", true);
+            }
         }
 
     }
