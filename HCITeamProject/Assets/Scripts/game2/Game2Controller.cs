@@ -9,9 +9,11 @@ public class Game2Controller : MonoBehaviour
     public static int state = 0; // 0: normal, 1:dead, 2: clear
     public static int stage = 0;
     public static int phase = 0;
+    public static float total_distance = 1;
 
     static float deadTime;
     static float portalTime;
+    static float distance;
 
     public static void Setting(int stage, int phase)
     {
@@ -20,6 +22,7 @@ public class Game2Controller : MonoBehaviour
         GameObject.Find("ObstacleManager").GetComponent<ObstacleManager>().SetStage(stage, phase);
         speed = 4f + 2f * stage;
         state = 0;
+        total_distance = GameObject.Find("ObstacleManager").GetComponent<ObstacleManager>().total_distance;
         deadTime = 0;
         portalTime = 0;
     }

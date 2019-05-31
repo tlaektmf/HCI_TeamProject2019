@@ -26,6 +26,7 @@ public class ObstacleManager : MonoBehaviour
 
     int cnt = 0;
     float distance = 0f;
+    public float total_distance = 0f;
     public void genEnemy(int type)
     {
         GameObject enemy = null;
@@ -68,7 +69,7 @@ public class ObstacleManager : MonoBehaviour
                 obstacleList.Add(new Obstacle(42.0f, 1));
                 obstacleList.Add(new Obstacle(46.0f, 1));
                 obstacleList.Add(new Obstacle(54.0f, 1));
-                obstacleList.Add(new Obstacle(60.0f, 100));
+                obstacleList.Add(new Obstacle(total_distance=60.0f, 100));
             }
             else if (phase == 1)
             {
@@ -78,7 +79,7 @@ public class ObstacleManager : MonoBehaviour
                 obstacleList.Add(new Obstacle(46.0f, 1));
                 obstacleList.Add(new Obstacle(55.0f, 1));
                 obstacleList.Add(new Obstacle(58.0f, 1));
-                obstacleList.Add(new Obstacle(65.0f, 100));
+                obstacleList.Add(new Obstacle(total_distance = 65.0f, 100));
             }
             else
             {
@@ -87,7 +88,7 @@ public class ObstacleManager : MonoBehaviour
                 obstacleList.Add(new Obstacle(33.0f, 1));
                 obstacleList.Add(new Obstacle(42.0f, 1));
                 obstacleList.Add(new Obstacle(55.0f, 1));
-                obstacleList.Add(new Obstacle(70.0f, 100));
+                obstacleList.Add(new Obstacle(total_distance = 70.0f, 100));
             }
             break;
         case 1:
@@ -98,7 +99,7 @@ public class ObstacleManager : MonoBehaviour
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
                     obstacleList.Add(new Obstacle(58.0f, 1));
-                    obstacleList.Add(new Obstacle(75.0f, 100));
+                    obstacleList.Add(new Obstacle(total_distance = 75.0f, 100));
                 }
                 else if (phase == 1)
                 {
@@ -108,7 +109,7 @@ public class ObstacleManager : MonoBehaviour
                     obstacleList.Add(new Obstacle(42.0f, 2));
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
-                    obstacleList.Add(new Obstacle(75.0f, 100));
+                    obstacleList.Add(new Obstacle(total_distance = 75.0f, 100));
                 }
                 else
                 {
@@ -119,7 +120,7 @@ public class ObstacleManager : MonoBehaviour
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
                     obstacleList.Add(new Obstacle(58.0f, 1));
-                    obstacleList.Add(new Obstacle(75.0f, 100));
+                    obstacleList.Add(new Obstacle(total_distance = 75.0f, 100));
                 }
                 break;
             case 2:
@@ -131,7 +132,7 @@ public class ObstacleManager : MonoBehaviour
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
                     obstacleList.Add(new Obstacle(58.0f, 1));
-                    obstacleList.Add(new Obstacle(75.0f, 100));
+                    obstacleList.Add(new Obstacle(total_distance = 75.0f, 100));
                 }
                 else if (phase == 1)
                 {
@@ -141,7 +142,7 @@ public class ObstacleManager : MonoBehaviour
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
                     obstacleList.Add(new Obstacle(58.0f, 1));
-                    obstacleList.Add(new Obstacle(75.0f, 100));
+                    obstacleList.Add(new Obstacle(total_distance = 75.0f, 100));
                 }
                 else
                 {
@@ -152,7 +153,7 @@ public class ObstacleManager : MonoBehaviour
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
                     obstacleList.Add(new Obstacle(58.0f, 1));
-                    obstacleList.Add(new Obstacle(75.0f, 100));
+                    obstacleList.Add(new Obstacle(total_distance = 75.0f, 100));
                 }
                 break;
         }
