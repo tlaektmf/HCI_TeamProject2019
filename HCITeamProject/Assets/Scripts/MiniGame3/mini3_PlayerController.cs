@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class mini3_PlayerController : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class mini3_PlayerController : MonoBehaviour
 
     GameObject mcastle;
     GameObject mroad;
+    //열
+    public Slider slider;
+
     private Animator anim;
 
     GameObject director;
@@ -39,6 +43,7 @@ public class mini3_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        slider.value += 0.01f;
         if (Input.touchCount > 0)
         {
             if (Input.GetMouseButton(0))
