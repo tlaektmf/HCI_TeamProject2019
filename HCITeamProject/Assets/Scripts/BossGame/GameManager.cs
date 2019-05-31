@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour {
     public Text timeText;
     bool rest = false;
     bool pcoll = false; //princess Collision
-    private float time=1;
+    private float time=40;
+
+    float ptime = 0;
 
     bool gameclear = false;
     
@@ -33,6 +35,11 @@ public class GameManager : MonoBehaviour {
     private EventSystem eventSystem = null;
     [SerializeField]
     private float dragThresholdCM = 0.5f;
+
+    [SerializeField]
+    Image progressBar;
+
+    public Slider slider;
 
     private void SetDragThreshold()
     {
@@ -51,11 +58,12 @@ public class GameManager : MonoBehaviour {
     {
         SoundManager.Instance.Stop();
         SoundManager.Instance.PlayMusicWithPath("audio/boss/boss");
+        
     }
 
     // Update is called once per frame
     void Update () {
-        
+        StartCoroutine(barUpdate());
         //MakeGift();
         if (time > 0) { 
             time -= Time.deltaTime;
@@ -187,6 +195,14 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         rest = true;
         print("로딩끝!");
+    }
+    IEnumerator barUpdate()
+    {
+        yield return null;
+        //progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, 100f, time);
+        ptime += 0.0001f;
+        slider.value = ptime;
+        
     }
     void GameClear()
     {
