@@ -43,7 +43,7 @@ public class mini3_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.value += 0.01f;
+        
         if (Input.touchCount > 0)
         {
             if (Input.GetMouseButton(0))
@@ -51,6 +51,7 @@ public class mini3_PlayerController : MonoBehaviour
                 //플레이어가 이동을 하지는 않고, 오브젝트들의 사이즈가 바뀜
                 //transform.localScale += new Vector3(0.5f, 0.5f, 0);
                 anim.SetBool("isRun", false);
+                slider.value += 0.01f;
                 UpButton();
             }
             else if (Input.GetTouch(0).phase == TouchPhase.Ended)
