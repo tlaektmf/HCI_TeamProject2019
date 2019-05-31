@@ -19,6 +19,7 @@ public class ObstacleManager : MonoBehaviour
     // Start is called before the first frame update
     GameObject enemyPrefab = null;
     GameObject enemyPrefab2 = null;
+    GameObject enemyPrefab3 = null;
     GameObject portalPrefab = null;
     GameObject om = null;
     public static Obstacle nextObstacle = null;
@@ -38,6 +39,10 @@ public class ObstacleManager : MonoBehaviour
         else if(enemyPrefab2 && type == 2)
         {
             enemy = MonoBehaviour.Instantiate(enemyPrefab2) as GameObject;
+        }
+        else if(enemyPrefab3 && type == 3)
+        {
+            enemy = MonoBehaviour.Instantiate(enemyPrefab3) as GameObject;
         }
         else if (portalPrefab && type == 100)
         {
@@ -66,7 +71,7 @@ public class ObstacleManager : MonoBehaviour
             {
                 obstacleList.Add(new Obstacle(15.0f, 1));
                 obstacleList.Add(new Obstacle(24.0f, 1));
-                obstacleList.Add(new Obstacle(42.0f, 1));
+                obstacleList.Add(new Obstacle(42.0f, 3));
                 obstacleList.Add(new Obstacle(46.0f, 1));
                 obstacleList.Add(new Obstacle(54.0f, 1));
                 obstacleList.Add(new Obstacle(total_distance=60.0f, 100));
@@ -75,19 +80,19 @@ public class ObstacleManager : MonoBehaviour
             {
                 obstacleList.Add(new Obstacle(24.0f, 1));
                 obstacleList.Add(new Obstacle(33.0f, 1));
-                obstacleList.Add(new Obstacle(42.0f, 1));
+                obstacleList.Add(new Obstacle(42.0f, 2));
                 obstacleList.Add(new Obstacle(46.0f, 1));
-                obstacleList.Add(new Obstacle(55.0f, 1));
+                obstacleList.Add(new Obstacle(55.0f, 3));
                 obstacleList.Add(new Obstacle(58.0f, 1));
                 obstacleList.Add(new Obstacle(total_distance = 65.0f, 100));
             }
             else
             {
                 obstacleList.Add(new Obstacle(15.0f, 1));
-                obstacleList.Add(new Obstacle(24.0f, 1));
+                obstacleList.Add(new Obstacle(24.0f, 3));
                 obstacleList.Add(new Obstacle(33.0f, 1));
                 obstacleList.Add(new Obstacle(42.0f, 1));
-                obstacleList.Add(new Obstacle(55.0f, 1));
+                obstacleList.Add(new Obstacle(55.0f, 2));
                 obstacleList.Add(new Obstacle(total_distance = 70.0f, 100));
             }
             break;
@@ -98,14 +103,14 @@ public class ObstacleManager : MonoBehaviour
                     obstacleList.Add(new Obstacle(42.0f, 2));
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
-                    obstacleList.Add(new Obstacle(58.0f, 1));
+                    obstacleList.Add(new Obstacle(58.0f, 3));
                     obstacleList.Add(new Obstacle(total_distance = 75.0f, 100));
                 }
                 else if (phase == 1)
                 {
                     obstacleList.Add(new Obstacle(15.0f, 2));
                     obstacleList.Add(new Obstacle(24.0f, 1));
-                    obstacleList.Add(new Obstacle(33.0f, 1));
+                    obstacleList.Add(new Obstacle(33.0f, 3));
                     obstacleList.Add(new Obstacle(42.0f, 2));
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
@@ -117,9 +122,9 @@ public class ObstacleManager : MonoBehaviour
                     obstacleList.Add(new Obstacle(24.0f, 1));
                     obstacleList.Add(new Obstacle(33.0f, 1));
                     obstacleList.Add(new Obstacle(42.0f, 2));
-                    obstacleList.Add(new Obstacle(46.0f, 1));
+                    obstacleList.Add(new Obstacle(46.0f, 3));
                     obstacleList.Add(new Obstacle(55.0f, 2));
-                    obstacleList.Add(new Obstacle(58.0f, 1));
+                    obstacleList.Add(new Obstacle(58.0f, 3));
                     obstacleList.Add(new Obstacle(total_distance = 75.0f, 100));
                 }
                 break;
@@ -127,7 +132,7 @@ public class ObstacleManager : MonoBehaviour
                 if (phase == 0)
                 {
                     obstacleList.Add(new Obstacle(15.0f, 2));
-                    obstacleList.Add(new Obstacle(24.0f, 1));
+                    obstacleList.Add(new Obstacle(24.0f, 3));
                     obstacleList.Add(new Obstacle(42.0f, 2));
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
@@ -137,7 +142,7 @@ public class ObstacleManager : MonoBehaviour
                 else if (phase == 1)
                 {
                     obstacleList.Add(new Obstacle(15.0f, 1));
-                    obstacleList.Add(new Obstacle(33.0f, 1));
+                    obstacleList.Add(new Obstacle(33.0f, 3));
                     obstacleList.Add(new Obstacle(42.0f, 2));
                     obstacleList.Add(new Obstacle(46.0f, 1));
                     obstacleList.Add(new Obstacle(55.0f, 2));
@@ -147,10 +152,10 @@ public class ObstacleManager : MonoBehaviour
                 else
                 {
                     obstacleList.Add(new Obstacle(15.0f, 2));
-                    obstacleList.Add(new Obstacle(24.0f, 1));
+                    obstacleList.Add(new Obstacle(24.0f, 3));
                     obstacleList.Add(new Obstacle(33.0f, 1));
                     obstacleList.Add(new Obstacle(42.0f, 2));
-                    obstacleList.Add(new Obstacle(46.0f, 1));
+                    obstacleList.Add(new Obstacle(46.0f, 3));
                     obstacleList.Add(new Obstacle(55.0f, 2));
                     obstacleList.Add(new Obstacle(58.0f, 1));
                     obstacleList.Add(new Obstacle(total_distance = 75.0f, 100));
@@ -165,6 +170,7 @@ public class ObstacleManager : MonoBehaviour
         portalPrefab = Resources.Load("game2/object/Portal") as GameObject;
         enemyPrefab = Resources.Load("game2/object/Enemy") as GameObject;
         enemyPrefab2 = Resources.Load("game2/object/Enemy2") as GameObject;
+        enemyPrefab3 = Resources.Load("game2/object/Enemy3") as GameObject;
     }
 
     // Update is called once per frame
