@@ -15,7 +15,9 @@ public class Owl : MonoBehaviour {
     private Touch tempTouchs;   //스마트폰터치 방향
     bool isDead = false;            // 사망?
     bool start = false; //처음에 나뭇가지 정보 넣을때
-    bool t = true;
+
+    public static bool t = true;
+
     Vector3 beforeBranch;   //방금 점프한 나뭇가지 정보
     float beforetime;
     bool touch_p = false;
@@ -140,6 +142,7 @@ public class Owl : MonoBehaviour {
                 other.SendMessage("GetGift");
                 break;
             case "Princess":
+                //StartCoroutine("wait");
                 other.SendMessage("PrincessCollision");
                 break;
         }

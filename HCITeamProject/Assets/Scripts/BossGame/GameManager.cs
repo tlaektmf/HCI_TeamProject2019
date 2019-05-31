@@ -19,11 +19,14 @@ public class GameManager : MonoBehaviour {
     public GameObject princess;
     public GameObject chkpoint;
     public GameObject mainCamera;   //카메라 이동
-    public GameObject Owl;   //주인공
+    //public GameObject Owl;   //주인공
     public Text timeText;
-    private float time=40;
+    bool rest = false;
+    bool pcoll = false; //princess Collision
+    private float time=1;
 
     bool gameclear = false;
+    
 
     private const float inchTocm = 2.54f;
     [SerializeField]
@@ -74,6 +77,15 @@ public class GameManager : MonoBehaviour {
                 Vector3 b_pos = new Vector3(pos.x, pos.y-(float)0.8, pos.z);
                 branch.transform.position = b_pos;
                 gameclear = true;
+            }
+            if (rest && pcoll)
+            {
+                //Owl.transform.position = princess.transform.position;
+                SoundManager.Instance.Stop();
+                SoundManager.Instance.PlayEffectWithPath("audio/common/win");
+                SceneController.state = "clear";
+                //SceneController.stage = "boss";
+                SceneManager.LoadScene("EmptyScene");    //GameClear 종류 두개로 바뀜. 확인해서 조건문도 바꿀것
             }
            
         }
@@ -162,26 +174,32 @@ public class GameManager : MonoBehaviour {
         //owlpos.y = owlpos.y;
         //StartCoroutine("wait");
     }
-    IEnumerator wait()
-    {
-        print("쉬는시간");
-        
-        yield return new WaitForSeconds(10f);
-        print("waitAndPrint " + Time.time);
-    }
+
     void SetScore()
     {
 
     }
+    IEnumerator wait2()
+    {
+        print("로딩즁");
+        //Owl.transform.position = princess.transform.position;
+        rest = false;
+        yield return new WaitForSeconds(1f);
+        rest = true;
+        print("로딩끝!");
+    }
     void GameClear()
     {
         print("용사여 당신은 공주를 구해냈어요!");
+        Owl.t = false;
+        StartCoroutine("wait2");
         timeText.text = "GameClear!!";
-        SoundManager.Instance.Stop();
-        SoundManager.Instance.PlayEffectWithPath("audio/common/win");
-        SceneController.state = "clear";
-        //SceneController.stage = "boss";
-        SceneManager.LoadScene("EmptyScene");    //GameClear 종류 두개로 바뀜. 확인해서 조건문도 바꿀것
+        pcoll = true;
+        //SoundManager.Instance.Stop();
+        //SoundManager.Instance.PlayEffectWithPath("audio/common/win");
+        //SceneController.state = "clear";
+        ////SceneController.stage = "boss";
+        //SceneManager.LoadScene("EmptyScene");    //GameClear 종류 두개로 바뀜. 확인해서 조건문도 바꿀것
     }
     void GameOver()
     {
