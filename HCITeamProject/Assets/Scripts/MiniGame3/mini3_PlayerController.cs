@@ -103,7 +103,7 @@ public class mini3_PlayerController : MonoBehaviour
 
             mcastle.transform.localScale += new Vector3(CASTLE_SIZE, CASTLE_SIZE, 0);
             mroad.transform.Translate(0, -ROAD_MOVE, 0);
-            ///Debug.Log(evil_awake.transform.localScale);
+          
         }
 
     }
