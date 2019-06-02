@@ -12,14 +12,18 @@ public class EvilController : MonoBehaviour
     GameObject evil_awake;
     GameObject evil_open_eyes;
 
+    
+    GameObject road;    //배경 이미지
+
     float FREQ_IMG = 2.0f;// 이미지 변경 속도
     float TIME_TYPE2_APPEAR = 5.0f;//default 실눈 뜬 고양이 지속 시간 조절
     float TIME_TYPE3_APPEAR = 2.0f;
     float delta = 0;
     float time;
-int evilNum;
+    int evilNum;
     bool flag;
     public static int number;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +32,8 @@ int evilNum;
         this.evil_open_eyes = GameObject.Find("evil_open_eyes");
         this.evil_sleep = GameObject.Find("evil_sleep");
         this.evil_awake = GameObject.Find("evil_awake");
-
+        this.road = GameObject.Find("road");
+        
         evil_awake.GetComponent<SpriteRenderer>().enabled = false;
         evil_sleep.GetComponent<SpriteRenderer>().enabled = false;
         evil_open_eyes.GetComponent<SpriteRenderer>().enabled = false;

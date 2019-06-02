@@ -208,6 +208,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1106367969}
+  sprites:
+  - {fileID: 21300000, guid: 04cc6f3db69481f47b70c754a3501547, type: 3}
+  - {fileID: 21300000, guid: b99922020cf20b949b9b5da6aa8967eb, type: 3}
 --- !u!95 &145777842
 Animator:
   serializedVersion: 3

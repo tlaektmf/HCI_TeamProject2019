@@ -23,6 +23,9 @@ public class mini3_PlayerController : MonoBehaviour
 
     GameObject director;
 
+    private SpriteRenderer spriteRenderer;
+    public Sprite[] sprites;    //sprite
+
     ///float BOUND_SIZE = 0.4f;
     // Start is called before the first frame update
     void Start()
@@ -37,13 +40,25 @@ public class mini3_PlayerController : MonoBehaviour
         this.mroad = GameObject.Find("road");
         anim = GetComponent<Animator>();
         anim.SetBool("isRun", true);
-
+        spriteRenderer = mroad.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = sprites[0];
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.value += 0.01f;
+        //road 빨간색 배경
+        if (EvilController.number == 2)
+        {
+            print("빨간 배경");
+            spriteRenderer.sprite = sprites[1];
+        }
+        else
+        {
+            spriteRenderer.sprite = sprites[0];
+        }
+
+        
         if (Input.touchCount > 0)
         {
             if (Input.GetMouseButton(0))
@@ -51,6 +66,7 @@ public class mini3_PlayerController : MonoBehaviour
                 //플레이어가 이동을 하지는 않고, 오브젝트들의 사이즈가 바뀜
                 //transform.localScale += new Vector3(0.5f, 0.5f, 0);
                 anim.SetBool("isRun", false);
+                slider.value += 0.01f;
                 UpButton();
             }
             else if (Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -76,7 +92,6 @@ public class mini3_PlayerController : MonoBehaviour
         else
         {
             
-
             evil_awake.transform.localScale += new Vector3(EVIL_SIZE, EVIL_SIZE, 0);
             evil_sleep.transform.localScale += new Vector3(EVIL_SIZE, EVIL_SIZE, 0);
             evil_open_eyes.transform.localScale += new Vector3(EVIL_SIZE, EVIL_SIZE, 0);
