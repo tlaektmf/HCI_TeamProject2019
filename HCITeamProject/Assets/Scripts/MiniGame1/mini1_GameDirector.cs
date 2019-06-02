@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class mini1_GameDirector : MonoBehaviour
 {
     int CLEAR_CONTROL_TIME = 40;
-
+    float time = 40;
+    public Text timeText;
     int PLAYER_SIZE_CONTROL_TIME = 5;
 
     GameObject mplayer;
@@ -18,6 +20,8 @@ public class mini1_GameDirector : MonoBehaviour
         this.mplayer = GameObject.Find("player_man");
         /// this.mevil = GameObject.Find("evil");
         StartCoroutine(miniGame1Clear());
+        time -= Time.deltaTime;
+        timeText.text = "남은시간 : " + Mathf.Ceil(time).ToString();
 
         SoundManager.Instance.Stop();
         SoundManager.Instance.PlayMusicWithPath("audio/game1/game1");
@@ -26,7 +30,8 @@ public class mini1_GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        time -= Time.deltaTime;
+        timeText.text = "남은시간 : " + Mathf.Ceil(time).ToString();
     }
 
     /*
