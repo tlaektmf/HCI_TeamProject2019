@@ -6,7 +6,7 @@ public class BombController : MonoBehaviour
 {
     GameObject mplayer;//케릭터 오브젝트
     GameObject director;
-
+    public GameObject explosion;
     float speed ;// 폭탄 낙하 속도
 
     // Start is called before the first frame update
@@ -39,14 +39,23 @@ public class BombController : MonoBehaviour
     }
 
     // Update is called once per frame
+    void initPosition()
+    {
+        //transform.position = new Vector3(transform.position.x, transform.position.y,0.0f);
+    }
     void Update()
     {
 
         transform.Translate(0, -1*speed* Time.deltaTime, 0);//0.1f의 속도만큼 낙하시킨다
-        if (transform.position.y < -5.0f)
+        if (transform.position.y < -3.0f)
         {//장애물의 y위치(높이)가 -5.0 밑으로 가는경우(화면에서 사라지는 경우)
-
-            Destroy(gameObject);//폭탄을 삭제
+            
+            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+            
+            //gameObject.SetActive(false);
+            
+            Destroy(gameObject,0.1f);//폭탄을 삭제
+            // initPosition();
 
         }
 
